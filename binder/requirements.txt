@@ -1,5 +1,5 @@
 # Das sind die Python-Bibliotheken für die Notebooks
-# Diese sind insbesonde für mybinder.org relevant
+# Diese sind insbesondere für mybinder.org relevant
 jupyter-server-proxy
 pandas==0.23.4
 matplotlib
@@ -9,3 +9,7 @@ pygal
 notebook==5.5
 jupyter_dashboards
 tornado==5.1.1
+nltk
+numpy
+re
+sklearn
