@@ -11,5 +11,4 @@ jupyter_dashboards
 tornado==5.1.1
 nltk
 numpy
-re
 sklearn
