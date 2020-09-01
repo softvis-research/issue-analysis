@@ -1,0 +1,2569 @@
+﻿entity,title,body
+node,fixed typo in README.md,"I changed the line ""to create a executable uberjar."" to ""to create an executable uberjar."" 
+The ""a"" should be ""an"" because the word that follows it starts with a vowel."
+node,** does not include files in the current directory,"It would be great if its behavior matched that of Bazel build files, or if not, it was prominently documented as such."
+node,fixed typos and spacings,fixed typos and spacings in `README.md`
+node,Docker: ERROR: Copybara config file filename should be 'copy.bara.sky' but it is 'something.else.sky',"In README.md
+> A few environment variables exist to allow you to change how you run copybara:
+> * COPYBARA_CONFIG=copy.bara.sky
+> allows you to specify a path to a config file, defaults to root copy.bara.sky
+
+I tried running it:
+
+```bash
+docker run \
+       -e COPYBARA_CONFIG='something.else.sky' \
+       -e COPYBARA_WORKFLOW='master' \
+       -v ""$(pwd)"":/usr/src/app \
+       -it copybara copybara
+```
+
+However, when I specific a config other than `copy.bara.sky` the error; **""Copybara config file filename should be 'copy.bara.sky' but it is 'something.else.sky'""** will be raised.
+
+"
+node,Issue VACCUM SQL directive to prevent the DB from keeping old Seeds,"This is a re-patch of 69a69977470dc0b6c0cbccd165ef6d8baa5b451e, which was added in pull request #89."
+node,Fix Issue 100: first card in list can never be dismissed.,Thanks.
+
+node,Changes are package protected and can't easily be used programmatically,#5 helped with exposing Info programatically but as I found out when I tried to use it `Info#migrationReferences()` is package protected and `MigrationReference#getAvailableToMigrate` is also package protected.
+I'd be happy to send a PR and make them public.
+node,Exception on rotation,"When I rotate my device I received the following Exception:
+
+``` java
+Process: de.fh.budgetkeeper.debug, PID: 1353
+    java.lang.RuntimeException: Unable to start activity ComponentInfo{de.fh.budgetkeeper.debug/de.fh.budgetkeeper.ui.MainActivity}: java.lang.ClassCastException: android.widget.AbsListView$SavedState cannot be cast to com.etsy.android.grid.StaggeredGridView$GridListSavedState
+            at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2195)
+            at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2245)
+            at android.app.ActivityThread.handleRelaunchActivity(ActivityThread.java:3738)
+            at android.app.ActivityThread.access$900(ActivityThread.java:135)
+            at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1202)
+            at android.os.Handler.dispatchMessage(Handler.java:102)
+            at android.os.Looper.loop(Looper.java:136)
+            at android.app.ActivityThread.main(ActivityThread.java:5017)
+            at java.lang.reflect.Method.invokeNative(Native Method)
+            at java.lang.reflect.Method.invoke(Method.java:515)
+            at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:779)
+            at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:595)
+            at dalvik.system.NativeStart.main(Native Method)
+     Caused by: java.lang.ClassCastException: android.widget.AbsListView$SavedState cannot be cast to com.etsy.android.grid.StaggeredGridView$GridListSavedState
+            at com.etsy.android.grid.StaggeredGridView.onRestoreInstanceState(StaggeredGridView.java:1292)
+            at android.view.View.dispatchRestoreInstanceState(View.java:12799)
+            at android.view.ViewGroup.dispatchThawSelfOnly(ViewGroup.java:2657)
+            at android.widget.AdapterView.dispatchRestoreInstanceState(AdapterView.java:791)
+            at android.view.ViewGroup.dispatchRestoreInstanceState(ViewGroup.java:2643)
+            at android.view.View.restoreHierarchyState(View.java:12777)
+            at android.support.v4.app.Fragment.restoreViewState(Fragment.java:465)
+            at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:969)
+            at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1126)
+            at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1108)
+            at android.support.v4.app.FragmentManagerImpl.dispatchActivityCreated(FragmentManager.java:1917)
+            at android.support.v4.app.FragmentActivity.onStart(FragmentActivity.java:544)
+            at android.app.Instrumentation.callActivityOnStart(Instrumentation.java:1171)
+            at android.app.Activity.performStart(Activity.java:5241)
+            at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2168)
+            at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2245)
+            at android.app.ActivityThread.handleRelaunchActivity(ActivityThread.java:3738)
+            at android.app.ActivityThread.access$900(ActivityThread.java:135)
+            at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1202)
+            at android.os.Handler.dispatchMessage(Handler.java:102)
+            at android.os.Looper.loop(Looper.java:136)
+            at android.app.ActivityThread.main(ActivityThread.java:5017)
+            at java.lang.reflect.Method.invokeNative(Native Method)
+            at java.lang.reflect.Method.invoke(Method.java:515)
+            at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:779)
+            at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:595)
+            at dalvik.system.NativeStart.main(Native Method)
+```
+
+It seems to come from the saving of the list (MaterialListView) SavedState which will be given to the grid (MaterialStaggeredGridView) and can not be converted to GridListSavedState....?
+"
+node,"BugFix, Resource-ID, ListCard, Abstraction","- I maybe fixed the Bug (#22). This should be tested, but I was not able to reproduce this exception.
+- I've added for every Card the possibility to add the Attributes via Resource-ID.
+- I updated the new BasicListCard and removed all the hard coded methods to add values to the list. Now an Adapter can be set for more flexibility on the data and the layout of the items which will be shown.
+- Updated the Readme
+"
+node,Fix the OAuth link,""
+node,Unable to run coursier on Windows,"After installing JDK8 and running the first bazel build command I get this:
+
+```
+INFO: Call stack for the definition of repository 'maven' which is a coursier_fetch (rule definition at C:/dev/celtoys/starnew/build/bazel/oqlwc3bo/external/rules_jvm_external/coursier.bzl:712:18):
+ - C:/dev/celtoys/starnew/build/bazel/oqlwc3bo/external/rules_jvm_external/defs.bzl:89:5
+ - C:/dev/celtoys/starnew/build/bazel/oqlwc3bo/external/rules_jvm_external/defs.bzl:89:5
+ - C:/dev/celtoys/temp/copybara/WORKSPACE:33:1
+INFO: Repository 'maven' used the following cache hits instead of downloading the corresponding file.
+ * Hash '8f35f92fb8e021f96b3aa8145c66c3b2e29295baabb28ff50569e613438afcbd' for https://github.com/coursier/coursier/releases/download/v2.0.0-RC3-4/coursier.jar
+If the definition of 'maven' was updated, verify that the hashes were also updated.
+ERROR: An error occurred during the fetch of repository 'maven':
+   Unable to run coursier: java.io.IOException: ERROR: src/main/native/windows/process.cc(199): CreateProcessW(""C:\dev\celtoys\starnew\build\bazel\oqlwc3bo\external\maven\coursier""): %1 is not a valid Win32 application.
+ (error: 193)
+INFO: Call stack for the definition of repository 'remotejdk11_win' which is a http_archive (rule definition at C:/dev/celtoys/starnew/build/bazel/oqlwc3bo/external/bazel_tools/tools/build_defs/repo/http.bzl:292:16):
+ - C:/dev/celtoys/starnew/build/bazel/oqlwc3bo/external/bazel_tools/tools/build_defs/repo/utils.bzl:205:9
+ - C:/dev/celtoys/starnew/build/bazel/oqlwc3bo/external/bazel_tools/tools/build_defs/repo/utils.bzl:205:9
+ - /DEFAULT.WORKSPACE.SUFFIX:249:1
+INFO: Call stack for the definition of repository 'remote_java_tools_windows' which is a http_archive (rule definition at C:/dev/celtoys/starnew/build/bazel/oqlwc3bo/external/bazel_tools/tools/build_defs/repo/http.bzl:292:16):
+ - C:/dev/celtoys/starnew/build/bazel/oqlwc3bo/external/bazel_tools/tools/build_defs/repo/utils.bzl:205:9
+ - C:/dev/celtoys/starnew/build/bazel/oqlwc3bo/external/bazel_tools/tools/build_defs/repo/utils.bzl:205:9
+ - /DEFAULT.WORKSPACE.SUFFIX:270:1
+INFO: Call stack for the definition of repository 'io_bazel' which is a http_archive (rule definition at C:/dev/celtoys/starnew/build/bazel/oqlwc3bo/external/bazel_tools/tools/build_defs/repo/http.bzl:292:16):
+ - C:/dev/celtoys/temp/copybara/WORKSPACE:67:1
+ - C:/dev/celtoys/temp/copybara/WORKSPACE:67:1
+ERROR: C:/dev/celtoys/temp/copybara/third_party/BUILD:149:1: //third_party:flogger depends on @maven//:com_google_flogger_flogger_system_backend in repository @maven which failed to fetch. no such package '@maven//': Unable to run coursier: java.io.IOException: ERROR: src/main/native/windows/process.cc(199): CreateProcessW(""C:\dev\celtoys\starnew\build\bazel\oqlwc3bo\external\maven\coursier""): %1 is not a valid Win32 application.
+ (error: 193)
+ERROR: C:/dev/celtoys/temp/copybara/third_party/BUILD:149:1: //third_party:flogger depends on @maven//:com_google_flogger_flogger in repository @maven which failed to fetch. no such package '@maven//': Unable to run coursier: java.io.IOException: ERROR: src/main/native/windows/process.cc(199): CreateProcessW(""C:\dev\celtoys\starnew\build\bazel\oqlwc3bo\external\maven\coursier""): %1 is not a valid Win32 application.
+ (error: 193)
+ERROR: Analysis of target '//java/com/google/copybara:copybara' failed; build aborted: no such package '@maven//': Unable to run coursier: java.io.IOException: ERROR: src/main/native/windows/process.cc(199): CreateProcessW(""C:\dev\celtoys\starnew\build\bazel\oqlwc3bo\external\maven\coursier""): %1 is not a valid Win32 application.
+ (error: 193)
+INFO: Elapsed time: 1.211s
+INFO: 0 processes.
+FAILED: Build did NOT complete successfully (0 packages loaded, 0 targets configured)
+```
+
+The `coursier` file exists but it's clearly not a Win32 PE, with some bash code prefixed at the beginning.
+
+Thanks for any help!"
+node,Fix formatting error in metadata.add_header docs,"""\`\`\`""  at the end of a line does not close a code block. ""\`\`\`python"" also does not close a code block, so the error was not obvious."
+node,why can't i display a BigImageCard with Description,"i just simply use the sample code to display a BigImageCard, but the description would't works!
+
+here is my code
+
+card = new Card.Builder(MainActivity.this)
+                                                .setTag(""BIG_IMAGE_CARD"")
+                                                .withProvider(new CardProvider())
+                                                .setLayout(R.layout.material_big_image_card_layout)
+                                                .setTitle("" "")
+                                                .setDescription(""new one"")
+                                                .setDrawable(item.getString(""webformatURL""))
+                                                .endConfig()
+                                                .build();
+materialListView.getAdapter().add(card);
+"
+node,Erroneous/broken `core.move` in public -> private import,"I'm working on a copybara demo for my team, and am running into an issue that's left me scratching my head.
+
+In this example private repository, I have a tree structure like:
+
+```
+internal-monorepo
+├── BUILD
+├── README.md
+├── WORKSPACE
+├── experimental
+    ├── copy.bara.sky
+    └── exercises
+        └── go
+            └── hello-world
+                ├── BUILD
+                ├── README.md
+                ├── go.mod
+                ├── hello_world.go
+                └── hello_world_test.go
+
+```
+
+The `copy.bara.sky` workflows are fairly straightforward:
+
+```
+public = ""https://github.com/someuser/experimental""
+private = ""https://github.com/someuser/internal-monorepo""
+
+core.workflow(
+    name = ""export"",
+    mode = ""ITERATIVE"",
+
+    origin = git.origin(
+        url = private,
+        ref = ""master"",
+    ),
+
+    destination = git.github_destination(
+        url = public,
+        push = ""master"",
+        fetch = ""master"",
+    ),
+
+    origin_files = glob([
+        ""experimental/**"",
+    ], exclude = [
+        ""experimental/copy.bara.sky"",
+        ""experimental/**/BUILD"",
+    ]),
+
+    destination_files = glob([""**""]),
+
+    authoring = authoring.pass_thru(""Copybara Bot <no-reply@domain.com>""),
+
+    transformations = [
+        core.move(""experimental"", """"),
+        metadata.scrubber('(^|\n)INTERNAL-ONLY:(.|\n)*'),
+        metadata.restore_author(
+          label = ""ORIGINAL_AUTHOR"",
+          search_all_changes = True,
+        ),
+    ],
+)
+
+core.workflow(
+    name = ""import"",
+    mode = ""CHANGE_REQUEST"",
+    set_rev_id = False,
+
+    origin = git.github_pr_origin(
+        url = public,
+    ),
+
+    destination = git.github_pr_destination(
+        url = private,
+        destination_ref = ""master"",
+    ),
+
+    origin_files = glob([
+        ""**"",
+    ]),
+
+    destination_files = glob([
+        ""experimental/**""
+    ], exclude = [
+        ""experimental/copy.bara.sky"",
+        ""experimental/**/BUILD"",
+    ]),
+
+    authoring = authoring.whitelisted(
+        default = ""Copybara Bot <no-reply@domain.com>"",
+        whitelist = [
+            ""me@domain.com"",
+        ],
+    ),
+
+    transformations = [
+        core.move("""", ""experimental""),
+        metadata.save_author(),
+        metadata.expose_label(""COPYBARA_INTEGRATE_REVIEW""),
+        metadata.expose_label(""GITHUB_PR_NUMBER"", new_name = ""closes"", separator = '#'),
+    ],
+)
+```
+
+## `export` works beautifully.
+
+In internal repository has a single, initial commit. Running the `export` workflow works as expected:
+
+```
+$ copybara experimental/copy.bara.sky export --init-history --force
+...
+
+# The new public repository looks exactly as expected!
+
+$ tree
+<public-repo>
+└── exercises
+    └── go
+        └── hello-world
+            ├── README.md
+            ├── go.mod
+            ├── hello_world.go
+            └── hello_world_test.go
+```
+
+## `import` fails due to a conflict.
+
+I'm testing the PR workflow, so I create an issue in `<public-repo>`, create a new branch, and push it up. The new tree looks like this:
+
+```
+$ tree
+<public-repo-branch>
+├── README.md
+└── exercism
+    └── go
+        └── hello-world
+            ├── README.md
+            ├── go.mod
+            ├── hello_world.go
+            └── hello_world_test.go
+```
+
+Switching back to my internal repo (where the workflow file lives), I now run the `import` workflow. It fails due to a conflict (the reference is `refs/pull/2/head` because the branch has been submitted as a PR):
+
+```
+➜ copybara experimental/copy.bara.sky import refs/pull/2/head
+Apr 01, 2020 9:12:55 PM com.google.copybara.Main configureLog
+INFO: Setting up LogManager
+Copybara source mover (Version: Unknown version)
+Task: Integrating change from https://github.com/someuser/experimental/pull/2 from someuser:1/add-readme c4b5ef92771760d076a036620adb2d74e2a4bea0
+WARN: Removing previous rebase failure lock: /home/myuser/copybara/cache/git_repos/https%3A%2F%2Fgithub%2Ecom%2Fsomeuser%2Finternal-monorepo/rebase-merge
+ERROR: Conflict detected while rebasing /home/myuser/copybara/temp/workdir1539881038528199439/checkout to 30785368de6889c04aa194754821ec6e9da062c0. Please sync or update the change in the origin and retry. Git output was:
+CONFLICT (add/add): Merge conflict in README.md
+Auto-merging README.md
+``` 
+
+In looking at the working directory, I'm seeing a weird duplication of the `exercises` directory -- **it looks like the `core.move` transformation is _copying_ the origin files in the `import` workflow rather than __merging__ them**:
+
+```
+~/copybara/temp/workdir1539881038528199439
+➜ tree
+.
+├── checkout
+│   ├── BUILD
+│   ├── README.md
+│   ├── WORKSPACE
+│   ├── exercises
+│   │   └── go
+│   │       └── hello-world
+│   │           ├── README.md
+│   │           ├── go.mod
+│   │           ├── hello_world.go
+│   │           └── hello_world_test.go
+│   ├── experimental
+│       ├── copy.bara.sky
+│       └── exercises
+│           └── go
+│               └── hello-world
+│                   ├── BUILD
+│                   ├── README.md
+│                   ├── go.mod
+│                   ├── hello_world.go
+│                   └── hello_world_test.go
+│
+├── origin
+│   ├── README.md
+│   └── exercises
+│       └── go
+│           └── hello-world
+│               ├── README.md
+│               ├── go.mod
+│               ├── hello_world.go
+│               └── hello_world_test.go
+└── reverse
+    ├── README.md
+    └── exercises
+        └── go
+            └── hello-world
+                ├── README.md
+                ├── go.mod
+                ├── hello_world.go
+                └── hello_world_test.go
+```
+
+From the documentation (and other examples found in issues in this repository), it appears that my `core.move` usage is correct, and should result in the `github_pr_origin` files being moved into a subdirectory. What am I doing wrong? Your help is greatly appreciated -- thanks for maintaining a great tool! "
+node,Cannot add image/icon inside buttons.,"Is there a way to add images or icons inside the buttons?
+I hope its possible because the welcome card has check icon/image on a button.  
+Do I need to override or create my own methods to accomplish this?
+.addAction(R.id.left_text_button, new TextViewAction(this)
+                       ```
+
+``````
+
+> > .setText(""RANDOM_CARD"")
+> >                         .setTextResourceColor(R.color.black_button)
+> >                         **.setImage() <-- something likea  setImage method**
+> >                         .setListener(new OnActionClickListener() {
+> >                             @Override
+> >                             public void onActionClicked(View view, Card card) {
+> >                                 Log.d(""START"", ""RANDOM CARD"");
+> > 
+> 
+> ```
+
+``````
+"
+node,Library not adding in dependency,failed to resolve: com.jpardogo
+
+
+node,Show issuer,"read and show the issuer
+
+I'm just going to leave this here in case anyone wants it, because I'm too lazy to do all the tests.
+"
+node,MaterialList efficiency problem," You used a ViewHolder pattern but not in correct way, build function is called in onBindViewHolder (in MaterialListAdapter) and it uses findViewById many times which it is not a cheap operation.
+I think you have to create two functions build which finds views and assigns it to references and called by onCreateViewHolder and bind which bind card's data to references and called by onBindViewHolder
+"
+node,Submodule not registered registered in destination,"When trying to copybara a repository with submodules in the origin, the git destination does not receive the submodule registered as such, i.e., the `git submodule status` returns nothing.
+I've tried with 2 kinds of submodules, one in the workspace root and one nested, both reference a github repository and are named like their path.
+
+Configuration: 
+* copybara version 6e798f92 (HEAD on 2019-04-10)
+* git version 2.21.0
+* config
+
+        core.workflow(
+            name = ""test"",
+            origin = git.origin(url = ""file:///<path-to-origin>"", ref = ""HEAD"", submodules = ""RECURSIVE""),
+            destination = git.destination(""file:///<path-to-destination>"", ""<ref>""),
+            origin_files = glob([""**""]),
+            destination_files = glob([""**""]),
+            mode = ""ITERATIVE"",
+            authoring = authoring.pass_thru(default = """"),
+        )"
+node,Errors while updating from 2.5 to 2.6,"Hi,
+
+```
+$ bazelisk clean --expugne
+```
+
+```
+$ bazelisk info
+Starting local Bazel server and connecting to it...
+bazel-bin: /private/var/tmp/_bazel_fsousa/5eb111cf39e94839e993e7dc498f4d7c/execroot/demos/bazel-out/darwin-fastbuild/bin
+bazel-genfiles: /private/var/tmp/_bazel_fsousa/5eb111cf39e94839e993e7dc498f4d7c/execroot/demos/bazel-out/darwin-fastbuild/bin
+bazel-testlogs: /private/var/tmp/_bazel_fsousa/5eb111cf39e94839e993e7dc498f4d7c/execroot/demos/bazel-out/darwin-fastbuild/testlogs
+character-encoding: file.encoding = ISO-8859-1, defaultCharset = ISO-8859-1
+command_log: /private/var/tmp/_bazel_fsousa/5eb111cf39e94839e993e7dc498f4d7c/command.log
+committed-heap-size: 257MB
+execution_root: /private/var/tmp/_bazel_fsousa/5eb111cf39e94839e993e7dc498f4d7c/execroot/demos
+gc-count: 3
+gc-time: 28ms
+install_base: /var/tmp/_bazel_fsousa/install/8772b695a4a7b498a4dd3eff54505d9c
+java-home: /private/var/tmp/_bazel_fsousa/install/8772b695a4a7b498a4dd3eff54505d9c/_embedded_binaries/embedded_tools/jdk
+java-runtime: OpenJDK Runtime Environment (build 11.0.2+7-LTS) by Azul Systems, Inc.
+java-vm: OpenJDK 64-Bit Server VM (build 11.0.2+7-LTS, mixed mode) by Azul Systems, Inc.
+max-heap-size: 3817MB
+output_base: /private/var/tmp/_bazel_fsousa/5eb111cf39e94839e993e7dc498f4d7c
+output_path: /private/var/tmp/_bazel_fsousa/5eb111cf39e94839e993e7dc498f4d7c/execroot/demos/bazel-out
+package_path: %workspace%
+release: release 0.28.1
+repository_cache: /var/tmp/_bazel_fsousa/cache/repos/v1
+server_log: /private/var/tmp/_bazel_fsousa/5eb111cf39e94839e993e7dc498f4d7c/java.log.nostradamus.fsousa.log.java.20190806-153858.8951
+server_pid: 8951
+used-heap-size: 70MB
+workspace: /Users/fsousa/Projects/demo/demos
+```
+
+```
+$ bazelisk build //...
+INFO: Call stack for the definition of repository 'gwtsrc' which is a coursier_fetch (rule definition at /private/var/tmp/_bazel_fsousa/5eb111cf39e94839e993e7dc498f4d7c/external/rules_jvm_external/coursier.bzl:852:18):
+ - /private/var/tmp/_bazel_fsousa/5eb111cf39e94839e993e7dc498f4d7c/external/rules_jvm_external/defs.bzl:83:5
+ - /Users/fsousa/Projects/demo/demos/WORKSPACE:143:1
+INFO: Repository 'gwtsrc' used the following cache hits instead of downloading the corresponding file.
+ * Hash '2311054a07f5e8d83766155744e139e7a4b2ee1e77d47a636839687c4233a465' for https://jcenter.bintray.com/io/get-coursier/coursier-cli_2.12/1.1.0-M14-4/coursier-cli_2.12-1.1.0-M14-4-standalone.jar
+If the definition of 'gwtsrc' was updated, verify that the hashes were also updated.
+ERROR: An error occurred during the fetch of repository 'gwtsrc':
+   local variable 'primary_artifact_path' is referenced before assignment.
+INFO: Call stack for the definition of repository 'gwt' which is a coursier_fetch (rule definition at /private/var/tmp/_bazel_fsousa/5eb111cf39e94839e993e7dc498f4d7c/external/rules_jvm_external/coursier.bzl:852:18):
+ - /private/var/tmp/_bazel_fsousa/5eb111cf39e94839e993e7dc498f4d7c/external/rules_jvm_external/defs.bzl:83:5
+ - /Users/fsousa/Projects/demo/demos/WORKSPACE:112:1
+INFO: Call stack for the definition of repository 'remote_java_tools_darwin' which is a http_archive (rule definition at /private/var/tmp/_bazel_fsousa/5eb111cf39e94839e993e7dc498f4d7c/external/bazel_tools/tools/build_defs/repo/http.bzl:237:16):
+ - /DEFAULT.WORKSPACE.SUFFIX:255:1
+INFO: Call stack for the definition of repository 'maven' which is a coursier_fetch (rule definition at /private/var/tmp/_bazel_fsousa/5eb111cf39e94839e993e7dc498f4d7c/external/rules_jvm_external/coursier.bzl:852:18):
+ - /private/var/tmp/_bazel_fsousa/5eb111cf39e94839e993e7dc498f4d7c/external/rules_jvm_external/defs.bzl:83:5
+ - /Users/fsousa/Projects/demo/demos/WORKSPACE:42:1
+ERROR: /Users/fsousa/Projects/demo/demos/java/pt/ipb/demo/gwt/app/BUILD.bazel:15:1: //java/pt/ipb/demo/gwt/app:gwt-deps depends on @gwtsrc//:com_google_jsinterop_jsinterop_annotations in repository @gwtsrc which failed to fetch. no such package '@gwtsrc//': local variable 'primary_artifact_path' is referenced before assignment.
+ERROR: /Users/fsousa/Projects/demo/demos/java/pt/ipb/demo/gwt/app/BUILD.bazel:15:1: //java/pt/ipb/demo/gwt/app:gwt-deps depends on @gwtsrc//:javax_validation_validation_api in repository @gwtsrc which failed to fetch. no such package '@gwtsrc//': local variable 'primary_artifact_path' is referenced before assignment.
+ERROR: Analysis of target '//java/pt/ipb/demo/gwt/app:gwt-deps' failed; build aborted: no such package '@gwtsrc//': local variable 'primary_artifact_path' is referenced before assignment.
+INFO: Elapsed time: 5.716s
+INFO: 0 processes.
+FAILED: Build did NOT complete successfully (113 packages loaded, 196 targets configured)
+    Fetching @remotejdk11_macos; fetching 4s
+    Fetching @local_config_xcode; fetching
+```
+
+In my WORKSPACE I have this:
+
+```python
+RULES_JVM_EXTERNAL_TAG = ""2.6""
+
+RULES_JVM_EXTERNAL_SHA = ""064b9085b21c349c8bd8be015a73efd6226dd2ff7d474797b3507ceca29544bb""
+
+http_archive(
+    name = ""rules_jvm_external"",
+    sha256 = RULES_JVM_EXTERNAL_SHA,
+    strip_prefix = ""rules_jvm_external-%s"" % RULES_JVM_EXTERNAL_TAG,
+    url = ""https://github.com/bazelbuild/rules_jvm_external/archive/%s.zip"" % RULES_JVM_EXTERNAL_TAG,
+)
+
+load(""@rules_jvm_external//:defs.bzl"", ""maven_install"")
+load(
+    ""//:artifacts.bzl"",
+    ""AUTO_FACTORY_ARTIFACTS"",
+    ""AUTO_SERVICE_ARTIFACTS"",
+    ""AUTO_VALUE_ARTIFACTS"",
+    ""FLOGGER_ARTIFACTS"",
+    ""GUICE_ARTIFACTS"",
+    ""JACKSON_ARTIFACTS"",
+    ""JAKARTA_ARTIFACTS"",
+    ""MAPSTRUCT_ARTIFACTS"",
+    ""QUERYDSL_ARTIFACTS"",
+    ""RETROFIT_ARTIFACTS"",
+    ""SLF4J_ARTIFACTS"",
+    ""TRUTH_ARTIFACTS"",
+)
+
+MAVEN_REPOSITORIES = [
+    ""<private_repo_with_basic_auth>"",
+    ""https://repo1.maven.org/maven2"",
+    ""https://maven.google.com"",
+]
+
+maven_install(
+    artifacts =
+        JACKSON_ARTIFACTS +
+        FLOGGER_ARTIFACTS +
+        GUICE_ARTIFACTS +
+        JAKARTA_ARTIFACTS +
+        RETROFIT_ARTIFACTS +
+        MAPSTRUCT_ARTIFACTS +
+        SLF4J_ARTIFACTS +
+        TRUTH_ARTIFACTS +
+        AUTO_SERVICE_ARTIFACTS +
+        AUTO_VALUE_ARTIFACTS +
+        AUTO_FACTORY_ARTIFACTS +
+        QUERYDSL_ARTIFACTS + [
+            ""com.github.dexecutor:dexecutor-core:2.1.0"",
+            ""com.google.dagger:dagger-compiler:2.24"",
+            ""com.google.guava:guava:28.0-jre"",
+            ""com.h2database:h2:jar:1.4.199"",
+            ""com.sparkjava:spark-core:2.9.1"",
+            ""com.squareup.okhttp3:logging-interceptor:3.12.2"",
+            ""javax.servlet:javax.servlet-api:3.1.0"",
+            ""javax.validation:validation-api:jar:2.0.1.Final"",
+            ""net.dongliu:gson-java8-datatype:1.1.0"",
+            ""ognl:ognl:jar:3.1.24"",
+            ""one.util:streamex:0.6.8"",
+            ""org.apache.commons:commons-lang3:3.8.1"",
+            ""org.flowable:flowable-engine:jar:6.4.1"",
+            ""org.hashids:hashids:jar:1.0.3"",
+            ""org.jboss.weld.se:weld-se-core:jar:3.1.1.Final"",
+            ""org.jboss:jandex:2.1.1.Final"",
+            ""org.jetbrains:annotations:17.0.0"",
+            ""org.jooq:jool-java-8:0.9.14"",
+            ""org.mockito:mockito-core:2.27.0"",
+            ""net.jodah:failsafe:2.0.1"",
+            ""info.picocli:picocli-codegen:4.0.1"",
+            ""info.picocli:picocli:4.0.1"",
+        ],
+    excluded_artifacts = [
+        ""com.mchange:c3p0"",
+        ""com.sun.mail:javax.mail"",
+        ""com.zaxxer:HikariCP-java6"",
+        ""com.zaxxer:HikariCP-java7"",
+        ""commons-logging:commons-logging"",
+        ""javax.activation:activation"",
+        ""javax.activation:javax-activation-api"",
+        ""javax.annotation:javax.annotation"",
+        ""javax.interceptor:javax.interceptor-api"",
+        ""javax.mail:javax.mail-api"",
+        ""javax.persistence:javax.persistence-api"",
+        ""javax.transaction:javax.transaction-api"",
+        ""javax.ws.rs:javax.ws.rs-api"",
+        ""javax.ws.rs:jsr311-api"",
+        ""javax.xml.bind:jaxb-api"",
+        ""javax.xml.ws:jaxws-api"",
+        ""javax:javaee-api"",
+        ""log4j:log4j"",
+        ""org.glassfish:javax.el"",
+        ""org.jboss.spec.javax.annotation:jboss-annotations-api_1.2_spec"",
+        ""org.jboss.spec.javax.interceptor:jboss-interceptors-api_1.2_spec"",
+        ""org.jboss.spec.javax.servlet:jboss-servlet-api_3.1_spec"",
+        ""org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.1_spec"",
+        ""org.jboss.spec.javax.xml.bind:jboss-jaxb-api_2.3_spec"",
+        ""org.slf4j:slf4j-jdk14"",
+        ""org.slf4j:slf4j-log4j12"",
+        ""org.springframework:spring-jcl"",
+    ],
+    fetch_sources = True,
+    repositories = MAVEN_REPOSITORIES,
+)
+
+maven_install(
+    name = ""gwt"",
+    artifacts = [
+        ""com.google.dagger:dagger-gwt:2.24"",
+        ""com.google.guava:guava-gwt:28.0-jre"",
+        ""com.google.gwt:gwt-dev:2.8.2-20190719"",
+        ""com.google.gwt:gwt-user:2.8.2-20190719"",
+        ""com.google.jsinterop:jsinterop-annotations:1.0.2-20190330"",
+        ""javax.validation:validation-api:1.0.0.GA"",
+        ""net.ltgt.gwt:gwt-places:1.0.0"",
+        ""org.eclipse.jetty:jetty-annotations:9.2.20.v20161216"",
+        ""org.eclipse.jetty:jetty-http:9.2.20.v20161216"",
+        ""org.eclipse.jetty:jetty-io:9.2.20.v20161216"",
+        ""org.eclipse.jetty:jetty-jndi:9.2.20.v20161216"",
+        ""org.eclipse.jetty:jetty-plus:9.2.20.v20161216"",
+        ""org.eclipse.jetty:jetty-security:9.2.20.v20161216"",
+        ""org.eclipse.jetty:jetty-server:9.2.20.v20161216"",
+        ""org.eclipse.jetty:jetty-servlet:9.2.20.v20161216"",
+        ""org.eclipse.jetty:jetty-servlets:9.2.20.v20161216"",
+        ""org.eclipse.jetty:jetty-util:9.2.20.v20161216"",
+        ""org.eclipse.jetty:jetty-webapp:9.2.20.v20161216"",
+        ""org.eclipse.jetty:jetty-xml:9.2.20.v20161216"",
+        ""org.fusesource.restygwt:restygwt:2.2.4"",
+        ""org.jboss.gwt.elemento:elemento-core:0.9.0-gwt2"",
+        ""org.jboss.gwt.elemento:elemento-widget:0.9.0-gwt2"",
+        ""org.ow2.asm:asm:7.1"",
+    ],
+    fetch_sources = True,
+    repositories = MAVEN_REPOSITORIES,
+)
+
+maven_install(
+    name = ""gwtsrc"",
+    artifacts = [
+        ""com.google.jsinterop:jsinterop-annotations:jar:sources:1.0.2-20190330"",
+        ""javax.validation:validation-api:jar:sources:1.0.0.GA"",
+    ],
+    repositories = MAVEN_REPOSITORIES,
+)
+```
+
+It works with 2.5 but not 2.6."
+node,Throw EvalException instead of IllegalArgumentException,Unchecked exceptions won't be automatically converted to EvalException (https://github.com/bazelbuild/bazel/pull/8266).
+node,BasicButtonsCard title not appearing,"I am using BigImageButtonsCards and BasicButtonsCards in my MaterialListView. For some reason, the titles of the the BasicButtonsCards do not appear even though the text colour is black and the card background colour is white. However, when I use BasicButtonsCards only (no BigImageButtonsCards), the titles appear. Any idea why?
+"
+node,Unable to sync with Gradle: compile 'com.github.dexafree:MaterialList:v3.0.1',"i'm unable to get this lib. via gradle sync. i've also tried snapshot : compile 'com.github.dexafree:MaterialList:-SNAPSHOT'  , still no success. please respond.
+
+![screen shot 2015-12-30 at 4 30 23 pm](https://cloud.githubusercontent.com/assets/13833204/12050117/55a0ecd2-aebe-11e5-9a43-0c6799faf5fb.png)
+![screen shot 2015-12-30 at 4 30 33 pm](https://cloud.githubusercontent.com/assets/13833204/12050118/5601bbc0-aebe-11e5-8434-3443fd81e8af.png)
+"
+node,problem with setColumnCountPortrait function,"I use this code to implement loading more data with MaterialList.
+it's work when mListView.setColumnCountPortrait(1); but when I set it 2 for example, function findFirstVisibleItemPosition return -1 all the time. any suggestion?
+
+``` java
+ mLayoutManager = (LinearLayoutManager) mListView.getLayoutManager();
+        mListView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                if (dy > 0) //check for scroll down
+                {
+                    visibleItemCount = mLayoutManager.getChildCount();
+                    totalItemCount = mLayoutManager.getItemCount();
+                    pastVisiblesItems = mLayoutManager.findFirstVisibleItemPosition();
+                    if (loading) {
+                        if ((visibleItemCount + pastVisiblesItems) >= totalItemCount) {
+                            loading = false;
+                            Log.v(""..."", ""Last Item!"");
+                            LoadMoreData();
+                        }
+                    }
+                }
+            }
+        });
+```
+"
+node,Issue when tried to start app,"Original [issue 347](https://code.google.com/p/google-authenticator/issues/detail?id=347) created by pipeh.surfer on 2013-12-27T04:04:11.000Z:
+
+<b>What steps will reproduce the problem?</b>
+1. Open Authentication
+2. Try to put Begin Setup button
+3. Immediately unfortunately, authentication has stopped
+
+<b>What is the expected output? What do you see instead?</b>
+Immediately unfortunately, authentication has stopped
+
+<b>What version of the product are you using? On what operating system?</b>
+2.49 ' Android 4.3 Xperia ZL
+
+<b>Please provide any additional information below.</b>
+"
+node,Why cant we set shadow to Text on title that falls on an Image?,setShadowLayer() on text that falls on an image is crucial as same image with same color makes the text invisible
+
+node,Barcode scanner is not available now popup on trying to add account,"Device: Nexus 4
+Android Version: 5.1.1
+Build number: LMY48T
+
+Steps to reproduce:
+Installed Google Authenticator from Play Store
+Launched the app
+Clicked on ""BEGIN""
+Below ""Add an account"" clicked on ""Scan a barcode"" and got the message popup saying ""Barcode scanner is not available now"" with ""OK"" to click.
+Tried installing few barcode scanners app from Play Store and then trying to add account, result is same. See attached screenshot.
+Please suggest if there is any workaround for this issue.
+![screenshot_2016-10-17-16-07-45](https://cloud.githubusercontent.com/assets/953479/19436835/06bf15c2-9490-11e6-9b86-8b4405bbe8a3.png)
+"
+node,copybara: command not found,"Hi, I am installing copybara on Centos 7 according to your documentation. But in the end, I am taking ""copybara: command not found"" error. How can I solve this problem?"
+node,DateTime parsing error,"While evaluating Copybara I ran into this:
+
+```
+bazel-bin/java/com/google/copybara/copybara migrate copy.bara.sky --force
+Copybara source mover (Version: Unknown version)
+Task: Git Destination: Fetching: https://github.com/<undisclosed>.git master
+WARN: Git Destination: 'master' doesn't exist in 'https://github.com/<undisclosed>.git'
+WARN: Cannot find last imported revision, but proceeding because of --force flag
+java.time.format.DateTimeParseException: Text '%aI' could not be parsed at index 0
+	at java.time.format.DateTimeFormatter.parseResolved0(DateTimeFormatter.java:1947)
+	at java.time.format.DateTimeFormatter.parse(DateTimeFormatter.java:1849)
+	at java.time.ZonedDateTime.parse(ZonedDateTime.java:597)
+	at java.time.ZonedDateTime.parse(ZonedDateTime.java:582)
+	at com.google.copybara.git.GitRepository$LogCmd.parseLog(GitRepository.java:1351)
+	at com.google.copybara.git.GitRepository$LogCmd.run(GitRepository.java:1307)
+	at com.google.copybara.git.ChangeReader.run(ChangeReader.java:73)
+	at com.google.copybara.git.GitOrigin$ReaderImpl.changes(GitOrigin.java:222)
+	at com.google.copybara.git.GitOrigin$ReaderImpl.changes(GitOrigin.java:120)
+	at com.google.copybara.WorkflowRunHelper.getChanges(WorkflowRunHelper.java:313)
+	at com.google.copybara.WorkflowMode$1.run(WorkflowMode.java:56)
+	at com.google.copybara.Workflow.run(Workflow.java:192)
+	at com.google.copybara.Copybara.run(Copybara.java:58)
+	at com.google.copybara.Main.runInternal(Main.java:171)
+	at com.google.copybara.Main.run(Main.java:106)
+	at com.google.copybara.Main.main(Main.java:85)
+ERROR: Unexpected error (please file a bug): Text '%aI' could not be parsed at index 0 (java.time.format.DateTimeParseException: Text '%aI' could not be parsed at index 0)
+```"
+node,Errors in config files are no longer presented to the user,"Using commit abcaf802fe93a93db8a200ed3c393f5b3e14653b, running `copybara <command> <path to copy.bara.sky>` where the `copy.bara.sky` file is invalid (incorrect call signatures for example) no longer shows the user the error, but instead throws a ClassCastException.
+
+
+```
+matt@Matts-MacBook-Pro $ copybara -v info ./ev/tooling/changelog/copy.bara.sky
+Jan 12, 2020 8:51:09 AM com.google.copybara.Main configureLog
+INFO: Setting up LogManager
+Copybara source mover (Version: Unknown version)
+Task: Cleaning output directory
+INFO: PROFILE:     14 //copybara/clean_outputdir
+Task: Loading config ev/tooling/changelog/copy.bara.sky
+ERROR: /Users/matt/Documents/workspace/evertz/ev/tooling/changelog/copy.bara.sky:24:5: positional argument is misplaced (positional arguments come first)
+INFO: PROFILE:    238 //copybara/loading_config
+java.lang.ClassCastException: com.google.devtools.build.lib.syntax.Argument$Positional cannot be cast to com.google.devtools.build.lib.syntax.Argument$Keyword
+	at com.google.devtools.build.lib.syntax.Eval.doEval(Eval.java:572)
+	at com.google.devtools.build.lib.syntax.Eval.eval(Eval.java:459)
+	at com.google.devtools.build.lib.syntax.Eval.execDispatch(Eval.java:250)
+	at com.google.devtools.build.lib.syntax.Eval.exec(Eval.java:238)
+	at com.google.devtools.build.lib.syntax.Eval.execStatements(Eval.java:74)
+	at com.google.devtools.build.lib.syntax.Eval.execFunctionBody(Eval.java:59)
+	at com.google.devtools.build.lib.syntax.StarlarkFunction.fastcall(StarlarkFunction.java:103)
+	at com.google.devtools.build.lib.syntax.Starlark.fastcall(Starlark.java:259)
+	at com.google.devtools.build.lib.syntax.EvalUtils.exec(EvalUtils.java:899)
+	at com.google.copybara.config.SkylarkParser$Evaluator.eval(SkylarkParser.java:232)
+	at com.google.copybara.config.SkylarkParser$Evaluator.access$200(SkylarkParser.java:178)
+	at com.google.copybara.config.SkylarkParser.loadConfigInternal(SkylarkParser.java:82)
+	at com.google.copybara.config.SkylarkParser.getConfigWithTransitiveImports(SkylarkParser.java:124)
+	at com.google.copybara.config.SkylarkParser.loadConfig(SkylarkParser.java:73)
+	at com.google.copybara.ConfigLoader.loadForConfigFile(ConfigLoader.java:80)
+	at com.google.copybara.ConfigLoader.load(ConfigLoader.java:57)
+	at com.google.copybara.InfoCmd.run(InfoCmd.java:68)
+	at com.google.copybara.Main.runInternal(Main.java:244)
+	at com.google.copybara.Main.run(Main.java:122)
+	at com.google.copybara.Main.main(Main.java:101)
+ERROR: Unexpected error (please file a bug against copybara): com.google.devtools.build.lib.syntax.Argument$Positional cannot be cast to com.google.devtools.build.lib.syntax.Argument$Keyword (java.lang.ClassCastException: com.google.devtools.build.lib.syntax.Argument$Positional cannot be cast to com.google.devtools.build.lib.syntax.Argument$Keyword)
+INFO: PROFILE:    305 //copybara
+```
+
+To reproduce, call copybara with an invalid copy.bara.config file. Note that syntax errors are shown to the user, albeit along with the exception above.
+In my config, I was missing the required `authoring` attr of `core.workflow`."
+node,Fix the Lint Errors,This fixes the errors reported by lint
+
+node,Add Show Description functionality to metadata.squash_notes,"I believe this will add the ability to disable showing the commit message when using metadata.squash_notes.
+
+This can be tested by now providing show_description = False with metadata.squash_notes. This should remove the message in all cases, including compact and non compact notes.
+
+Docs updated as a part of this and tests updated.
+
+Apologies on the delay, I was driving from Alaska to NYC, took a minute to fix this up."
+node,"A problem with hotmail.com Google Accounts ""user@hotmail.com like Google Account"" do not have the code email to verify","Hello Google team,
+
+I do not know, how I can send this issue but Google Accounts created with Hotmail addresses ""user@hotmail.com like Google Account"" (and maybe other Microsoft mail addresses or other mail addresses of the World) can not received the email with the Google Code to confirm that we are the user.
+
+But the blocked alert mail has been received.
+
+I see that it is not new:
+- https://support.google.com/mail/forum/AAAAK7un8RU7uDa33Sgx5c
+
+Can you solve it?
+
+Thanks in advance."
+node,android.content.res.Resources$NotFoundException: Resource ID #0x0,"i got this error when i try to run code ""android.content.res.Resources$NotFoundException: Resource ID #0x0""  any idea why?
+here is my .xml
+<?xml version=""1.0"" encoding=""utf-8""?>
+<LinearLayout
+    xmlns:android=""http://schemas.android.com/apk/res/android""
+    xmlns:tools=""http://schemas.android.com/tools""
+    xmlns:app=""http://schemas.android.com/apk/res-auto""
+    android:layout_width=""match_parent""
+    android:layout_height=""match_parent""
+
+```
+app:layout_behavior=""@string/appbar_scrolling_view_behavior""
+tools:showIn=""@layout/activity_main""
+tools:context="".MainActivity"">
+
+
+
+
+    <com.dexafree.materialList.view.MaterialListView
+        android:layout_width=""fill_parent""
+        android:layout_height=""fill_parent""
+        android:id=""@+id/material_listview""/>
+
+
+​
+```
+
+</LinearLayout>
+
+here is my main activity 
+
+ FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, ""Replace with your own action"", Snackbar.LENGTH_LONG)
+                        .setAction(""Action"", null).show();
+                        MaterialListView mListView = (MaterialListView) findViewById(R.id.material_listview);
+        Card card = new Card.Builder(MainActivity.this)
+                .setTag(""BASIC_IMAGE_BUTTONS_CARD"")
+                .withProvider(new CardProvider<>())
+                .setTitle(""I'm new"")
+                .setDescription(""I've been generated on runtime!"")
+                .setDrawable(R.drawable.myimage)
+                .endConfig()
+                .build();
+                mListView.getAdapter().add(card);
+            }
+        });
+"
+node,Opening from other app results in 'key not recognized' error.,"## Describe the Bug
+
+Whenever I try to open the google authenticator from another app it shows an error to the user that the key wasn't recognized. The URI I used to open the intent was ""otpauth://totp/EXAMPLE:email""
+
+### Intended Behavior
+
+What I was hoping to do was provide a button on the login screen to open any authenticator app. This is so it is more convenient to the user.
+
+### Actual Behavior
+
+Upon opening the app an error message pops up that says the key was not recognized. If you close the dialog than the user can copy the code, it is just annoying that it always pops up.
+
+## Reproducing
+
+Try to open the google authenticator from another app using the otpauth schema.
+
+### Screenshots
+
+If applicable, add screenshots to help explain your problem.
+
+### Device
+
+Pixel XL 1
+
+## Additional Information
+
+The exact code I use to create the intent is:
+Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(""otpauth://totp/ITmanager.net:"" + email + ""?issuer=ITmanager.net""));
+"
+node,Unable to migrate a new github repo,"I am trying to migrate an existing local git repo to a fresh github repo and I am getting the following error:
+
+`ERROR: Previous revision label GitOrigin-RevId could not be found in GitDestination{repoUrl=https://github.com/jawsthegame/myrepo.git, fetch=master, push=master} and --last-rev or --init-history flags were not passed`
+
+Adding those flags doesn't change the result, and I am using --force.
+
+I have also tried initializing the github repo with a README, still no luck.
+
+Has anyone else seen this issue?"
+node,Should allow editing issuer,The Android client should allow editing the issuer (what looks like the title of each row). It's not a security element as one can easily hack it to add it in the QR code URL.
+
+node,Activity fails to load when not setting button text,"Tested this with BasicButtonsCard, setting only the Text for the left Button!
+If you create a BasicButtonsCard and setting  only one Button's text the program may compile without any errors, but the Activity will fail to start.
+
+Reason:
+
+This is caused by 
+
+> com.dexafree.materialList.cards.internal.BaseButtonsCardItemView.java
+
+in the `
+.build ()
+` method when it comes to
+
+``` java
+     leftText.setText(card.getLeftButtonText().toUpperCase());
+```
+
+and
+
+``` java
+    rightText.setText(card.getRightButtonText().toUpperCase());
+```
+
+It'll throw a NullPointerException and the activity crashes.
+
+(This is my first BugReport so in case I missed something please tell me)
+"
+node,Bug with time causes all tokens to be incorrect,"I noticed a few days/weeks ago that all tokens generated by the Google Authenticator app were deemed invalid. None of the accounts/websites accepted the generated keys. Nothing obviously happened on my phone. I didn't reset it, didn't replace it with a new handheld or anything else.
+
+After some fiddling around and changing the date/time settings and setting the checkbox on ""Use 24-hour notation"" in the Android settings the issue was resolved.
+
+Apparantly the Authenticator app does not work properly anymore when the 24-hour vs am/pm notation is changed.
+
+It is unclear to me why the 24-hour notation was changed into am/pm in the first place, as I prefer 24-hour notation. However, this could have been my kid fiddling around on my phone or I could have done it by accident.  But nevertheless, the Authenticator app shouldn't stop working after changing time display settings.
+
+I believe this is a bug.
+"
+node,cannot resolve BasicImageButtonsCard,@dexafree 
+![screenshot of android studio](https://cloud.githubusercontent.com/assets/16497306/12870389/ff213ad8-cd67-11e5-839f-0163c06277b8.png)
+i have successfully integrated your library but it is not  been able to work properly..
+it has been showing some 'cannot resolve methods' and classes like 'BasicImageButtonsCardProvider' ..
+so please let me where i am doing wrong
+
+node,"BugFixes, Merge MaterialListView and MaterialStaggeredGridView",I've merged the MaterialListView and MaterialStaggeredGridView. Now the MaterialListView is based on the RecyclerView which made it possible to define a LayoutManager which handels the columns.
+
+Fixed Bug: #44
+
+node,InflateException: Binary XML file line #110,"- [X] This issue is present in the app downloaded from the [Play Store][playstore].
+
+## Describe the Bug
+
+After last google authenticator update, i cannot open google authenticator app.
+
+### Intended Behavior
+
+Open google authenticator activity, displaying all my 2fa codes.
+
+### Actual Behavior
+
+Activity crashing at startup.
+
+## Reproducing
+
+1. Open app
+2. See the app crashing.
+
+### Device
+
+Fill out the details about the device and app version in which you encountered the bug.
+
+ - Device: Pocket23gxx (Samsung/SM G11-0B)
+ - OS: Android 4.4.2
+ - Version Google Authenticator 5.10
+
+## Additional Information
+
+Full exception stack trace (taken with logcat):
+
+```java
+java.lang.RuntimeException: Unable to start activity ComponentInfo{com.google.android.apps.authenticator2/com.google.android.apps.authenticator.AuthenticatorActivity}: android.view.InflateException: Binary XML file line #110: Error inflating class com.google.android.libraries.material.speeddial.expandable.ExpandableFloatingActionButton
+E/AndroidRuntime(17596):        at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2436)
+E/AndroidRuntime(17596):        at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2498)
+E/AndroidRuntime(17596):        at android.app.ActivityThread.access$900(ActivityThread.java:179)
+E/AndroidRuntime(17596):        at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1324)
+E/AndroidRuntime(17596):        at android.os.Handler.dispatchMessage(Handler.java:102)
+E/AndroidRuntime(17596):        at android.os.Looper.loop(Looper.java:146)
+E/AndroidRuntime(17596):        at android.app.ActivityThread.main(ActivityThread.java:5641)
+E/AndroidRuntime(17596):        at java.lang.reflect.Method.invokeNative(Native Method)
+E/AndroidRuntime(17596):        at java.lang.reflect.Method.invoke(Method.java:515)
+E/AndroidRuntime(17596):        at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1288)
+E/AndroidRuntime(17596):        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1104)
+E/AndroidRuntime(17596):        at dalvik.system.NativeStart.main(Native Method)
+E/AndroidRuntime(17596): Caused by: android.view.InflateException: Binary XML file line #110: Error inflating class com.google.android.libraries.material.speeddial.expandable.ExpandableFloatingActionButton
+E/AndroidRuntime(17596):        at android.view.LayoutInflater.createView(LayoutInflater.java:626)
+E/AndroidRuntime(17596):        at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:702)
+E/AndroidRuntime(17596):        at android.view.LayoutInflater.rInflate(LayoutInflater.java:761)
+E/AndroidRuntime(17596):        at android.view.LayoutInflater.rInflate(LayoutInflater.java:769)
+E/AndroidRuntime(17596):        at android.view.LayoutInflater.rInflate(LayoutInflater.java:769)
+E/AndroidRuntime(17596):        at android.view.LayoutInflater.inflate(LayoutInflater.java:498)
+E/AndroidRuntime(17596):        at android.view.LayoutInflater.inflate(LayoutInflater.java:398)
+E/AndroidRuntime(17596):        at android.view.LayoutInflater.inflate(LayoutInflater.java:354)
+E/AndroidRuntime(17596):        at android.support.v7.app.AppCompatDelegateImpl.setContentView(PG:819)
+E/AndroidRuntime(17596):        at android.support.v7.app.AppCompatActivity.setContentView(PG:117)
+E/AndroidRuntime(17596):        at com.google.android.apps.authenticator.AuthenticatorActivity.onCreate(PG:234)
+E/AndroidRuntime(17596):        at android.app.Activity.performCreate(Activity.java:5484)
+E/AndroidRuntime(17596):        at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1093)
+E/AndroidRuntime(17596):        at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2400)
+```
+
+[playstore]: https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2
+[opensource]: https://github.com/google/google-authenticator-android
+"
+node,Improve error message to suggest fix,"For this line: https://github.com/google/copybara/blob/c12c048c95bc5157f7d67ec8a9a77eeec3ba6115/java/com/google/copybara/transform/RegexTemplateTokens.java#L266
+
+This makes it seem like copybara cannot handle repeated use of regex group. But it can, the user just needs to configure `repeated_groups = True` in `core.replace`.
+
+Can we clarify the error message to suggest this?
+
+If needed, I can make a quick PR."
+node,Fix visual problem and add new style,"The bug shows like this in low resolution screen:
+
+![device-2015-01-23-203704](https://cloud.githubusercontent.com/assets/5752560/5874877/93330b54-a341-11e4-8af8-a22e09062921.png)
+
+I fix it by drawing twice, which likes adding it a ""thickness"" attribute. It's the easiest way to fix, I guess because of the transition from ""dp"" to ""px"".
+And I've tried to draw only once by adding 1 or 0.5f on ""mHalf"", problem still exists.
+
+Here is the performance after drawing twice:
+![device-2015-01-23-203740](https://cloud.githubusercontent.com/assets/5752560/5874938/3590ee2a-a342-11e4-93e4-88ebdb660d72.png)
+"
+node,Issue VACCUM SQL directive to prevent the DB from keeping old Seeds.,""
+node,why can't i change the CardView_contentPadding?,"i want to change the code of MaterialList, so i can freely change the padding of between the cards;
+i try this in two way, but both fail.
+1.   I want to use the public way setContentPadding() to change the padding of cardview,
+     but it don't work.
+       LayoutInflater inflater = getLayoutInflater();
+       CardLayout cardLayout = (CardLayout) inflater.inflate(R.layout.card_layout, null);
+       cardView = (CardView) cardLayout.findViewById(R.id.cardView);
+       if(cardView != null){
+           Log.v(TAG, ""not null"");
+           cardView.setContentPadding(0, 0, 0, 0);
+       }
+2. I change the Constants in the styleable, but it will return to original value as soon as i run the project
+   
+   ```
+           public static final int CardView_contentPadding = 8;
+   public static final int CardView_contentPaddingBottom = 12;
+   public static final int CardView_contentPaddingLeft = 9;
+   public static final int CardView_contentPaddingRight = 10;
+   public static final int CardView_contentPaddingTop = 11;
+   ```
+"
+node,Fix passcodes when Math.pow() is innacurate,My Zest T1 generates codes which are incorrect because the calculation of 10<sup>6</sup> using `(int) Math.pow()` in `PasscodeGenerator` comes to 999 999 instead of 1 000 000. This fix is based on the code given in IETF standard RFC 6238.
+
+This seems to be a fairly common problem based on the number of comments on this issue: https://code.google.com/p/google-authenticator/issues/detail?id=396
+
+node,Lollipop error with RoundRectDrawable,"I found a bug, when I try to run the sample app on my phone with Android 5.0 or higher the app crashes with the following exception:
+
+``` java
+01-02 20:25:00.409    4019-4019/com.dexafree.materiallistviewexample E/AndroidRuntime﹕ FATAL EXCEPTION: main
+    Process: com.dexafree.materiallistviewexample, PID: 4019
+    java.lang.NullPointerException: Attempt to invoke interface method 'void android.support.v7.widget.RoundRectDrawableWithShadow$RoundRectHelper.drawRoundRect(android.graphics.Canvas, android.graphics.RectF, float, android.graphics.Paint)' on a null object reference
+            at android.support.v7.widget.RoundRectDrawableWithShadow.draw(RoundRectDrawableWithShadow.java:204)
+            at android.support.v7.widget.MyRoundRectDrawableWithShadow.draw(MyRoundRectDrawableWithShadow.java:9)
+            at android.view.View.getDrawableRenderNode(View.java:15388)
+            at android.view.View.drawBackground(View.java:15339)
+            at android.view.View.draw(View.java:15105)
+            at android.widget.FrameLayout.draw(FrameLayout.java:592)
+            at android.view.View.updateDisplayListIfDirty(View.java:14048)
+            at android.view.View.getDisplayList(View.java:14071)
+            at android.view.View.draw(View.java:14838)
+            at android.view.ViewGroup.drawChild(ViewGroup.java:3404)
+            at android.view.ViewGroup.dispatchDraw(ViewGroup.java:3198)
+            at android.view.View.updateDisplayListIfDirty(View.java:14043)
+            at android.view.View.getDisplayList(View.java:14071)
+            at android.view.View.draw(View.java:14838)
+            at android.view.ViewGroup.drawChild(ViewGroup.java:3404)
+            at android.view.ViewGroup.dispatchDraw(ViewGroup.java:3198)
+            at android.widget.AbsListView.dispatchDraw(AbsListView.java:2594)
+            at android.view.View.draw(View.java:15117)
+            at android.widget.AbsListView.draw(AbsListView.java:4083)
+            at android.view.View.updateDisplayListIfDirty(View.java:14048)
+            at android.view.View.getDisplayList(View.java:14071)
+            at android.view.View.draw(View.java:14838)
+            at android.view.ViewGroup.drawChild(ViewGroup.java:3404)
+            at android.view.ViewGroup.dispatchDraw(ViewGroup.java:3198)
+            at android.view.View.updateDisplayListIfDirty(View.java:14043)
+            at android.view.View.getDisplayList(View.java:14071)
+            at android.view.View.draw(View.java:14838)
+            at android.view.ViewGroup.drawChild(ViewGroup.java:3404)
+            at android.view.ViewGroup.dispatchDraw(ViewGroup.java:3198)
+            at android.view.View.updateDisplayListIfDirty(View.java:14043)
+            at android.view.View.getDisplayList(View.java:14071)
+            at android.view.View.draw(View.java:14838)
+            at android.view.ViewGroup.drawChild(ViewGroup.java:3404)
+            at android.view.ViewGroup.dispatchDraw(ViewGroup.java:3198)
+            at android.view.View.updateDisplayListIfDirty(View.java:14043)
+            at android.view.View.getDisplayList(View.java:14071)
+            at android.view.View.draw(View.java:14838)
+            at android.view.ViewGroup.drawChild(ViewGroup.java:3404)
+            at android.view.ViewGroup.dispatchDraw(ViewGroup.java:3198)
+            at android.view.View.updateDisplayListIfDirty(View.java:14043)
+            at android.view.View.getDisplayList(View.java:14071)
+            at android.view.View.draw(View.java:14838)
+            at android.view.ViewGroup.drawChild(ViewGroup.java:3404)
+            at android.view.ViewGroup.dispatchDraw(ViewGroup.java:3198)
+            at android.view.View.updateDisplayListIfDirty(View.java:14043)
+            at android.view.View.getDisplayList(View.java:14071)
+            at android.view.View.draw(View.java:14838)
+            at android.view.ViewGroup.drawChild(ViewGroup.java:3404)
+            at android.view.ViewGroup.dispatchDraw(ViewGroup.java:3198)
+            at android.view.View.draw(View.java:15117)
+            at android.widget.FrameLayout.draw(FrameLayout.java:592)
+            at com.android.internal.policy.impl.PhoneWindow$DecorView.draw(PhoneWindow.java:2595)
+            at android.view.View.updateDisplayListIfDirty(View.java:14048)
+            at android.view.View.getDisplayList(View.java:14071)
+            at android.view.ThreadedRenderer.updateViewTreeDisplayList(ThreadedRenderer.java:266)
+            at android.view.ThreadedRenderer.updateRootDisplayList(ThreadedRenderer.java:272)
+            at android.view.ThreadedRenderer.draw(ThreadedRenderer.java:311)
+            at android.view.ViewRootImpl.draw(ViewRootImpl.java:2492)
+            at android.view.ViewRootImpl.performDraw(ViewRootImpl.java:2337)
+            at android.view.ViewRootImpl.performTraversals(ViewRootImpl.java:1968)
+            at android.view.ViewRootImpl.doTraversal(ViewRootImpl.java:1054)
+            at android.view.ViewRootImpl$TraversalRunnable.run(ViewRootImpl.java:
+```
+"
+node,Does not sync with google servers,"Referenced [here](https://github.com/google/google-authenticator/issues/369). I have two devices, both using the same 2fa keys, but at any given time, they show different passwords. One, a Samsung S7 will sync with google servers and display the message ""Time already correct"". The other, a Samsung Note (Android version 4.4.2) gives the error ""Sync now: There was a problem contacting Google's server. Please check your network settings and try again.""
+
+Both devices are connected to the same wifi network and both are using the latest version of the app. Any help is appreciated."
+node,Getting null pointer exception while showing progressbar,I am using this library in viewpager i am getting this crash
+
+java.lang.NullPointerException: Attempt to read from null array
+                                                                  at com.jpardogo.android.googleprogressbar.library.ChromeFloatingCirclesDrawable.draw(ChromeFloatingCirclesDrawable.java:189)
+                                                                  at android.widget.ProgressBar.drawTrack(ProgressBar.java:1803)
+                                                                  at android.widget.ProgressBar.onDraw(ProgressBar.java:1770)
+                                                                  at android.view.View.draw(View.java:17503)
+                                                                  at android.view.View.updateDisplayListIfDirty(View.java:16496)
+                                                                  at android.view.ViewGroup.recreateChildDisplayList(ViewGroup.java:3907)
+                                                                  at android.view.ViewGroup.dispatchGetDisplayList(ViewGroup.java:3887)
+                                                                  at android.view.View.updateDisplayListIfDirty(View.java:16456)
+                                                                  at android.view.ViewGroup.recreateChildDisplayList(ViewGroup.java:3907)
+                                                                  at android.view.ViewGroup.dispatchGetDisplayList(ViewGroup.java:3887)
+                                                                  at android.view.View.updateDisplayListIfDirty(View.java:16456)
+                                                                  at android.view.ViewGroup.recreateChildDisplayList(ViewGroup.java:3907)
+                                                                  at android.view.ViewGroup.dispatchGetDisplayList(ViewGroup.java:3887)
+                                                                  at android.view.View.updateDisplayListIfDirty(View.java:16456)
+node,Do not assume github.com in git repository url validation,We'd like to use Copybara with our internally hosted GHE.  
+node,App crash when scanning malformed qr code,The app is crashing when an incorrect qr code is scanned.
+
+**What steps will reproduce the problem?**
+
+1. Open the app and go to scan barcode
+2. Scan the qr code with the content 
+
+> otpauth://totp/%2?secret=s
+
+
+or scan directly this qr code [https://pasteboard.co/Iordizm.png](url)
+
+3. The app will crash
+
+**Version of the app**
+5.00
+
+**Android version**
+8.0.0 on a Honor 7X
+node,Scan a barcode button crashes other app,"When I click on scan a barcode, my app crashes.
+We are using zbar library to scan qr code ourselves and we also use zxing core jar.
+Can you point to where should I be looking at 
+The log that I see is here
+<code>FATAL EXCEPTION: main
+                                                                    Process: zebpay.Application, PID: 24127
+                                                                    java.lang.NoClassDefFoundError: Failed resolution of: Lcom/google/zxing/client/android/R$layout;
+                                                                        at com.google.zxing.client.android.CaptureActivity.onCreate(CaptureActivity.java:159)
+                                                                        at android.app.Activity.performCreate(Activity.java:5995)
+                                                                        at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1106)
+                                                                        at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2312)
+                                                                        at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2421)
+                                                                        at android.app.ActivityThread.access$900(ActivityThread.java:153)
+                                                                        at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1324)
+                                                                        at android.os.Handler.dispatchMessage(Handler.java:102)
+                                                                        at android.os.Looper.loop(Looper.java:135)
+                                                                        at android.app.ActivityThread.main(ActivityThread.java:5347)
+                                                                        at java.lang.reflect.Method.invoke(Native Method)
+                                                                        at java.lang.reflect.Method.invoke(Method.java:372)
+                                                                        at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:904)
+                                                                        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:699)
+                                                                     Caused by: java.lang.ClassNotFoundException: Didn't find class ""com.google.zxing.client.android.R$layout"" on path: DexPathList[[zip file ""/data/app/zebpay.Application-1/base.apk""],nativeLibraryDirectories=[/data/app/zebpay.Application-1/lib/arm, /vendor/lib, /system/lib]]
+                                                                        at dalvik.system.BaseDexClassLoader.findClass(BaseDexClassLoader.java:56)
+                                                                        at java.lang.ClassLoader.loadClass(ClassLoader.java:511)
+                                                                        at java.lang.ClassLoader.loadClass(ClassLoader.java:469)
+                                                                        at com.google.zxing.client.android.CaptureActivity.onCreate(CaptureActivity.java:159) 
+                                                                        at android.app.Activity.performCreate(Activity.java:5995) 
+                                                                        at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1106) 
+                                                                        at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2312) 
+                                                                        at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2421) 
+                                                                        at android.app.ActivityThread.access$900(ActivityThread.java:153) 
+                                                                        at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1324) 
+                                                                        at android.os.Handler.dispatchMessage(Handler.java:102) 
+                                                                        at android.os.Looper.loop(Looper.java:135) 
+                                                                        at android.app.ActivityThread.main(ActivityThread.java:5347) 
+                                                                        at java.lang.reflect.Method.invoke(Native Method) 
+                                                                        at java.lang.reflect.Method.invoke(Method.java:372) 
+                                                                        at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:904) 
+                                                                        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:699) 
+                                                                        Suppressed: java.lang.ClassNotFoundException: com.google.zxing.client.android.R$layout
+                                                                        at java.lang.Class.classForName(Native Method)
+                                                                        at java.lang.BootClassLoader.findClass(ClassLoader.java:781)
+                                                                        at java.lang.BootClassLoader.loadClass(ClassLoader.java:841)
+                                                                        at java.lang.ClassLoader.loadClass(ClassLoader.java:504)
+                                                                                ... 15 more
+                                                                     Caused by: java.lang.NoClassDefFoundError: Class not found using the boot class loader; no stack available
+</code>
+
+I understand that this class is not found,but fail to understand why it is calling my app.
+
+Thanks, Any help will be appreciated
+"
+node,xml issues,"When i import this into Eclipse, the project is broken with an xml issue on the material_basic_buttons.xml which says that the cardCornerRadius attribute does not exist?
+"
+node,No Card swipe Exception,"If there is no Card added yet, then an Exception is thrown from the SwipeDismissListener:
+
+``` java
+    java.lang.IndexOutOfBoundsException: Invalid index 0, size is 0
+            at java.util.ArrayList.throwIndexOutOfBoundsException(ArrayList.java:255)
+            at java.util.ArrayList.get(ArrayList.java:308)
+            at android.widget.ArrayAdapter.getItem(ArrayAdapter.java:337)
+            at com.dexafree.materialList.controller.SwipeDismissListener.onTouch(SwipeDismissListener.java:226)
+            at android.view.View.dispatchTouchEvent(View.java:8382)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2424)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2158)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2430)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2172)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2430)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2172)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2430)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2172)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2430)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2172)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2430)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2172)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2430)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2172)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2430)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2172)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2430)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2172)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2430)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2172)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2430)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2172)
+            at com.android.internal.policy.impl.PhoneWindow$DecorView.superDispatchTouchEvent(PhoneWindow.java:2314)
+            at com.android.internal.policy.impl.PhoneWindow.superDispatchTouchEvent(PhoneWindow.java:1692)
+            at android.app.Activity.dispatchTouchEvent(Activity.java:2739)
+            at com.android.internal.policy.impl.PhoneWindow$DecorView.dispatchTouchEvent(PhoneWindow.java:2275)
+            at android.view.View.dispatchPointerEvent(View.java:8578)
+            at android.view.ViewRootImpl$ViewPostImeInputStage.processPointerEvent(ViewRootImpl.java:4021)
+            at android.view.ViewRootImpl$ViewPostImeInputStage.onProcess(ViewRootImpl.java:3887)
+            at android.view.ViewRootImpl$InputStage.deliver(ViewRootImpl.java:3449)
+            at android.view.ViewRootImpl$InputStage.onDeliverToNext(ViewRootImpl.java:3502)
+            at android.view.ViewRootImpl$InputStage.forward(ViewRootImpl.java:3468)
+            at android.view.ViewRootImpl$AsyncInputStage.forward(ViewRootImpl.java:3578)
+            at android.view.ViewRootImpl$InputStage.apply(ViewRootImpl.java:3476)
+            at android.view.ViewRootImpl$AsyncInputStage.apply(ViewRootImpl.java:3635)
+            at android.view.ViewRootImpl$InputStage.deliver(ViewRootImpl.java:3449)
+            at android.view.ViewRootImpl$InputStage.onDeliverToNext(ViewRootImpl.java:3502)
+            at android.view.ViewRootImpl$InputStage.forward(ViewRootImpl.java:3468)
+            at android.view.ViewRootImpl$InputStage.apply(ViewRootImpl.java:3476)
+            at android.view.ViewRootImpl$InputStage.deliver(ViewRootImpl.java:3449)
+            at android.view.ViewRootImpl.deliverInputEvent(ViewRootImpl.java:5701)
+            at android.view.ViewRootImpl.doProcessInputEvents(ViewRootImpl.java:5675)
+            at android.view.ViewRootImpl.enqueueInputEvent(ViewRootImpl.java:5646)
+            at android.view.ViewRootImpl$WindowInputEventReceiver.onInputEvent(ViewRootImpl.java:5791)
+            at android.view.InputEventReceiver.dispatchInputEvent(InputEventReceiver.java:185)
+            at android.view.InputEventReceiver.nativeConsumeBatchedInputEvents(Native Method)
+            at android.view.InputEventReceiver.consumeBatchedInputEvents(InputEventReceiver.java
+```
+"
+node,Card's setBitmap(int resourceId) not working,"I've seen your library on Reddit and decided to give it a try.
+
+I used the `BigImageButtonsCard` and noticed that there's no image displayed. Code snippet:
+
+``` java
+BigImageButtonsCard card = new BigImageButtonsCard();
+card.setBitmap(R.drawable.test);
+```
+
+Using the following code instead worked pretty nicely:
+
+``` java
+Bitmap b = BitmapFactory.decodeResource(getResources(), R.drawable.test);
+card.setBitmap(b);
+```
+
+I identified the problem in the [Card.java](https://github.com/dexafree/MaterialList/blob/master/materialList/src/main/java/com/dexafree/materialList/model/Card.java#L70) class. `Resources.getSystem()` only provides access to system resources. We need a handle on the application's context to fetch application resources. See [Resources (Android Documentation)](http://developer.android.com/reference/android/content/res/Resources.html#getSystem%28%29).
+
+Best regards,
+Olli
+"
+node,Key not recognized,"The following key does not get accepted (""Key not recognized""). However it works well on Authy and I can't find how it breaks the specs.
+
+![https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=otpauth%3A%2F%2Ftotp%2FACME%253Aexample%2540mysite.com%3Fsecret%3D6hwk0m9n71d4mw3e8wu3cnv66hd6jnat%26issuer%3DACME](https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=otpauth%3A%2F%2Ftotp%2FACME%253Aexample%2540mysite.com%3Fsecret%3D6hwk0m9n71d4mw3e8wu3cnv66hd6jnat%26issuer%3DACME)
+
+URI: `otpauth://totp/ACME%3Aexample%40mysite.com?secret=6hwk0m9n71d4mw3e8wu3cnv66hd6jnat&issuer=ACME`
+
+Secret: `4y0Q58ZJpnG46Wf4ZiUY`
+
+Secret (base32): `6hwk0m9n71d4mw3e8wu3cnv66hd6jnat` (using [base32](https://www.npmjs.com/package/base32))"
+node,codes not accepted,"I'm using an android8 phone with GA to log into bitfinex.com. Since my OnePlus3t crashed it resetted to factory, after reinstalling GA my codes aren't accepted on the website anymore. Result I'm financially kept hostage, I can't access my savings. Bitfinex is gone dark and has no support. 
+
+Now nothing changed related to timezones or something like that. 
+
+Is GA related to an emailaddresse?"
+node,README.md: fix typo,""
+node,InsecureRecursiveDeleteException: Issue when running on OS X,"Hi there,
+
+Trying to set this up on OS X 10.12.3 and anytime I run copybara, I get something akin to the following:
+
+```
+581 jeffryhesse:reports (master *)$ copybara copy.bara.sky 
+Copybara source mover (Version: Unknown version)
+Task: Cleaning working directory
+ERROR: /Users/jeffryhesse/copybara/out/workdir101393186198424635: unable to guarantee security of recursive delete (com.google.common.io.InsecureRecursiveDeleteException: /Users/jeffryhesse/copybara/out/workdir101393186198424635: unable to guarantee security of recursive delete)
+```
+
+I'm a bit murky on how to resolve this issue. From my detective work (AKA using Google) all I've found is that exception is thrown when SecureDirectoryStream is not supported by the OS. I'm having trouble finding a list of supported OS for this purpose, and I'm also curious why it's not working on OS X, since Oracle does support Java in this context. This may be more of a Guava issue from what I can tell, but the use here seems to impede use of Copybara on OS X.
+
+As well, in running bazel tests, these are the failures I get:
+
+```
+BazelTestRunner exiting with a return value of 1
+JVM shutdown hooks (if any) will run now.
+The JVM will exit once they complete.
+
+-- JVM shutdown starting at 2017-07-06 16:32:59 --
+
+FAIL: //javatests/com/google/copybara/git:SubmodulesInDestinationTest (see /private/var/tmp/_bazel_jeffryhesse/f5baa568c1bab50fda34d59d99a6c6eb/execroot/copybara/bazel-out/darwin_x86_64-fastbuild/testlogs/javatests/com/google/copybara/git/SubmodulesInDestinationTest/test.log).
+INFO: Elapsed time: 30.382s, Critical Path: 20.58s
+//copybara/integration:reference_doc_test                       (cached) PASSED in 0.2s
+//javatests/com/google/copybara:CommandTest                     (cached) PASSED in 0.4s
+//javatests/com/google/copybara:CoreReverseTest                 (cached) PASSED in 0.6s
+//javatests/com/google/copybara:CoreTransformTest               (cached) PASSED in 0.6s
+//javatests/com/google/copybara:ExamplesTest                    (cached) PASSED in 0.7s
+//javatests/com/google/copybara:LabelFinderTest                 (cached) PASSED in 0.3s
+//javatests/com/google/copybara:MainArgumentsTest               (cached) PASSED in 0.4s
+//javatests/com/google/copybara:MainTest                        (cached) PASSED in 0.6s
+//javatests/com/google/copybara:authoring/AuthorParserTest      (cached) PASSED in 0.3s
+//javatests/com/google/copybara:authoring/AuthorTest            (cached) PASSED in 0.4s
+//javatests/com/google/copybara:authoring/AuthoringTest         (cached) PASSED in 0.6s
+//javatests/com/google/copybara/config:CapturingConfigFileTest  (cached) PASSED in 0.3s
+//javatests/com/google/copybara/config:MapConfigFileTest        (cached) PASSED in 0.3s
+//javatests/com/google/copybara/config:PathBasedConfigFileTest  (cached) PASSED in 0.4s
+//javatests/com/google/copybara/config:SkylarkParserTest        (cached) PASSED in 0.7s
+//javatests/com/google/copybara/config/base:SkylarkUtilTest     (cached) PASSED in 0.3s
+//javatests/com/google/copybara:folder/FolderDestinationTest    (cached) PASSED in 0.7s
+//javatests/com/google/copybara:folder/FolderOriginTest         (cached) PASSED in 0.7s
+//javatests/com/google/copybara/git:GerritChangeFinderTest      (cached) PASSED in 0.3s
+//javatests/com/google/copybara/git:GerritOptionsTest           (cached) PASSED in 0.3s
+//javatests/com/google/copybara/git:GerritOriginTest            (cached) PASSED in 2.2s
+//javatests/com/google/copybara/git:GitOriginSubmodulesTest     (cached) PASSED in 2.5s
+//javatests/com/google/copybara/git:GitOriginTest               (cached) PASSED in 6.3s
+//javatests/com/google/copybara/git:GitRepoTypeTest             (cached) PASSED in 1.3s
+//javatests/com/google/copybara/git:RefspecTest                 (cached) PASSED in 0.5s
+//javatests/com/google/copybara:modules/PatchTransformationTest (cached) PASSED in 0.6s
+//javatests/com/google/copybara/profiler:ProfilerTest           (cached) PASSED in 0.4s
+//javatests/com/google/copybara:testing/DummyOriginTest         (cached) PASSED in 0.5s
+//javatests/com/google/copybara:testing/SkylarkTestExecutorTest (cached) PASSED in 0.6s
+//javatests/com/google/copybara/transform:ExplicitReversalTest  (cached) PASSED in 0.4s
+//javatests/com/google/copybara/transform:MoveTest              (cached) PASSED in 0.7s
+//javatests/com/google/copybara/transform:ReplaceTest           (cached) PASSED in 0.7s
+//javatests/com/google/copybara/transform:SequenceTest          (cached) PASSED in 0.5s
+//javatests/com/google/copybara/transform:VerifyMatchTest       (cached) PASSED in 0.7s
+//javatests/com/google/copybara/transform:metadata/RevisionMigratorTest (cached) PASSED in 0.8s
+//javatests/com/google/copybara:treestate/TreeStateTest         (cached) PASSED in 0.5s
+//javatests/com/google/copybara:util/DiffUtilTest               (cached) PASSED in 0.4s
+//javatests/com/google/copybara:util/FileUtilTest               (cached) PASSED in 0.5s
+//javatests/com/google/copybara:util/GlobTest                   (cached) PASSED in 0.7s
+//javatests/com/google/copybara:util/RenameDetectorTest         (cached) PASSED in 0.4s
+//javatests/com/google/copybara/util/console:ConsoleTest        (cached) PASSED in 0.4s
+//javatests/com/google/copybara/util/console:ConsolesTest       (cached) PASSED in 0.4s
+//javatests/com/google/copybara/util/console/testing:TestingConsoleTest (cached) PASSED in 0.4s
+//copybara/integration:tool_test                                         FAILED in 20.5s
+  /private/var/tmp/_bazel_jeffryhesse/f5baa568c1bab50fda34d59d99a6c6eb/execroot/copybara/bazel-out/darwin_x86_64-fastbuild/testlogs/copybara/integration/tool_test/test.log
+//javatests/com/google/copybara:TransformWorkTest                        FAILED in 0.8s
+  /private/var/tmp/_bazel_jeffryhesse/f5baa568c1bab50fda34d59d99a6c6eb/execroot/copybara/bazel-out/darwin_x86_64-fastbuild/testlogs/javatests/com/google/copybara/TransformWorkTest/test.log
+//javatests/com/google/copybara:WorkflowTest                             FAILED in 1.4s
+  /private/var/tmp/_bazel_jeffryhesse/f5baa568c1bab50fda34d59d99a6c6eb/execroot/copybara/bazel-out/darwin_x86_64-fastbuild/testlogs/javatests/com/google/copybara/WorkflowTest/test.log
+//javatests/com/google/copybara/git:GerritDestinationTest                FAILED in 1.0s
+  /private/var/tmp/_bazel_jeffryhesse/f5baa568c1bab50fda34d59d99a6c6eb/execroot/copybara/bazel-out/darwin_x86_64-fastbuild/testlogs/javatests/com/google/copybara/git/GerritDestinationTest/test.log
+//javatests/com/google/copybara/git:GitDestinationTest                   FAILED in 1.9s
+  /private/var/tmp/_bazel_jeffryhesse/f5baa568c1bab50fda34d59d99a6c6eb/execroot/copybara/bazel-out/darwin_x86_64-fastbuild/testlogs/javatests/com/google/copybara/git/GitDestinationTest/test.log
+//javatests/com/google/copybara/git:GitMirrorTest                        FAILED in 0.9s
+  /private/var/tmp/_bazel_jeffryhesse/f5baa568c1bab50fda34d59d99a6c6eb/execroot/copybara/bazel-out/darwin_x86_64-fastbuild/testlogs/javatests/com/google/copybara/git/GitMirrorTest/test.log
+//javatests/com/google/copybara/git:GitRepositoryTest                    FAILED in 0.5s
+  /private/var/tmp/_bazel_jeffryhesse/f5baa568c1bab50fda34d59d99a6c6eb/execroot/copybara/bazel-out/darwin_x86_64-fastbuild/testlogs/javatests/com/google/copybara/git/GitRepositoryTest/test.log
+//javatests/com/google/copybara/git:SubmodulesInDestinationTest          FAILED in 0.8s
+  /private/var/tmp/_bazel_jeffryhesse/f5baa568c1bab50fda34d59d99a6c6eb/execroot/copybara/bazel-out/darwin_x86_64-fastbuild/testlogs/javatests/com/google/copybara/git/SubmodulesInDestinationTest/test.log
+//javatests/com/google/copybara/transform:metadata/MetadataModuleTest    FAILED in 0.8s
+  /private/var/tmp/_bazel_jeffryhesse/f5baa568c1bab50fda34d59d99a6c6eb/execroot/copybara/bazel-out/darwin_x86_64-fastbuild/testlogs/javatests/com/google/copybara/transform/metadata/MetadataModuleTest/test.log
+//javatests/com/google/copybara:util/OutputDirFactoryTest                FAILED in 0.4s
+  /private/var/tmp/_bazel_jeffryhesse/f5baa568c1bab50fda34d59d99a6c6eb/execroot/copybara/bazel-out/darwin_x86_64-fastbuild/testlogs/javatests/com/google/copybara/util/OutputDirFactoryTest/test.log
+
+Executed 10 out of 53 tests: 43 tests pass and 10 fail locally.
+```"
+node,Minor fixes (proposal),""
+node,fixed a bug cause crash,when view attach status change
+
+node,image resizes on another card when dismissing BigImageButtonsCard,"Hi.  I am having a problem with the BigImageButtonsProvider card.  I created a bunch of test cards, and have set them all to ""swipe to dismiss"".  When I dismiss a card that works ok, but the the image on another card gets re-sized to be about twice as large.  The card that gets messed up is usually the card below the one which was dismissed, also, sometimes more than one card has it's image resized. maybe every 4th card? 
+
+In order to demonstrate the problem, I modified your demo program which was included in the downloaded source.
+There are the main changes to the program:  
+
+first, I always want to get a BigImageButtonsProvider card - so I modified the switch statement in getRandomCard(): 
+
+```
+ //    switch (position % 6) {
+        switch (1) {
+```
+
+then modify the case statement for case 1 to be a little simpler (no Picasso) make the card dismissible:
+
+```
+           case 1: {
+                final BigImageButtonsCardProvider provider = new Card.Builder(this)
+                        .setTag(""BIG_IMAGE_CARD"")
+                        .withProvider(BigImageButtonsCardProvider.class)
+                        .setTitle(title)
+                        .setDescription(description)
+                        .setDrawable(R.drawable.dog);
+                       /*********************************
+                        .setDrawable(""https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png"");
+                        .setOnPicassoImageLoadingListener(new TextCardProvider.OnPicassoImageLoadingListener() {
+                            @Override
+                            public void onImageLoading(@NonNull final RequestCreator requestCreator) {
+                                requestCreator.rotate(position * 45.0f)
+                                        .resize(200, 200)
+                                        .centerCrop();
+                            }
+                        });
+                       *************************/
+                        Card cc = provider
+                                .endConfig()
+                                .build();
+                    cc.setDismissible(true);
+                    return cc;
+            }
+
+```
+
+the problem seems to occur whether the Picasso Image loader is used or not.  Also, I prefer using the dog picture since it is available locally in the drawable directory, and that would be more like my use case. 
+
+Have I set this up incorrectly?  Have I done something wrong?    
+
+Thanks in advance! 
+
+bob
+"
+node,"More methods, BugFixes",- More methods: Add the string resource option to TextViewAction; Open add
+  with scroll option in MaterialListAdapter
+- BugFix: Fixed the scroll behaivor with SwipeDismissLayout
+
+node,MaterialListView is not compatible with ListView,"<b>Is there any easy way to make MaterialListView work with ListView?</b>
+
+As far as I see if I want to work with the Cards and MaterialListView, I have to transform my BaseAdapter to RecyclerAdapter (implement new methods, change a little the old ViewHolder). Or am I wrong? 
+@dexafree 
+"
+node,Adding card not working ,"```
+` MaterialListView mListView = (MaterialListView) findViewById(R.id.material_listview);
+        //TODO: Delhi Daredevils
+        Card delhi = new Card.Builder(this)
+                .withProvider(new CardProvider())
+                .setLayout(R.layout.material_image_with_buttons_card)
+                .setTitle(""Delhi Daredevils"")
+                .setDescription(""Lorem ipsum dolor sit amet"")
+                .setDrawable(R.drawable.delhi)
+                .addAction(R.id.left_text_button, new TextViewAction(this)
+                        .setText(""Squad"")
+                        .setTextResourceColor(R.color.accent)
+                        .setListener(new OnActionClickListener() {
+                            @Override
+                            public void onActionClicked(View view, Card card) {
+
+
+                            }
+                        }))
+                .addAction(R.id.right_text_button, new TextViewAction(this)
+                        .setText(""Matches"")
+                        .setTextResourceColor(R.color.accent)
+                        .setListener(new OnActionClickListener() {
+                            @Override
+                            public void onActionClicked(View view, Card card) {
+                                Toast.makeText(MainActivity.this, ""You have pressed the right button"", Toast.LENGTH_SHORT).show();
+                            }
+                        }))
+                .endConfig()
+                .build();
+      mListView.add(delhi); //Giving error on this line : Cannot resolve method add(card)`
+```
+"
+node,unable to add a spinner in the card ?,i tried making changes in the cardprovider.java  but i was not successful in doing that 
+
+node,Loading copybara into another bazel WORKSPACE,"I'm trying to load Copybara into my internal Bazel WORKSPACE.
+I added a `http_archive` statement to my `WORKSPACE` file:
+```
+http_archive(
+    name = ""copybara"",
+    url = ""https://github.com/google/copybara/archive/4f8904964283a405beb9612eb30a5ef693d3f4f3.zip"",
+    type = ""zip"",
+    sha256 = ""b5f321ebc4932ed9b5673b80ea88fcccfad93dce68c76c81ce306c1ebf2b6b34"",
+    strip_prefix = ""copybara-4f8904964283a405beb9612eb30a5ef693d3f4f3""
+)
+```
+and then trying to build copybara: `bazel build @copybara//java/com/google/copybara:copybara`. At which point I get an error:
+```
+ERROR: Analysis of target ‘@copybara//java/com/google/copybara:copybara’ failed; build aborted: no such package ‘@flogger//jar’: The repository could not be resolved
+INFO: Elapsed time: 0.194s
+INFO: 0 processes.
+FAILED: Build did NOT complete successfully (0 packages loaded)
+```
+
+I know this is not the main use-case of Copybara, but by having copybara part of my repo (as in, defined and pinned in my WORKSPACE file), I will be able to more easily create `run` targets that use Copybara."
+node,Fixed globs breaking markdown.,"Just one place I just noticed, there might be more."
+node,fixed small errors in docs,""
+node,Handle scanning of malformed QR codes,"When the app scans a QR code without a secret key, the app will crash. This is because we don't catch the `IllegalArgumentException` properly.
+
+This should fix google/google-authenticator#677."
+node,"Preview failed, and showed exceptions in Android Studio 1.0","I use GPB in a cardview, and Android Studio 1.0 show me an exception.
+
+The way I use:
+
+```
+<android.support.v7.widget.CardView xmlns:android=""http://schemas.android.com/apk/res/android""
+    xmlns:card-view=""http://schemas.android.com/apk/res-auto""
+    xmlns:gpb=""http://schemas.android.com/apk/res-auto""
+    android:layout_width=""match_parent""
+    android:layout_height=""140dp""
+    android:layout_marginLeft=""10dp""
+    android:layout_marginRight=""10dp""
+    android:layout_marginTop=""10dp""
+    android:clickable=""true""
+    android:foreground=""?android:attr/selectableItemBackground""
+    card-view:cardBackgroundColor=""@color/novel_item_white""
+    card-view:contentPadding=""5dp""
+    card-view:cardElevation=""2dp""
+    card-view:cardMaxElevation=""4dp"">
+        <com.jpardogo.android.googleprogressbar.library.GoogleProgressBar
+            android:id=""@+id/google_progress""
+            android:layout_width=""20dp""
+            android:layout_height=""20dp""
+            gpb:type=""folding_circles""
+            android:layout_centerVertical=""true""
+            android:layout_centerHorizontal=""true"" />
+</android.support.v7.widget.CardView>
+```
+
+The exception:
+
+```
+android.content.res.Resources$NotFoundException: Int array resource ID #0x7f050000
+    at android.content.res.Resources.getIntArray(Resources.java:522)
+    at com.jpardogo.android.googleprogressbar.library.FoldingCirclesDrawable$Builder.initDefaults(FoldingCirclesDrawable.java:256)
+    at com.jpardogo.android.googleprogressbar.library.FoldingCirclesDrawable$Builder.<init>(FoldingCirclesDrawable.java:251)
+    at com.jpardogo.android.googleprogressbar.library.GoogleProgressBar.buildDrawable(GoogleProgressBar.java:42)
+    at com.jpardogo.android.googleprogressbar.library.GoogleProgressBar.<init>(GoogleProgressBar.java:32)
+    at com.jpardogo.android.googleprogressbar.library.GoogleProgressBar.<init>(GoogleProgressBar.java:22)
+    at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+    at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+    at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+    at java.lang.reflect.Constructor.newInstance(Constructor.java:408)
+    at org.jetbrains.android.uipreview.ViewLoader.createNewInstance(ViewLoader.java:379)
+    at org.jetbrains.android.uipreview.ViewLoader.loadView(ViewLoader.java:99)
+    at com.android.tools.idea.rendering.LayoutlibCallback.loadView(LayoutlibCallback.java:172)
+    at android.view.BridgeInflater.loadCustomView(BridgeInflater.java:207)
+    at android.view.BridgeInflater.createViewFromTag(BridgeInflater.java:132)
+    at android.view.LayoutInflater.rInflate_Original(LayoutInflater.java:806)
+    at android.view.LayoutInflater_Delegate.rInflate(LayoutInflater_Delegate.java:64)
+    at android.view.LayoutInflater.rInflate(LayoutInflater.java:782)
+    at android.view.LayoutInflater.rInflate_Original(LayoutInflater.java:809)
+    at android.view.LayoutInflater_Delegate.rInflate(LayoutInflater_Delegate.java:64)
+    at android.view.LayoutInflater.rInflate(LayoutInflater.java:782)
+    at android.view.LayoutInflater.inflate(LayoutInflater.java:504)
+    at android.view.LayoutInflater.inflate(LayoutInflater.java:385)
+    at com.android.layoutlib.bridge.impl.RenderSessionImpl.inflate(RenderSessionImpl.java:400)
+    at com.android.layoutlib.bridge.Bridge.createSession(Bridge.java:332)
+    at com.android.ide.common.rendering.LayoutLibrary.createSession(LayoutLibrary.java:350)
+    at com.android.tools.idea.rendering.RenderService$5.compute(RenderService.java:688)
+    at com.android.tools.idea.rendering.RenderService$5.compute(RenderService.java:677)
+    at com.intellij.openapi.application.impl.ApplicationImpl.runReadAction(ApplicationImpl.java:932)
+    at com.android.tools.idea.rendering.RenderService.createRenderSession(RenderService.java:677)
+    at com.android.tools.idea.rendering.RenderService.render(RenderService.java:815)
+    at org.jetbrains.android.uipreview.AndroidLayoutPreviewToolWindowManager.doRender(AndroidLayoutPreviewToolWindowManager.java:646)
+    at org.jetbrains.android.uipreview.AndroidLayoutPreviewToolWindowManager.access$1700(AndroidLayoutPreviewToolWindowManager.java:82)
+    at org.jetbrains.android.uipreview.AndroidLayoutPreviewToolWindowManager$7$1.run(AndroidLayoutPreviewToolWindowManager.java:589)
+    at com.intellij.openapi.progress.impl.ProgressManagerImpl$2.run(ProgressManagerImpl.java:178)
+    at com.intellij.openapi.progress.ProgressManager.executeProcessUnderProgress(ProgressManager.java:209)
+    at com.intellij.openapi.progress.impl.ProgressManagerImpl.executeProcessUnderProgress(ProgressManagerImpl.java:212)
+    at com.intellij.openapi.progress.impl.ProgressManagerImpl.runProcess(ProgressManagerImpl.java:171)
+    at org.jetbrains.android.uipreview.AndroidLayoutPreviewToolWindowManager$7.run(AndroidLayoutPreviewToolWindowManager.java:584)
+    at com.intellij.util.ui.update.MergingUpdateQueue.execute(MergingUpdateQueue.java:320)
+    at com.intellij.util.ui.update.MergingUpdateQueue.execute(MergingUpdateQueue.java:310)
+    at com.intellij.util.ui.update.MergingUpdateQueue$2.run(MergingUpdateQueue.java:254)
+    at com.intellij.util.ui.update.MergingUpdateQueue.flush(MergingUpdateQueue.java:269)
+    at com.intellij.util.ui.update.MergingUpdateQueue.flush(MergingUpdateQueue.java:227)
+    at com.intellij.util.ui.update.MergingUpdateQueue.run(MergingUpdateQueue.java:217)
+    at com.intellij.util.concurrency.QueueProcessor.runSafely(QueueProcessor.java:238)
+    at com.intellij.util.Alarm$Request$1.run(Alarm.java:327)
+    at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+    at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+    at java.lang.Thread.run(Thread.java:745)
+```
+"
+node,"Code Refactoring, Simplifications, Patterns, Annotations, Fixed Issues",This PR should make the coding much easier for every developer and reduces the Library size.
+
+_What I've done at all:_
+- **Builder Pattern**: to easily create new Cards
+- **Observer Pattern**: to replace the Eventbus Otto with
+- **Library shrinking**: by replacing Libraries with an easy java implementation
+- **Java Doc**: added to understand the code much easier and faster
+
+_Fixed issues:_
+#92 With the Renderer principle it should be easy to create a Card programmaticly.
+#77 Should be fixed with Observer Pattern
+
+Maybe some others are also fixed with this PR...
+
+node,Migrate initial repo into empy repo: ERROR: Unknown option: --git-first-commit,"Hello again!
+
+I'm trying to run Copybara like so: `copybara copy.bara.sky --git-first-commit`
+
+I get:
+
+```
+Copybara source mover (Version: Unknown version)
+ERROR: Unknown option: --git-first-commit
+
+ERROR: Try 'copybara --help'.
+```
+
+I'm following the instructions in pretty much verbatim minus some tiny differences: https://github.com/google/copybara/blob/master/docs/examples.md#basic-git-to-git-import
+
+My local differences are:
+- using SSH over https for git repo
+- using one of @sonatype 's internal repos to test this on versus Copybara
+
+I don't think either have any impact here, as I think this is just an old command flag that no longer exists? I'd be curious what the steps are now to get copybara working on pushing an existing repo to a new bare one.
+"
+node,ArrayIndexOutOfBoundsException in SwipeDismissListener,![snapnote-demo](https://cloud.githubusercontent.com/assets/7982269/5675534/68864d40-97fb-11e4-9db1-4a8655669963.gif)
+
+```
+java.lang.ArrayIndexOutOfBoundsException: length=12; index=-1
+            at java.util.ArrayList.get(ArrayList.java:310)
+            at android.widget.ArrayAdapter.getItem(ArrayAdapter.java:337)
+            at com.dexafree.materialList.controller.SwipeDismissListener.isCurrentItemDismissable(SwipeDismissListener.java:359)
+            at com.dexafree.materialList.controller.SwipeDismissListener.onTouch(SwipeDismissListener.java:197)
+            at android.view.View.dispatchTouchEvent(View.java:8382)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2424)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2158)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2430)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2172)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2430)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2172)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2430)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2172)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2430)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2172)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2430)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2172)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2430)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2172)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2430)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2172)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2430)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2172)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2430)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2172)
+            at com.android.internal.policy.impl.PhoneWindow$DecorView.superDispatchTouchEvent(PhoneWindow.java:2314)
+            at com.android.internal.policy.impl.PhoneWindow.superDispatchTouchEvent(PhoneWindow.java:1692)
+            at android.app.Activity.dispatchTouchEvent(Activity.java:2739)
+            at com.android.internal.policy.impl.PhoneWindow$DecorView.dispatchTouchEvent(PhoneWindow.java:2275)
+            at android.view.View.dispatchPointerEvent(View.java:8578)
+            at android.view.ViewRootImpl$ViewPostImeInputStage.processPointerEvent(ViewRootImpl.java:4021)
+            at android.view.ViewRootImpl$ViewPostImeInputStage.onProcess(ViewRootImpl.java:3887)
+            at android.view.ViewRootImpl$InputStage.deliver(ViewRootImpl.java:3449)
+            at android.view.ViewRootImpl$InputStage.onDeliverToNext(ViewRootImpl.java:3502)
+            at android.view.ViewRootImpl$InputStage.forward(ViewRootImpl.java:3468)
+            at android.view.ViewRootImpl$AsyncInputStage.forward(ViewRootImpl.java:3578)
+            at android.view.ViewRootImpl$InputStage.apply(ViewRootImpl.java:3476)
+            at android.view.ViewRootImpl$AsyncInputStage.apply(ViewRootImpl.java:3635)
+            at android.view.ViewRootImpl$InputStage.deliver(ViewRootImpl.java:3449)
+            at android.view.ViewRootImpl$InputStage.onDeliverToNext(ViewRootImpl.java:3502)
+            at android.view.ViewRootImpl$InputStage.forward(ViewRootImpl.java:3468)
+            at android.view.ViewRootImpl$InputStage.apply(ViewRootImpl.java:3476)
+            at android.view.ViewRootImpl$InputStage.deliver(ViewRootImpl.java:3449)
+            at android.view.ViewRootImpl.deliverInputEvent(ViewRootImpl.java:5701)
+            at android.view.ViewRootImpl.doProcessInputEvents(ViewRootImpl.java:5675)
+            at android.view.ViewRootImpl.enqueueInputEvent(ViewRootImpl.java:5646)
+            at android.view.ViewRootImpl$WindowInputEventReceiver.onInputEvent(ViewRootImpl.java:5791)
+            at android.view.InputEventReceiver.dispatchInputEvent(InputEventReceiver.java:185)
+            at android.os.MessageQueue.nativePollOnce(Native Method)
+            at android.os.MessageQueue.next(MessageQueue.java:143)
+            at android.os.Looper.loop(Looper.java:122)
+            at android.app.ActivityThread.main(ActivityThread.java:5221)
+            at java.lang.reflect.Method.invoke(Nati
+
+```
+
+node,Second card is not dismissable,After dismissing the first card the second card is not getting dismissed
+
+node,auth code not working on Github,"I login with my username and password on Github, and it asks for my [two-factor authentication](https://github.com/sessions/two-factor) auth code. I enter the code after doing a ""Sync now"" under ""Time Correction for Codes"" in the Google Authenticator Android app (4.60 on Android 4.4) which says ""Time already Correct"".
+When I enter the code in Github, it says ""Two-factor authentication failed."". I reached out to Github, who says their system is saying the codes are not correct. 
+On the Google Authenticator display it says ""GitHub"", then underneath the dynamic 6 digit code, and under that it says github.com/myusername. On the right is the countdown clock image. "
+node,Sensitivity Issue of Swipe to Dismiss,"I am facing sensitivity issues regarding swipe to dismiss feature. Often while scrolling, I accidentally dismiss a card just by touching the card. The dismiss feature appears to be very sensitive to touch.
+
+Is there a way to reduce sensitivity of of swipe to dismiss in Material List view ?
+"
+node,Error while adding BigImageButtonsCard,"I am encoutering exception when adding BigImageButtonsCard.
+
+The tracestack for the same is: 
+
+```
+java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.String java.lang.String.toUpperCase()' on a null object reference
+        at com.dexafree.materialList.cards.view.BaseButtonsCardItemView.build(BaseButtonsCardItemView.java:37)
+        at com.dexafree.materialList.cards.view.BaseButtonsCardItemView.build(BaseButtonsCardItemView.java:15)
+        at com.dexafree.materialList.controller.MaterialListViewAdapter.getView(MaterialListViewAdapter.java:42)
+        at com.nhaarman.listviewanimations.BaseAdapterDecorator.getView(BaseAdapterDecorator.java:125)
+        at com.nhaarman.listviewanimations.appearance.AnimationAdapter.getView(AnimationAdapter.java:142)
+        at android.widget.AbsListView.obtainView(AbsListView.java:2344)
+        at android.widget.ListView.makeAndAddView(ListView.java:1864)
+        at android.widget.ListView.fillDown(ListView.java:698)
+        at android.widget.ListView.fillSpecific(ListView.java:1356)
+        at android.widget.ListView.layoutChildren(ListView.java:1651)
+        at android.widget.AbsListView.onLayout(AbsListView.java:2148)
+        at android.view.View.layout(View.java:15596)
+        at android.view.ViewGroup.layout(ViewGroup.java:4966)
+        at android.support.v4.widget.SwipeRefreshLayout.onLayout(SwipeRefreshLayout.java:543)
+        at android.view.View.layout(View.java:15596)
+        at android.view.ViewGroup.layout(ViewGroup.java:4966)
+        at android.widget.LinearLayout.setChildFrame(LinearLayout.java:1703)
+        at android.widget.LinearLayout.layoutVertical(LinearLayout.java:1557)
+        at android.widget.LinearLayout.onLayout(LinearLayout.java:1466)
+        at android.view.View.layout(View.java:15596)
+        at android.view.ViewGroup.layout(ViewGroup.java:4966)
+        at android.support.v4.widget.DrawerLayout.onLayout(DrawerLayout.java:890)
+        at android.view.View.layout(View.java:15596)
+        at android.view.ViewGroup.layout(ViewGroup.java:4966)
+        at android.widget.FrameLayout.layoutChildren(FrameLayout.java:573)
+        at android.widget.FrameLayout.onLayout(FrameLayout.java:508)
+        at android.view.View.layout(View.java:15596)
+        at android.view.ViewGroup.layout(ViewGroup.java:4966)
+        at android.widget.FrameLayout.layoutChildren(FrameLayout.java:573)
+        at android.widget.FrameLayout.onLayout(FrameLayout.java:508)
+        at android.view.View.layout(View.java:15596)
+        at android.view.ViewGroup.layout(ViewGroup.java:4966)
+        at android.widget.LinearLayout.setChildFrame(LinearLayout.java:1703)
+        at android.widget.LinearLayout.layoutVertical(LinearLayout.java:1557)
+        at android.widget.LinearLayout.onLayout(LinearLayout.java:1466)
+        at android.view.View.layout(View.java:15596)
+        at android.view.ViewGroup.layout(ViewGroup.java:4966)
+        at android.widget.FrameLayout.layoutChildren(FrameLayout.java:573)
+        at android.widget.FrameLayout.onLayout(FrameLayout.java:508)
+        at android.view.View.layout(View.java:15596)
+        at android.view.ViewGroup.layout(ViewGroup.java:4966)
+        at android.widget.LinearLayout.setChildFrame(LinearLayout.java:1703)
+        at android.widget.LinearLayout.layoutVertical(LinearLayout.java:1557)
+        at android.widget.LinearLayout.onLayout(LinearLayout.java:1466)
+        at android.view.View.layout(View.java:15596)
+        at android.view.ViewGroup.layout(ViewGroup.java:4966)
+        at android.widget.FrameLayout.layoutChildren(FrameLayout.java:573)
+        at android.widget.FrameLayout.onLayout(FrameLayout.java:508)
+        at android.view.View.layout(View.java:15596)
+        at android.view.ViewGroup.layout(ViewGroup.java:4966)
+        at android.view.ViewRootImpl.performLayout(ViewRootImpl.java:2072)
+        at android.view.ViewRootImpl.performTraversals(ViewRootImpl.java:1829)
+        at android.view.ViewRootImpl.doTraversal(ViewRootImpl.java:1054)
+        at android.view.ViewRootImpl$TraversalRunnable.run(ViewRootImpl.java:5779)
+        at android.view.Choreographer$CallbackRecord.run(Choreographer.java:767)
+        at android.view.Choreographer.doCallbacks(Choreographer.java:580)
+        at android.view.Choreographer.doFrame(Choreographer.java:550)
+        at android.view.Choreographer$FrameDisplayEventReceiver.run(Choreographer.java:753)
+        at android.os.Handler.handleCallback(Handler.java:739)
+at android.os.Handler.dispatc
+```
+
+I am using following code for creating and placing the card:
+
+```
+public static Card getBigImageCard( final Context mContext)  {
+    SimpleCard card = new BigImageButtonsCard(mContext);
+
+    card.setDescription(""Some Description"");
+    card.setTitle(""SomeTitle"");
+    final String url = ""wwww.google.com""
+   // Code to get some drawable here
+    card.setDrawable(d);
+
+        ((BigImageButtonsCard) card).setDividerVisible(true);
+       ((BigImageButtonsCard)card).setLeftButtonText(""Open"");
+        ((BigImageButtonsCard)card).setLeftButtonText(""Dismiss"");
+
+        ((BigImageButtonsCard)card).setOnLeftButtonPressedListener(new OnButtonPressListener() {
+                           @Override
+                           public void onButtonPressedListener(View view, Card card) {
+                               Intent urlIntent = new Intent(mContext, WebViewingActivity.class);
+                               urlIntent.putExtra(""webUrl"", url);
+                               mContext.startActivity(urlIntent);
+                           } });
+
+
+                card.setDismissible(true);
+
+
+
+    return card;
+   }
+```
+
+Then to add the card:
+
+```
+mListView.add(getBigImageCard( Activity.this );
+```
+
+The same code works for BigImage card (after removing the code for buttons & divider of-course.)
+"
+node,Error,How fix it?
+
+Error:Execution failed for task ':app:dexDebug'.
+
+> com.android.ide.common.internal.LoggedErrorException: Failed to run command:
+>     E:\Android\sdk\build-tools\21.1.2\dx.bat --dex --no-optimize --output E:\Android\Projects\TypicalNSK\app\build\intermediates\dex\debug --input-list=E:\Android\Projects\TypicalNSK\app\build\intermediates\tmp\dex\debug\inputList.txt
+> Error Code:
+>     2
+> Output:
+>     UNEXPECTED TOP-LEVEL EXCEPTION:
+>     com.android.dex.DexException: Multiple dex files define Lcom/nineoldandroids/animation/Animator$AnimatorListener;
+>         at com.android.dx.merge.DexMerger.readSortableTypes(DexMerger.java:596)
+>         at com.android.dx.merge.DexMerger.getSortedTypes(DexMerger.java:554)
+>         at com.android.dx.merge.DexMerger.mergeClassDefs(DexMerger.java:535)
+>         at com.android.dx.merge.DexMerger.mergeDexes(DexMerger.java:171)
+>         at com.android.dx.merge.DexMerger.merge(DexMerger.java:189)
+>         at com.android.dx.command.dexer.Main.mergeLibraryDexBuffers(Main.java:454)
+>         at com.android.dx.command.dexer.Main.runMonoDex(Main.java:303)
+>         at com.android.dx.command.dexer.Main.run(Main.java:246)
+>         at com.android.dx.command.dexer.Main.main(Main.java:215)
+>         at com.android.dx.command.Main.main(Main.java:106)
+
+Thanks.
+
+node,"Cannot scan QR code with ""QR & barcode scanner""","Android 6.0.1 / Samsung Galaxy 7 Edge
+
+Installed authenticator from the store. Run authenticator, Tap ""Begin setup"", tap ""Scan a barcode"", back to the ""Begin setup"" page rather than the scanner opening to scan the QR code.
+
+This seems to be in an infinite loop. I have used the authenticator succesfully on other android devices but not seen this issue before. Have re-installed a couple of times with no success and cannot find any help elsewhere for this issue.
+
+Any ideas?
+"
+node,can you remove ic_launcher icon in the resource file?,""
+node,Migration#getInfo is not generified,"Hi,
+`Migration#getInfo` is not generified which means that when one uses it programatically they need to cast it to `Info<Revision>` or `Info<O>` where `O extends Revision`.
+This is not blocking me since Scala somehow bypasses this but I didn't like the cast I needed to do in https://github.com/google/copybara/commit/34668295421c75623ed6cd74869c6ecdddd0c68d"
+node,App can't be installed on devices w/o back-facing camera,App can't be installed on devices that only have front-facing (aka selfie) camera.
+This includes Android system for Chromebooks.
+node,auto setting my google account server error,""
+node,The problem with data recovery ,Hello. Please help solve the problem. Notes with the code were lost when the phone was looped. Is it possible to somehow restore account access codes from the app's memory. I am grateful for the help in advance. 
+node,Cannot build docker image,Steps to reproduce
+
+```
+cd ~/path/to/copybara
+docker build -t copybara .
+```
+
+c7e31c66a979300daedbc9bb266787013486746e is fine but after that it fails.
+node,first card in list can never be dismissed.,"Hi - First, thank you for an awesome library.
+I have a problem where the first card (card 0) does not get dismissed.  Ever.  For any card type.  
+I tracked it down through your library code and (finally) found it.  The problem is in MaterialListAdapter.java, in the getCard() method around line 118 (in the copy i have):
+<code>
+public Card getCard(int position) {
+    //bug here.  first test should be ""position > -1"" 
+    if(position > 0 && position < mCardList.size()) {
+        return mCardList.get(position);
+    }
+    return null;
+}
+</code>
+
+Thank you!! 
+bob
+"
+node,Could not dispatch event in removing ,"I can not remove items from MaterialListView. Always got the following exceptions. I debug it for couple hours but couldn't understand why this exception happens. When I run the same code in separate Activity for test, it works fine. But in my fragment inside of a viewPager this exception happens.
+
+Here is my code:
+
+``` java
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState)
+    {
+        View view = inflater.inflate(R.layout.fragment_page, container, false);
+
+        mListView = (MaterialListView) view.findViewById(R.id.material_listview);
+
+        mListView.addOnItemTouchListener(new RecyclerItemClickListener.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(CardItemView cardItemView, int i)
+            {
+            }
+
+            @Override
+            public void onItemLongClick(CardItemView cardItemView, int i)
+            {
+                Log.d(TAG, ""Long click"" + cardItemView.getTag().toString() + "" in position "" + i);
+                mListView.remove((com.dexafree.materialList.model.Card) cardItemView.getTag());
+            }
+        });
+```
+
+``` java
+05-01 21:46:17.442  28856-28856/app.arash.wishlist E/AndroidRuntime﹕ FATAL EXCEPTION: main
+    java.lang.RuntimeException: Could not dispatch event: class com.dexafree.materialList.events.DismissEvent to handler [EventHandler public void com.dexafree.materialList.view.MaterialListView.onCardDismiss(com.dexafree.materialList.events.DismissEvent)]: null
+            at com.squareup.otto.Bus.throwRuntimeException(Bus.java:456)
+            at com.squareup.otto.Bus.dispatch(Bus.java:386)
+            at com.squareup.otto.Bus.dispatchQueuedEvents(Bus.java:367)
+            at com.squareup.otto.Bus.post(Bus.java:336)
+            at com.dexafree.materialList.events.MainThreadBus.post(MainThreadBus.java:31)
+            at com.dexafree.materialList.events.BusProvider.dismiss(BusProvider.java:22)
+            at com.dexafree.materialList.view.MaterialListView.remove(MaterialListView.java:118)
+            at app.arash.wishlist.activities.PageFragment$1.onItemLongClick(PageFragment.java:108)
+            at com.dexafree.materialList.controller.RecyclerItemClickListener$1.onLongPress(RecyclerItemClickListener.java:38)
+            at android.view.GestureDetector.dispatchLongPress(GestureDetector.java:624)
+            at android.view.GestureDetector.access$200(GestureDetector.java:42)
+            at android.view.GestureDetector$GestureHandler.handleMessage(GestureDetector.java:269)
+            at android.os.Handler.dispatchMessage(Handler.java:99)
+            at android.os.Looper.loop(Looper.java:138)
+            at android.app.ActivityThread.main(ActivityThread.java:3701)
+            at java.lang.reflect.Method.invokeNative(Native Method)
+            at java.lang.reflect.Method.invoke(Method.java:507)
+            at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:878)
+            at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:636)
+            at dalvik.system.NativeStart.main(Native Method)
+     Caused by: java.lang.NullPointerException
+            at com.dexafree.materialList.view.MaterialListView.onCardDismiss(MaterialListView.java:171)
+            at java.lang.reflect.Method.invokeNative(Native Method)
+            at java.lang.reflect.Method.invoke(Method.java:507)
+            at com.squareup.otto.EventHandler.handleEvent(EventHandler.java:89)
+            at com.squareup.otto.Bus.dispatch(Bus.java:384)
+            at com.squareup.otto.Bus.dispatchQueuedEvents(Bus.java:367)
+            at com.squareup.otto.Bus.post(Bus.java:336)
+            at com.dexafree.materialList.events.MainThreadBus.post(MainThreadBus.java:31)
+            at com.dexafree.materialList.events.BusProvider.dismiss(BusProvider.java:22)
+            at com.dexafree.materialList.view.MaterialListView.remove(MaterialListView.java:118)
+            at app.arash.wishlist.activities.PageFragment$1.onItemLongClick(PageFragment.java:108)
+            at com.dexafree.materialList.controller.RecyclerItemClickListener$1.onLongPress(RecyclerItemClickListener.java:38)
+            at android.view.GestureDetector.dispatchLongPress(GestureDetector.java:624)
+            at android.view.GestureDetector.access$200(GestureDetector.java:42)
+            at android.view.GestureDetector$GestureHandler.handleMessage(GestureDetector.java:269)
+            at android.os.Handler.dispatchMessage(Handler.java:99)
+            at android.os.Looper.loop(Looper.java:138)
+            at android.app.ActivityThread.main(ActivityThread.java:3701)
+            at java.lang.reflect.Method.invokeNative(Native Method)
+            at java.lang.reflect.Method.invoke(Method.java:507)
+            at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:878)
+            at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:636)
+            at dalvik.system.NativeStart.main(Native Method)
+```
+"
+node,Codes specifically not working with GitHub,"I noticed that my codes were not working with my Github account. Assuming it was a time sync issue, I tried to perform time correction and received the following error:
+
+`There was a problem contacting Google's server. Please check your network settings and try again.`
+
+Upon making a new account, I tried enabling 2fa via Google Authenticator again and the codes did not work.
+"
+node,$HOME not found in Windows,"From : https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!msg/copybara-discuss/XPTFivEHJUg/B_mlkpc5CgAJ
+
+
+
+Hi Mikel,
+
+Thanks for replying. Yes, I am using windows. Here is the stack trace:
+
+Task: Cleaning output directory.
+java.lang.NullPointerException: $HOME environment var is not set
+        at com.google.common.base.Preconditions.checkNotNull(Preconditions.java:787)
+        at com.google.copybara.GeneralOptions.getDirFactory(GeneralOptions.java:208)
+        at com.google.copybara.Main.lambda$cleanupOutputDir$0(Main.java:351)
+        at com.google.copybara.GeneralOptions.ioRepoTask(GeneralOptions.java:189)
+        at com.google.copybara.Main.cleanupOutputDir(Main.java:345)
+        at com.google.copybara.Main.initEnvironment(Main.java:337)
+        at com.google.copybara.Main.runInternal(Main.java:160)
+        at com.google.copybara.Main.run(Main.java:107)
+        at com.google.copybara.Main.main(Main.java:86)  "
+node,setSubtitle(string) is not working,subtitle not showing on card
+
+node,"2-step enabled, can't authorize Authenticator","Reopened from [Issue 411](https://github.com/google/google-authenticator/issues/411) under [google-authenticator](https://github.com/google/google-authenticator) (which was closed because that repo is apparently not for the android version anymore...)
+
+> Original issue 412 created by nick.krabbenhoeft on 2014-07-30T06:30:03.000Z:
+> 
+> What steps will reproduce the problem?
+> 1. I enabled 2-step verification for a Google Apps for Non-Profits account. It works
+> 2. I go to my phone's Authenticator which I use with my Gmail account, and try to add the Google Apps account
+> 3. Error, ""Continue on a computer.""
+> 
+> What is the expected output? What do you see instead?
+> I expect a new account to be added. I receive instructions to ""To enable 2-step verifcation, visit accounts.google.com/security...""
+> 
+> What version of the product are you using? On what operating system?
+> Authenticator 2.49 on Android 4.4.2
+> 
+> Please provide any additional information below.
+> I've tried disabling and re-enabling 2-step to know effect.
+"
+node,"Bug with calculation causes all tokens to be incorrect on some devices, for Google Authenticator 2.49","I encountered always wrong verification code on my phone, e.g. 396731, correct is 396709.
+
+The correct code is found by using php's Google Authenticator's source code.  The wrong code is 22396709 mod 999999, instead of mod 1000000  (always reproducable).  The tested phone is Lenovo S930, android 4.4.2.
+
+Not sure if the bug is related to the logic in this project. Thus reported here for reference.
+## Some corresponding parameter of the final code 396709
+
+hmac output:  287f5c148333f125aa4507950eca8155bf25556e
+final 32-bit integer before mod 1000000:  22396709
+"
+node,Maven library error when building apk,"I encountered an error when building the library maven APK
+
+```
+INFO: Call stack for the definition of repository 'maven' which is a coursier_fetch (rule definition at C:/users/trand/_bazel_trand/lkcawj2i/external/rules_jvm_external/coursier.bzl:383:18):
+ - C:/users/trand/_bazel_trand/lkcawj2i/external/rules_jvm_external/defs.bzl:59:5
+ - A:/android/google-authenticator-android-master/WORKSPACE:45:1
+ERROR: An error occurred during the fetch of repository 'maven':
+   Error while fetching artifact sources with coursier: Error getting scaladex infos:
+  download error: Caught java.io.IOException: Server returned HTTP response code: 403 for URL: https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7 (Server returned HTTP response code: 403 for URL: https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7) while downloading https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7
+ERROR: A:/android/google-authenticator-android-master/java/com/google/android/apps/authenticator/BUILD:28:1: //java/com/google/android/apps/authenticator:authenticator_lib depends on @maven//:com_android_support_appcompat_v7 in repository @maven which failed to fetch. no such package '@maven//': Error while fetching artifact sources with coursier: Error getting scaladex infos:
+  download error: Caught java.io.IOException: Server returned HTTP response code: 403 for URL: https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7 (Server returned HTTP response code: 403 for URL: https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7) while downloading https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7
+ERROR: A:/android/google-authenticator-android-master/java/com/google/android/apps/authenticator/BUILD:28:1: //java/com/google/android/apps/authenticator:authenticator_lib depends on @maven//:com_android_support_design in repository @maven which failed to fetch. no such package '@maven//': Error while fetching artifact sources with coursier: Error getting scaladex infos:
+  download error: Caught java.io.IOException: Server returned HTTP response code: 403 for URL: https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7 (Server returned HTTP response code: 403 for URL: https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7) while downloading https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7
+ERROR: A:/android/google-authenticator-android-master/java/com/google/android/apps/authenticator/BUILD:28:1: //java/com/google/android/apps/authenticator:authenticator_lib depends on @maven//:com_android_support_loader in repository @maven which failed to fetch. no such package '@maven//': Error while fetching artifact sources with coursier: Error getting scaladex infos:
+  download error: Caught java.io.IOException: Server returned HTTP response code: 403 for URL: https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7 (Server returned HTTP response code: 403 for URL: https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7) while downloading https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7
+ERROR: A:/android/google-authenticator-android-master/java/com/google/android/apps/authenticator/BUILD:28:1: //java/com/google/android/apps/authenticator:authenticator_lib depends on @maven//:com_android_support_multidex in repository @maven which failed to fetch. no such package '@maven//': Error while fetching artifact sources with coursier: Error getting scaladex infos:
+  download error: Caught java.io.IOException: Server returned HTTP response code: 403 for URL: https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7 (Server returned HTTP response code: 403 for URL: https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7) while downloading https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7
+ERROR: A:/android/google-authenticator-android-master/java/com/google/android/apps/authenticator/BUILD:28:1: //java/com/google/android/apps/authenticator:authenticator_lib depends on @maven//:com_android_support_support_annotations in repository @maven which failed to fetch. no such package '@maven//': Error while fetching artifact sources with coursier: Error getting scaladex infos:
+  download error: Caught java.io.IOException: Server returned HTTP response code: 403 for URL: https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7 (Server returned HTTP response code: 403 for URL: https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7) while downloading https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7
+ERROR: A:/android/google-authenticator-android-master/java/com/google/android/apps/authenticator/BUILD:28:1: //java/com/google/android/apps/authenticator:authenticator_lib depends on @maven//:com_android_support_support_compat in repository @maven which failed to fetch. no such package '@maven//': Error while fetching artifact sources with coursier: Error getting scaladex infos:
+  download error: Caught java.io.IOException: Server returned HTTP response code: 403 for URL: https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7 (Server returned HTTP response code: 403 for URL: https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7) while downloading https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7
+ERROR: A:/android/google-authenticator-android-master/java/com/google/android/apps/authenticator/BUILD:28:1: //java/com/google/android/apps/authenticator:authenticator_lib depends on @maven//:com_android_support_support_fragment in repository @maven which failed to fetch. no such package '@maven//': Error while fetching artifact sources with coursier: Error getting scaladex infos:
+  download error: Caught java.io.IOException: Server returned HTTP response code: 403 for URL: https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7 (Server returned HTTP response code: 403 for URL: https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7) while downloading https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7
+ERROR: A:/android/google-authenticator-android-master/java/com/google/android/apps/authenticator/BUILD:28:1: //java/com/google/android/apps/authenticator:authenticator_lib depends on @maven//:com_android_support_support_v4 in repository @maven which failed to fetch. no such package '@maven//': Error while fetching artifact sources with coursier: Error getting scaladex infos:
+  download error: Caught java.io.IOException: Server returned HTTP response code: 403 for URL: https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7 (Server returned HTTP response code: 403 for URL: https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7) while downloading https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7
+ERROR: A:/android/google-authenticator-android-master/java/com/google/android/apps/authenticator/BUILD:28:1: //java/com/google/android/apps/authenticator:authenticator_lib depends on @maven//:com_android_support_viewpager in repository @maven which failed to fetch. no such package '@maven//': Error while fetching artifact sources with coursier: Error getting scaladex infos:
+  download error: Caught java.io.IOException: Server returned HTTP response code: 403 for URL: https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7 (Server returned HTTP response code: 403 for URL: https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7) while downloading https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7
+ERROR: A:/android/google-authenticator-android-master/java/com/google/android/apps/authenticator/BUILD:28:1: //java/com/google/android/apps/authenticator:authenticator_lib depends on @maven//:com_google_android_gms_play_services_base in repository @maven which failed to fetch. no such package '@maven//': Error while fetching artifact sources with coursier: Error getting scaladex infos:
+  download error: Caught java.io.IOException: Server returned HTTP response code: 403 for URL: https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7 (Server returned HTTP response code: 403 for URL: https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7) while downloading https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7
+ERROR: A:/android/google-authenticator-android-master/java/com/google/android/apps/authenticator/BUILD:28:1: //java/com/google/android/apps/authenticator:authenticator_lib depends on @maven//:com_google_android_gms_play_services_vision in repository @maven which failed to fetch. no such package '@maven//': Error while fetching artifact sources with coursier: Error getting scaladex infos:
+  download error: Caught java.io.IOException: Server returned HTTP response code: 403 for URL: https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7 (Server returned HTTP response code: 403 for URL: https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7) while downloading https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7
+ERROR: A:/android/google-authenticator-android-master/java/com/google/android/apps/authenticator/BUILD:28:1: //java/com/google/android/apps/authenticator:authenticator_lib depends on @maven//:com_google_android_gms_play_services_vision_common in repository @maven which failed to fetch. no such package '@maven//': Error while fetching artifact sources with coursier: Error getting scaladex infos:
+  download error: Caught java.io.IOException: Server returned HTTP response code: 403 for URL: https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7 (Server returned HTTP response code: 403 for URL: https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7) while downloading https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7
+ERROR: A:/android/google-authenticator-android-master/java/com/google/android/apps/authenticator/BUILD:28:1: //java/com/google/android/apps/authenticator:authenticator_lib depends on @maven//:com_google_code_findbugs_jsr305 in repository @maven which failed to fetch. no such package '@maven//': Error while fetching artifact sources with coursier: Error getting scaladex infos:
+  download error: Caught java.io.IOException: Server returned HTTP response code: 403 for URL: https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7 (Server returned HTTP response code: 403 for URL: https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7) while downloading https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7
+ERROR: A:/android/google-authenticator-android-master/java/com/google/android/apps/authenticator/BUILD:28:1: //java/com/google/android/apps/authenticator:authenticator_lib depends on @maven//:com_google_guava_guava in repository @maven which failed to fetch. no such package '@maven//': Error while fetching artifact sources with coursier: Error getting scaladex infos:
+  download error: Caught java.io.IOException: Server returned HTTP response code: 403 for URL: https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7 (Server returned HTTP response code: 403 for URL: https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7) while downloading https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7
+ERROR: A:/android/google-authenticator-android-master/java/com/google/android/apps/authenticator/BUILD:28:1: //java/com/google/android/apps/authenticator:authenticator_lib depends on @maven//:com_squareup_dagger_dagger in repository @maven which failed to fetch. no such package '@maven//': Error while fetching artifact sources with coursier: Error getting scaladex infos:
+  download error: Caught java.io.IOException: Server returned HTTP response code: 403 for URL: https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7 (Server returned HTTP response code: 403 for URL: https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7) while downloading https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7
+ERROR: A:/android/google-authenticator-android-master/java/com/google/android/apps/authenticator/BUILD:28:1: //java/com/google/android/apps/authenticator:authenticator_lib depends on @maven//:javax_inject_javax_inject in repository @maven which failed to fetch. no such package '@maven//': Error while fetching artifact sources with coursier: Error getting scaladex infos:
+  download error: Caught java.io.IOException: Server returned HTTP response code: 403 for URL: https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7 (Server returned HTTP response code: 403 for URL: https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7) while downloading https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7
+ERROR: Analysis of target '//java/com/google/android/apps/authenticator:authenticator' failed; build aborted: no such package '@maven//': Error while fetching artifact sources with coursier: Error getting scaladex infos:
+  download error: Caught java.io.IOException: Server returned HTTP response code: 403 for URL: https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7 (Server returned HTTP response code: 403 for URL: https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7) while downloading https://index.scala-lang.org/api/search?q=true&target=JVM&scalaVersion=2.12.7
+INFO: Elapsed time: 267.987s
+INFO: 0 processes.
+FAILED: Build did NOT complete successfully (5 packages loaded, 258 targets configured)
+```
+
+version bazel: 2.0.1"
+node,authoring not working,"We want to use copybara with Gitlab. The workflow I imagine, since copybare doesn't support Gitlab as good as Github, is the following:
+
+1. A user creates a pull request on the external repo.
+2. We use copybara to copy (CHANGE_REQUEST) the branch of the pull request to our internal repo.
+3. We do a pull request.
+4. We merge this pull request.
+5. We sync back (ITERATIVE) our internal source to the external repo.
+
+However, I tried this and the only thing that gets displayed at the external repo is a commit of the ""Merge branch 'external-001' into 'master'"". There is no sign of the original author or of the original commit of the author.
+
+I only see the commit of the original author in our internal repo.
+
+My copy.bara.sky looks like this:
+```
+internalUrl = ""git@gitlab.com:example/internal_test_repo.git""
+externalUrl = ""git@gitlab.com:example/external_test_repo.git""
+
+core.workflow(
+    name = ""default"",
+    origin = git.origin(
+        url = internalUrl,
+        ref = ""master"",
+    ),
+    destination = git.destination(
+        url = externalUrl,
+        fetch = ""master"",
+        push = ""master"",
+    ),
+    origin_files = glob([""project_001/share_001/**"", ""project_001/share_002/**"", ""project_002/subproject_002/**"", ""external/README.md""], exclude = [""**/key.txt""]),
+
+    destination_files = glob([""**""], exclude = [""external_only.txt""]),
+
+    mode = ""ITERATIVE"",
+    authoring = authoring.pass_thru(default = ""Example <example@gmail.com>""),
+    transformations = [
+        # Move to root of OSS repo.
+        core.move(""external/README.md"", ""README.md""),
+        core.move(""project_002"", """"),
+        metadata.restore_author(label='ORIGINAL_AUTHOR', search_all_changes=True),
+    ],
+)
+core.workflow(
+    name = ""import_branch"",
+    origin = git.origin(
+        url = externalUrl,
+        ref = ""external-001""
+    ),
+    destination = git.destination(
+        url = internalUrl,
+        fetch = ""master"",
+        push = ""external/external-001"",
+    ),
+    origin_files = glob([""**""], exclude = [""bla.txt""]),
+
+    destination_files = glob([""project_001/share_001/**"", ""project_001/share_002/**"", ""project_002/subproject_002/**"", ""external/README.md""], exclude = [""**/key.txt""]),
+
+    mode = ""CHANGE_REQUEST"",
+    authoring = authoring.pass_thru(default = ""Example <example@gmail.com>""),
+    transformations = [
+        # Move from root of OSS repo.
+        core.move(""README.md"", ""external/README.md""),
+        core.move(""subproject_002"", ""project_002/subproject_002""),
+        metadata.save_author(label='ORIGINAL_AUTHOR'),
+    ],
+)
+```"
+node,i cant sync g.auth time correction not working,Hello all i cant sync the app
+time/date are right
+anyone can help me
+node,"Error:(2) Attribute ""type"" has already been defined",I am getting the following error when I tried to sync gradle.
+
+node,fix preview problem in ADT,"Changes:
+
+> Add ""if( isInEditMode( ) ) return;"" to prevent preview problem in new ADT;
+> Updated gradle feature: replace ""runProguard false"" by ""minifyEnabled false"".
+
+Original preview problem sample happens when use ""<com.jpardogo.android.googleprogressbar.library.GoogleProgressBar>"" tag in layout XML:
+
+![originalcode](https://cloud.githubusercontent.com/assets/5752560/5831023/97cfe38c-a164-11e4-9ca9-cb7e6589606c.png)
+"
+node,"hello ,i'm from China，and my English is poor,i will try my best to let you know my problem,thank u.",Error:A problem occurred configuring project ':app'.
+
+> Could not resolve all dependencies for configuration ':app:_debugCompile'.
+> Could not resolve com.github.dexafree:materialList:2.0.3.
+>      Required by:
+>          SmartHome+:app:unspecified > com.github.dexafree:materiallist:2.0.3
+>       > inconsistent module metadata found. Descriptor: com.github.dexafree:materiallist:2.0.3 Errors: bad module name: expected='materialList' found='materiallist'
+> Could not find com.android.support:cardview-v7:21.0.0.
+>      Searched in the following locations:
+>          https://jcenter.bintray.com/com/android/support/cardview-v7/21.0.0/cardview-v7-21.0.0.pom
+>          https://jcenter.bintray.com/com/android/support/cardview-v7/21.0.0/cardview-v7-21.0.0.jar
+>      Required by:
+>          SmartHome+:app:unspecified > com.github.dexafree:materiallist:2.0.3
+> Could not find com.android.support:appcompat-v7:21.0.3.
+>      Searched in the following locations:
+>          https://jcenter.bintray.com/com/android/support/appcompat-v7/21.0.3/appcompat-v7-21.0.3.pom
+>          https://jcenter.bintray.com/com/android/support/appcompat-v7/21.0.3/appcompat-v7-21.0.3.jar
+>      Required by:
+>          SmartHome+:app:unspecified > com.github.dexafree:materiallist:2.0.3
+
+node,International users code not accepted.,"We are currently using Google Authentication for our Multi-factor authentication. However, the system is not accepting the Google code that is being returned to International users with an international phone. 
+
+We have done a bit of testing internationally and have found that it is working when a US based Phone and person is internationally based but is not working for an international based phone and person in the same location. 
+
+The internationally based user was able to download the app to the internationally based phone, and receive the code when prompted, however, the system does not accept the code. They received a “response Invalid” each time. We tried a few times and got the same results. A US based user and phone was able to receive the code and successfully login to the system. 
+
+We have not been able to find any information that limits the use of Google MFA to US based carriers."
+node,Performance Issue: Adding Buttons to card,"Hi, 
+
+I was recently making custom cards to be used with mListView. I found that serious performance issues if Text View Buttons (Left and Right) are replaced by actual buttons with icons. Frames drop while scrolling.
+
+Has anyone else encountered same issue ? Is there a way around ?
+"
+node,Method setRightButtonTextColorRes seems to be not working,"Hello! Try to add in your demo app this code:
+
+`((BasicButtonsCard) card).setRightButtonTextColorRes(R.color.divider_white);`
+
+(It is in `MainActivity.getRandomCard` method, in  `case 3: ...`)
+
+The color of the right button never changes. Bug?
+"
+node,Algorithm not being set properly,```
+otpauth://totp/ckpool:ckolivas?secret=46PABKV2HL2BYL5P&algorithm=SHA256&issuer=BitclubPool
+```
+
+I'm setting the SHA256 parameter in the above example but google-authenticator doesn't seem to be using it correctly(it works fine in the Red Hat FreeOTP app). I'm setting the parameter based off of [this](https://github.com/google/google-authenticator/blob/master/mobile/ios/README#L17) readme.
+
+node,version 2.0.1 error,"I got this error with this version. I cant compile. 
+
+Note: there were 19 duplicate class definitions.
+      (http://proguard.sourceforge.net/manual/troubleshooting.html#duplicateclass)
+Warning:com.dexafree.materialList.model.BasicButtonsCard: can't find superclass or interface com.dexafree.materialList.model.Card
+Warning:com.dexafree.materialList.model.BasicImageButtonsCard: can't find superclass or interface com.dexafree.materialList.model.Card
+Warning:com.dexafree.materialList.model.BigImageButtonsCard: can't find superclass or interface com.dexafree.materialList.model.Card
+Warning:com.dexafree.materialList.model.BigImageCard: can't find superclass or interface com.dexafree.materialList.model.Card
+Warning:com.dexafree.materialList.model.SmallImageCard: can't find superclass or interface com.dexafree.materialList.model.Card
+Warning:com.dexafree.materialList.model.WelcomeCard: can't find superclass or interface com.dexafree.materialList.model.Card
+Warning:com.dexafree.materialList.model.BasicButtonsCard: can't find referenced class com.dexafree.materialList.model.Card
+Warning:com.dexafree.materialList.model.BasicImageButtonsCard: can't find referenced class com.dexafree.materialList.model.Card
+Warning:com.dexafree.materialList.model.BigImageButtonsCard: can't find referenced class com.dexafree.materialList.model.Card
+Warning:com.dexafree.materialList.model.BigImageCard: can't find referenced class com.dexafree.materialList.model.Card
+Warning:com.dexafree.materialList.model.CardList: can't find referenced class com.dexafree.materialList.model.Card
+Warning:com.dexafree.materialList.model.GridItemView: can't find referenced class com.dexafree.materialList.model.Card
+Warning:com.dexafree.materialList.model.SmallImageCard: can't find referenced class com.dexafree.materialList.model.Card
+Warning:com.dexafree.materialList.model.WelcomeCard: can't find referenced class com.dexafree.materialList.model.Card
+Warning:there were 21 unresolved references to classes or interfaces.
+         You may need to add missing library jars or update their versions.
+         If your code works fine without the missing classes, you can suppress
+         the warnings with '-dontwarn' options.
+         (http://proguard.sourceforge.net/manual/troubleshooting.html#unresolvedclass)
+:app:proguardDebug FAILED
+Error:Execution failed for task ':app:proguardDebug'.
+
+> java.io.IOException: Please correct the above warnings first.
+"
+node,Authenticator code issue when logging into github,"I am trying to clone my company's github repo. After I 'git clone' the repo Github login box comes up.  I put my username and password and now I am asked for two-factor authentication. I get the code from the Authenticator app on my Samsung S7 and put it in just to see 'Logon failed' in command line. I already synced the time in the app, it was right in the first place.
+
+I am locked out from accessing my own work and this happened to me for 2nd time. The last time it I was able to get the authentication code that works by using my old mobile.
+
+Edit:
+It worked for me now as well by using my old mobile which means that the authenticator app on my new mobile generates wrong codes. How is it possible? Why the codes generated by my newer mobile are completely different (and wrong) than the codes generated by the old mobile (I was comparing the two apps for a few minutes.)
+ "
+node,Scanner not available now,"Hi there,
+
+I have tried downloading the authenticator and the barcode scanner by ZXING, but whenever I try to run the barcode scan I get an error saying that the ""barcode scanner is not available now""
+
+Any advise on how I can fix this?
+
+Thanks
+"
+node,Bugs in MaterialListAdapter,"There is a bug, that the MaterialList can not be cleared.
+
+I think the issue can resolved by removing the incremtation of index.
+
+``` java
+    public void clear() {
+        while(!mCardList.isEmpty()) {
+            remove(mCardList.get(0), false);
+        }
+    }
+```
+
+Also is a bug in the MaterialListAdapter.getCard(int). The minimum position can be 0 but if the method is called with 0 as parameter, it returns null. There for need to ask position is >= 0 not only > 0.
+
+``` java
+    public Card getCard(int position) {
+        if(position >= 0 && position < mCardList.size()) {
+            return mCardList.get(position);
+        }
+        return null;
+    }
+```
+"
+node,MethodDescriptor.call: don't convert unchecked exceptions into EvalException.,"Also, move some code that doesn't need to be in the try block out of it."
+node,java.util.zip.ZipException duplicate entry,"This is my build.gradle file:
+
+---
+
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion ""23.0.0 rc2""
+
+```
+defaultConfig {
+    applicationId ""com.sampleapp.app1""
+    minSdkVersion 15
+    targetSdkVersion 22
+    versionCode 1
+    versionName ""1.0""
+    multiDexEnabled true
+}
+buildTypes {
+    release {
+        minifyEnabled false
+        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+}
+```
+
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:22.2.0'
+    compile 'de.hdodenhof:circleimageview:1.3.0'
+    compile files('libs/picasso-2.5.2.jar')
+    compile 'com.github.dexafree:materiallist:2.4.5'
+}
+
+---
+
+This leads to the following error when I try to run the application:
+
+Error:Execution failed for task ':app:packageAllDebugClassesForMultiDex'.
+
+> java.util.zip.ZipException: duplicate entry: com/squareup/picasso/Action$RequestWeakReference.class
+> :app:packageAllDebugClassesForMultiDex FAILED
+> :app:collectDebugMultiDexComponents
+
+How can I solve this?
+"
+node,"In fragment, withProvider generates an error","in drawer fragment, when i made a card and give arrgument of builder getActivity, with provider generates error. How to overcome from it 
+"
+node,name 'maven_jar' is not defined,"follow ReadMe.md, I get following errors
+
+(base) PengdongdeMacBook-Pro:copybara pengdongzhu$ bazel build //java/com/google/copybara
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:21:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:27:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:34:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:41:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:48:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:55:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:62:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:69:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:76:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:84:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:92:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:100:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:107:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:114:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:121:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:128:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:137:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:144:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:151:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:158:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:165:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:172:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:179:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:236:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:21:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:27:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:34:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:41:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:48:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:55:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:62:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:69:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:76:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:84:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:92:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:100:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:107:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:114:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:121:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:128:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:137:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:144:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:151:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:158:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:165:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:172:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:179:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:236:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:21:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:27:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:34:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:41:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:48:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:55:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:62:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:69:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:76:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:84:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:92:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:100:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:107:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:114:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:121:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:128:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:137:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:144:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:151:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:158:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:165:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:172:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:179:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:236:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:21:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:27:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:34:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:41:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:48:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:55:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:62:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:69:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:76:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:84:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:92:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:100:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:107:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:114:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:121:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:128:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:137:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:144:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:151:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:158:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:165:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:172:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:179:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:236:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:21:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:27:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:34:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:41:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:48:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:55:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:62:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:69:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:76:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:84:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:92:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:100:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:107:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:114:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:121:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:128:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:137:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:144:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:151:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:158:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:165:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:172:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:179:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:236:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:21:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:27:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:34:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:41:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:48:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:55:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:62:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:69:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:76:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:84:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:92:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:100:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:107:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:114:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:121:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:128:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:137:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:144:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:151:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:158:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:165:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:172:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:179:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:236:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:21:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:27:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:34:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:41:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:48:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:55:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:62:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:69:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:76:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:84:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:92:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:100:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:107:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:114:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:121:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:128:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:137:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:144:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:151:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:158:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:165:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:172:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:179:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:236:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:21:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:27:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:34:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:41:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:48:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:55:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:62:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:69:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:76:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:84:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:92:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:100:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:107:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:114:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:121:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:128:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:137:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:144:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:151:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:158:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:165:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:172:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:179:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:236:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:21:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:27:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:34:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:41:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:48:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:55:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:62:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:69:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:76:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:84:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:92:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:100:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:107:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:114:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:121:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:128:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:137:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:144:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:151:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:158:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:165:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:172:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:179:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:236:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:21:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:27:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:34:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:41:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:48:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:55:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:62:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:69:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:76:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:84:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:92:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:100:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:107:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:114:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:121:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:128:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:137:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:144:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:151:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:158:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:165:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:172:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:179:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:236:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:21:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:27:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:34:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:41:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:48:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:55:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:62:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:69:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:76:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:84:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:92:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:100:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:107:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:114:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:121:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:128:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:137:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:144:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:151:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:158:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:165:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:172:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:179:1: name 'maven_jar' is not defined
+ERROR: /Users/pengdongzhu/workspace/copybara/WORKSPACE:236:1: name 'maven_jar' is not defined
+ERROR: error loading package 'external': Package 'external' contains errors
+INFO: Elapsed time: 0.081s
+INFO: 0 processes.
+FAILED: Build did NOT complete successfully (0 packages loaded)"
+node,Current Google Authenticator Version does not work on Android 2.3.7,"Buy they write it works on Android 2.3.3 ?!?!
+
+Message: 
+
+""Die Anwendung Authenticator (Prozess com.google.android.authenticator2) wurde unerwartet beendet. Versuchen Sie es erneut.""
+
+Thx for feedback!!"
+node,"ListCard, Dismiss, Animations, Sorting, StaggeredGridView, BugFixes",Simplify the MaterialListViewAdapter and MaterialListView. Added the
+Function to directly dismiss a Card without swiping it away.
+
+node,Add Show Description functionality to metadata.squash_notes,"I believe this will add the ability to disable showing the commit message when using `metadata.squash_notes`.
+
+This can be tested by now providing `show_description = False` with `metadata.squash_notes`. This should remove the message in all cases, including compact and non compact notes.
+
+Docs updated as a part of this and tests updated.
+
+Sorry for the fun fiasco, rebase and squashed, and right email address for CLA :)"
+node,Create bug report and feature request issue templates,Many historic GitHub issues have shown that users tend to be unaware that this repository hosts a fork of the Play Store app. I'm adding templates such that users are conscious of which app they are referring to (and for general issue hygiene).
+node,cannot resolve method.,"Hello, thanks for this great library.
+
+I would like to request some help. I've followed the steps, but I still can't add the card to the Material List.
+I've added the ""compile 'com.github.dexafree:materiallist:2.3.0'"" to dependencies.
+![screen shot 2015-03-02 at 2 06 45 am](https://cloud.githubusercontent.com/assets/1477874/6432163/d65761e6-c083-11e4-935b-580264e62297.png)
+and also this error while in the preview page.
+![screen shot 2015-03-02 at 2 06 31 am](https://cloud.githubusercontent.com/assets/1477874/6432175/00115e24-c084-11e4-9ca1-f93a07101199.png)
+how to solve?
+thanks.
+"
+node,classCastException android.graphics.drawable.colordrawable cannot be cast to android.support.v7.widget.RoundRectDrawableWithShadow,app crashes at cardView.setBackgroundColor(card.getBackgroundColor()); 
+i used setCardBackgroundColor which solved the crashing issue.
+original code is at BaseCardItemView.java line:46
+
+node,Fix path in integration tests,Fixes #51
+node,"MaterialListViewAdapter.getItemViewType error,plz fix it","this method return -1 , so i got this error 
+ java.lang.RuntimeException: Unable to start activity ComponentInfo{org.xxx.xxx/xxx.ui.MainActivity}: java.lang.IllegalArgumentException: Can't have a viewTypeCount < 1
+i don't know why...
+"

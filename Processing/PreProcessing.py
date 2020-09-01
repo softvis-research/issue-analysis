@@ -2,6 +2,7 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import PorterStemmer
 import nltk
+
 import numpy as np
 import re
 
@@ -11,14 +12,23 @@ import inflect
 p = inflect.engine()
 
 # Downloading package
-# TODO use packages downloaded in setup.py in order
+
 # to avoid error when run without internet connection
 nltk.download('stopwords')
 nltk.download('punkt')
+nltk.download('words')
+
+words = set(nltk.corpus.words.words())
+
 
 # Source: https://towardsdatascience.com/tf-idf-for-document-ranking-from-scratch-in-python-on-real-world-dataset-796d339a4089
 def convert_lower_case(data):
     return np.char.lower(data)
+
+
+def extract_words(data):
+    data = " ".join(w for w in nltk.wordpunct_tokenize(data) if w.lower() in words or not w.isalpha())
+    return data
 
 
 def remove_stop_words(data):
@@ -86,8 +96,10 @@ def preprocess(data):
     data = formate_text_bayes(data)
     data = convert_lower_case(data)
     data = remove_stop_words(data)
-    data = stemming(data)
-    data = remove_stop_words(data)
+    # data = stemming(data)
+    data = extract_words(data)
+    # data = formate_text_bayes(data)
+
     return data
 
 
@@ -129,5 +141,34 @@ def formate_text(text):
 
 
 def formate_text_bayes(text):
-    text = re.sub('[^a-zA-Z_]', '  ', text)
+    text = re.sub('[^a-zA-Z]', '  ', text)
     return text
+
+
+def formate_text_class(text):
+    text = re.sub('[^a-zA-Z]', '  ', text)
+
+    return text
+def formate_text2(text):
+    text = re.sub('[^a-zA-Z0-9_-]', '  ', text)
+    return text
+
+"""
+text: List with filename
+return List"""
+
+
+def formate_name(array):
+    array = [re.sub('(\.class)', '', file) for file in array]
+
+    array = [re.sub('(/)', '.', file) for file in array]
+    array = [re.sub('(^\.)', '', file) for file in array]
+    return array
+
+def delete_not_class(list):
+    new_list=[]
+    for item in list:
+        if re.match("([\w]+\.[\w]+\.[A-Za-z0-9_\.]+)", item) is not None:
+            new_list.append(item)
+
+    return new_list

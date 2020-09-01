@@ -1,0 +1,2859 @@
+﻿entity,title,body
+node,Bazel Test seems to be failing on master,"As of ~4 days ago running: `bazel test //...` on master has started failing. This can be seen on a GitHub action CI where I build nightly copybara images: [This is the first test failure, although all 4 days since have been solid of this test failing](https://github.com/SecurityInsanity/openjdk-panama-vector-docker/runs/956196460?check_suite_focus=true).
+
+This has been tested on two linux setups, one running bazel 3.4.1, and the CI actions uses bazel 3.3.0. A failed output log from the test that is failing is: [HERE](https://gist.github.com/SecurityInsanity/76d9a8bdb16364b920123d1961b33182).
+
+Please let me know any other information you need, Thanks!"
+node,Using Copybara with deploy keys?,"We would like to give Copybara access to the origin repo using a read only deploy key and the destination repo using a read/write deploy key. GitHub does not allow the same SSH key to be used as a deploy key in two different repos.
+
+It's not clear to me how to do this with Copybara. A common trick when using git to access different repos with different keys is explained here: https://gist.github.com/gubatron/d96594d982c5043be6d4 - however this appears not to work with Copybara as there is a check for the GitHub hostname in the code [1].
+
+Is there a way to use different keys to access different repos with Copybara? If not, please could it be added e.g. by allowing the `GIT_SSH_COMMAND` environment variable to be specified on a per-repo basis?
+
+Thanks.
+
+Christopher Hoskin
+
+[1] https://github.com/google/copybara/blob/574ddc0ed1b50d3240509e71ae7d563554fb635d/java/com/google/copybara/git/GitModule.java#L1398
+
+
+"
+node,How to remove the GitOrigin-RevId label,"Hi,
+
+I was wondering how the GitOrigin-RevId label can be removed. I've tried using metadata.remove_label in the transformations, but it doesn't remove it.
+
+Sorry if this isn't the appropriate place for this question. I tried posting in the google groups forum, but it wouldn't let me due to permissions
+
+Cheers,
+
+Mike"
+node,git.origin -> git.github_pr_destination fails when specifying a SHA-1 `ref` on the origin,"I'm attempting to write a macro for a workflow which will take a public Git SoT (`git.origin` is necessary, since this can be sources other than `github` or `gerrit`). I'd like to submit this import as a PR to a private github destination (via `git.github_pr_destination`).
+
+The workflow that gets generated is pretty simple:
+
+```
+    core.workflow(
+        name = ""some_foo_name"",
+        mode = ""SQUASH"",
+        origin = git.origin(
+            url = url,
+            ref = ""someCommitHash"",
+        ),
+        destination = git.github_pr_destination(
+            url = private_url,
+            destination_ref = ""master"",
+            pr_branch = ""import/some_foo_name/${CONTEXT_REFERENCE}"",
+        ),
+        <snip...>
+```
+
+However, when running this workflow, I get a error stating that I need to specify the `pr_branch` for this:
+
+```
+ERROR: git.github_pr_destination is incompatible with the current origin. Origin has to be able to provide the contextReference or use '--github-destination-pr-branch' flag
+```
+
+Am I going about this incorrectly? What is a more idiomatic way to do this?"
+node,GitDestinationOptions#fetch and GitDestinationOptions#push are package protected,need to use the programatically.
+Thanks!
+node,Usage question,"I'm evaluating Copybara but the lack of documentation makes it a bit hard to understand some basic concepts.
+
+Let's suppose there a private repo A and a public repo B, both hosted on Github. B is a filtered version of A, in the sense that some files and folders are removed. Most work (internal) will happen on A, but some public contributions might happen on B as pull requests. My understanding so far is that I would have to setup webhooks on both repos. On A to mirror branches to B on commits, and on B to mirror PRs to A.
+
+Is my understanding correct?
+
+thank you for the product and your attention!"
+node,feature: hide all codes on screen until selected,"On large screen devices it is easy to read from a distance all the codes displayed on the screen, even though I only ever need one of them at a time.
+
+Please add a setting to have all the codes hidden by default so I can just show the one I want to use instead of exposing all of them to shoulder-surfers.
+
+I know the risk from exposure in this regard is low, but it is still an unnecessary risk that can be easily mitigated.
+"
+node,Multiple Views,Whats the most efficient way of using multiple card view layouts in a recycler view? for example a WelcomeCard and a SmallImageCard in the same recycler view. 
+
+node,Failed to find: com.github.dexafree:materiallist:2.3.2,I have this message when try to compile project
+   Error:Failed to find: com.github.dexafree:materiallist:2.3.2
+
+it works only for version 2.0.1
+
+node,How do I maintain the original author when migrating code?,"I was able to maintain an original author using Copybara, but only by doing this:
+
+`authoring = authoring.pass_thru(""Original Author <original@author.com>""),`
+
+I'm not sure how to modify the workflow so that it just does this automatically? If it helps, I'm on git 2.8.1, on OS X 10.12.3.
+
+PS, this tool rocks!"
+node,Update Serbian translation,""
+node,Update Main.java,""
+node,BEGIN_PUBLIC,BEGIN_PUBLIC
+3. commit
+
+COPYBARA_INTEGRATE_REVIEW=https://github.com/samuelba/external_test_repo/pull/3 from samuelba:patch-3 affef1cb6b6c1e1480d107325d8818eac8f6fdc4
+Closes #3
+
+END_PUBLIC
+node,SetText to custom view inside custom layout,"Hello. I created custom RippleBigImageCard extends by  BigImageButtonsCard and also I redefined getLayout() which return my custom layout.
+I want to add custom view with date to my layout and setText to this view after creating instance of RippleBgImageCard, but I don't understand how can  I do that.
+"
+node,Bump Supported API Versions,"Drop support for API 7 (Eclair) as it has less than .1% market share on the Play Store.
+Extend support all the way up to API 22 (Lollipop_MR1).
+Since Eclair support is dropped, the Mockito workaround for testing is deleted also.
+Additionally, to make the project work with the latest Android Studio, the test manifest is deleted.
+"
+node,Version 3.1.1 or 3.1.0 doesn't result in successful builds.,"Error:(31, 38) error: cannot find symbol class OnButtonClickListener
+Error:(32, 47) error: cannot find symbol class BasicImageButtonsCardProvider
+Error:(241, 22) error: cannot find symbol method clearAll()
+Error:(245, 22) error: cannot find symbol method clearAll()
+Error:(363, 27) error: cannot find symbol class BasicImageButtonsCardProvider
+Error:(366, 43) error: cannot find symbol class BasicImageButtonsCardProvider
+Error:(373, 63) error: cannot find symbol class OnButtonClickListener
+Error:(384, 64) error: cannot find symbol class OnButtonClickListener
+Error:(427, 23) error: cannot find symbol class BasicImageButtonsCardProvider
+Error:(430, 39) error: cannot find symbol class BasicImageButtonsCardProvider
+Error:(437, 59) error: cannot find symbol class OnButtonClickListener
+Error:(450, 60) error: cannot find symbol class OnButtonClickListener
+
+These are the list of errors that I get.
+"
+node,Horizontal scrolling,"Hi there,
+Is it possible to make it scrollable vertically?
+"
+node,Project import generated by Copybara.,Project import generated by Copybara.
+node,[Feature Request] Support call external commands as transformation,"I'd like to run code formatting in a copybara workflow, which needs to call external commands as transformation."
+node,Doesn't seem to work in a fragment,"I get this
+
+java.lang.NullPointerException: Attempt to invoke virtual method 'void com.dexafree.materialList.view.MaterialListView.add(com.dexafree.materialList.model.Card)' on a null object reference
+
+when trying to use it in a fragment. my code looks like this 
+
+```
+  mMaterialListView = (MaterialListView)view.findViewById(R.id.material_listview);
+    BasicImageButtonsCard card = new BasicImageButtonsCard(view.getContext());
+    card.setTitle(""Your title"");
+  //  card.setSubtitle(""My subtitle!"");
+    card.setDescription(""Your description"");
+  //  card.setButtonText(""OKAY!"");
+
+    mMaterialListView.add(card);
+```
+"
+node,Update to 2.4.0 on jitpack,Can you please upload 2.4.0+ to jitpack.io so that I can use it using the basic dependencies?
+
+node,Using picasso along with BigImageCard,"I want to use Picasso to load the images efficiently onto a BigImageCard. My issue is that card.setDrawable() takes in a drawable/drawableBitmap, but Picasso uses a .into() method to inject the image into a imageview. 
+
+I can't find a way to get it to work with a card, would you have any idea? 
+"
+node,Can't set lastRevision programatically,"To use Copybara programatically one needs the ability to pass the lastRevision.
+Currently I think that's not possible.
+```scala
+val generalOptions =  new GeneralOptions(
+      System.getenv(),
+      FileSystems.getDefault,
+      VerboseLoggingOff,
+      LogConsole.writeOnlyConsole(System.out, VerboseLoggingOff)
+val options = new Options((moduleSupplier.newOptions().asScala :+ generalOptions).asJava)
+options.get(classOf[WorkflowOptions]).lastRevision = lastRev //visibility problem
+```
+"
+node,Guide implementation,Sorry i am new in this 2 factor authentication
+
+I like to implement this on my application ive learned how to generate secret that is needed to generate the 6 number key. my question is how can i validate my 6 number key if it is correct or not. 
+
+Thanks! 
+node,damian210medina,""
+node,Security Problem: Screenshot Function,"Original [issue 402](https://code.google.com/p/google-authenticator/issues/detail?id=402) created by TriplexAccount.P.N on 2014-07-08T10:27:41.000Z:
+
+<b>What steps will reproduce the problem?</b>
+1. Call Screenshot Function from the specific smartphone
+
+<b>What version of the product are you using? On what operating system?</b>
+Google Authentificator: 2.49
+
+<b>Please provide any additional information below.</b>
+In general, it is not possible to take a screenshot of any inner user interface from a banking app for security reason. The Google Authentificator can be comprimised by using a trojan with screenshot function. Please disable the ability to take a screenshot from the main interface from the Google Authentificator.
+"
+node,Just a test,Change-Id: Iecedfde897e28be8a18a4bb85934140fb5306d19
+node,Update RecyclerView library version,Thanks for creating this wonderful library. I am recently getting into the new Design Support Library and its CoordinatorLayout. It seems the latest RecyclerView library is required to enable interaction with the CoordinatorLayout. Please fix the dependency version. Great thanks!
+
+node,Just a internal test. IGNORE.,Change-Id: Ic9274fba81aac0141002dfeba17cc6b6cc09a064
+node,Context Menu Disappears on Device Rotation,"When I perform this sequence of events, the context menu on screen disappears:
+1.  Long Click on code item
+2. Orientation Change
+"
+node,Folders to organize entries,"Original [issue 456](https://code.google.com/p/google-authenticator/issues/detail?id=456) created by tohelwithlove on 2014-10-03T17:49:10.000Z:
+
+As TOTP gains popularity, the long list of entries in Google Authenticator becomes unwieldy. Especially for an IT professional who manages a number of AWS, Google Apps &amp; Joomla accounts.
+
+Ideally users should be able to organize the entries by folders they define, or as a compromise, automatic categorizing entries based on the issuer field.
+
+Thanks!
+"
+node,Allow creating PullRequest on a different repo than pushing,""
+node,Add default http.useragent flag,"Hi Copybara team,
+
+I'd like to be able to identify calls to our Git service which come from your awesome tool.  The simplest way to do this seems to be adding a default http.useragent=""copybara"" flag in the Git command line you build.
+
+Does that sound OK?  A quick look through your code suggests that shouldn't be to hard.
+
+Thanks!"
+node,Secrets should be stored in a java.security.KeyStore,"Original [issue 158](https://code.google.com/p/google-authenticator/issues/detail?id=158) created by kroot@google.com on 2012-03-28T23:27:19.000Z:
+
+Instead of storing the secrets in the SQLite database, the SQLite database should store the alias of the SecretKey in a java.security.KeyStore. This will allow migration to more secure methods of storage in the future.
+
+Note that you'll have to use a JCEKS instead of the default JKS.
+"
+node,Should allow sorting,"The Google Auth Android client works well for a few entries. People like me have about 20 entries, not sorted (well sorted by when you've added them which is meaningless). You should be able to:
+
+Sort them (manually, by issuer, or by provider, at least one of those)
+Possibly group them together in one level tree
+"
+node,Password protection / pin to enter the app,"We really need a password protection / pin to enter the app and save the local data as encrypted.
+I am very surprised this feature is not in the app, seems VERY basic security (you can't count only on the Android login passord for access security)
+
+regards
+
+Sean
+"
+node,Example provided in README doesn't work.,The example provided in the README does not compile. Where as the example provided in the docs works. I have merely just replaced the example in the README file with the example mentioned in the docs!
+
+node,Is there a way to pass a GitHub API Token?,"I am getting rate limited by GitHub when moving a bunch of commits:
+
+```
+% copybara copy.bara.sky export_to_github_pr
+Nov 06, 2019 4:16:36 PM com.google.copybara.Main configureLog
+INFO: Setting up LogManager
+Copybara source mover (Version: Unknown version)
+...
+ERROR: Migration of origin revision '<commit_sha1>' failed with error: GitHub API call failed with code 403 The request was GET <redacted> Response:
+{""message"":""API rate limit exceeded for <ip_address>. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)"",""documentation_url"":""https://developer.github.com/v3/#rate-limiting""}
+```"
+node,Incorrect removing card from other fragment,"I have `ViewPager` and simple class extending `FragmentPagerAdapter` with some fragments and identical cards in them. When i dismiss card from first, it is also removing from second fragment.
+"
+node,How to get card config (card.getConfig)?,"In last version, we have: card.getConfig();
+
+E.g, if I have my custon card, and I want add some custom code, I did:
+
+```
+Card c1 = new Card.Builder(getActivity())
+            .setTag(""MY_CARD"")
+            .withProvider(SimplePhotoCard.class)
+            .hideActionBar(true)
+            .endConfig()
+            .build();
+
+    mListView.add(c1);
+
+    SimplePhotoCard sp1 = (SimplePhotoCard) c1.getConfig();
+
+    sp1.setOnTouchPhotoListener(new SimplePhotoCard.OnTouchPhotoListener() {
+        @Override
+        public void onTouch(View v) {
+        }
+    });
+```
+
+In the new version, how can I get it?
+
+Thanks for help.
+"
+node,BasicListCard,"Very good work on the library. I just have some issues using the BasicListCard.
+I have added the dependencies and the code for the layout. In the activity itself I have created a BasicListCard, but it seems that methods addItem and addAllItems does not exist.
+"
+node,spam ticket: meizhumeizhu58,Not to get code and password
+node,MoPub Native Ads recyclerview implementation mixed with this lib.....,Has anyone played with or fully implemented MoPub's native ads recyclerview implementation with this library?
+
+node,MateriaList with Picasso,"Hi! I am using this awesome library and I am trying to mix with picasso, but I need a ImageView to do this, and I do not know how do it, I tried to inflate the layout but it does not work. So I wonder if could you tell me how can I mix them, maybe if there was a ""getImageView()"" or something could it be more easy.
+
+Thanks you, so much!
+"
+node,Update Truth to 0.45.,null
+node,All accounts lost after installation on new device,My mobile phone died yesterday (android 5.1.1 Nexus 5).
+
+Today I set up the replacement (android 5.1.1. Nexus 6). But after installing google-authentticator only the google account appears. None of the others do. I am pretty messed up trying to access my diverse accounts now. Not to mention that the account list was very long and I can't even find a way to list up for which services google authenticator was set up.
+
+Has something gone wrong? Or is this expected behaviour?
+
+node,Push to MavenCentral,""
+node,Excluding Files,I tried to copy a Java project repository (GitHub) from one to another and I want to exclude some files in the original repository when moving it as well. I tried to add those files to `exclude` array but I still see the files are being copied to the new repository. Can you add a good example on how to do this? 
+node,getInfo returns changes `getAvailableToMigrate` for the ones which already migrated,"Hi, 
+
+we are using copybara as embedded one. 
+our use case next: 
+1. we are using [.getInfo](https://github.com/google/copybara/blob/master/java/com/google/copybara/InfoCmd.java#L159) for getting list of changes that available for migration
+2. if there are some changes -> notify user about it
+3. user triggering migration process
+4. our service creating branch 
+5. migrating code to this branch
+6. opening PR 
+7. merge with rebase if passing checks
+
+problem that .getInfo provides list of changes available to migrate even when they already migrated.  we are using `lastRevision` as starting point, but no updating it after migration. 
+I know that we are doing something wrong which not allowed to get info correctly. 
+
+migration for this case throwing expected exception `Iterative workflow produced no changes in the destination for resolved ref: ` 
+
+I know that it's not trivial use case of copybara, but I would really appreciate if you will advice something. 
+
+Thanks!!! 
+
+Cheers,
+Pavel"
+node,i need load image from url how i do this ?,"i done this but i cannot get photo 
+......
+Card card = new Card.Builder(this)
+                    .withProvider(new CardProvider())
+                    .setLayout(R.layout.material_basic_image_buttons_card_layout)
+                    .setTitle(rssItems.get(i).getTitle())
+                    .setTitleGravity(Gravity.END)
+                    .setDescription(rssItems.get(i).getDescription())
+                    .setDescriptionGravity(Gravity.END)
+                    .setDrawable(""https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png"")
+
+```
+                .setDrawableConfiguration(new CardProvider.OnImageConfigListener() {
+                    @Override
+                    public void onImageConfigure(@NonNull RequestCreator requestCreator) {
+                        requestCreator.fit();
+                    }
+                })
+```
+
+........
+"
+node,Cards inside GridView,Is it possible to have Cards within GridView?
+
+node,Use 'git add -f' to avoid failures with .gitignore rules.,"If the repo being imported includes `.gitignore` rules that exclude its own files, then Copybara fails to import to a Git destination with an error like:
+
+``` shell
+Copybara source mover
+Task: Git Destination: Creating a local commit
+ERROR: com.google.copybara.RepoException: Error executing 'git': Process exited with status 1. Stderr: 
+The following paths are ignored by one of your .gitignore files:
+FILE_THAT_IS_IGNORED
+Use -f if you really want to add them.
+```
+
+`bazel test ...:all` passes successfully.
+"
+node,Add pull request template,A lot of historic pull requests have been blank. Let's fix that by requiring a short summary (and reminding contributors that they have to sign the CLA).
+node,Reset phone now what,"Hello, so I have 2 factor set up on about 4 websites where I have money stored and now I cannot access them. I had to reset my phone due to issues and didn't even know there had to be a backup done for the sites on google authenticator app. What can I do at this point?
+
+Thanks."
+node,add setGravity function for use in RTL languages.,"add three function for title, subtitle and description to set Gravity.
+when use setTitleGravity(Gravity.END) the title move to right side.
+"
+node,Include labels in GitHub PR body,"Is there a way to add the labels of a change to the body of the PullRequest created by `git.github_pr_destination`?
+
+If there isn't, I'd be happy to contribute a patch implementing this if that's something you'd want to support."
+node,Extend raw Subject instead of supplying type parameters.,"The type parameters are being removed from Subject.
+
+This CL will temporarily produce rawtypes warnings, which will go away when I remove the type parameters (as soon as this batch of CLs is submitted)."
+node,Provide a way to easily migrate from maven_jar to rules_jvm_external,"Test project(s): Copybara. https://github.com/google/copybara
+
+Get list of all `maven_jar` targets: `bazel query 'kind(maven_jar, //external:all)'`
+Get list of artifacts: `bazel query 'kind(maven_jar, //external:all)' --output=build | grep artifact | awk '{print $3}' | sort`"
+node,Help request - decode otpauth-migration://offline?data= uri,Hi. I want to extract my original code to use it in third party apps. But offline migration url contains some strange info that I don't know how to extract. Can anyone help extract data in such url payload?
+node,How to detect that user scrolles to end of list?,"Hi, read here about scrolls. My question is: how to detect, that user scrolled list to last item?
+"
+node,Add missing androidTestCompile libraries,"Since conversion to Android Studio 1.1.0, the test-builds did not work, since required libraries were missing from the `androidTestCompile` dependencies.
+
+This pull request adds the required libraries, the tests run on my device and in an emulator. Some fail, though, but these seem to be related to some changes since Android 4.3, I think.
+"
+node,Always set locale to english when running git,Copybara runs may fail if users use a different locale than english
+because we try to parse git's language dependent output.
+This change fixes this bug by forcing git's output language always to be english.
+node,Use bazel docker image for Docker build,"Instead of using the jdk image and then installing bazel, it probably makes sense to use the bazel provided image directly."
+node,OnItemClickListeners implementation,"Hi dexafree i'm using your nice library and i am missing the onitemclick listener.
+Is there a way to implement it ou it is plan for the next release ?
+
+looking forward to hearing from you.
+
+regards,
+"
+node,how to import it in eclipse?,"I have created a new library project for materialLib
+1) copied all files in that project
+2) added cardview, recyclerview library to that
+3) added its jar to import/export
+4) added the jars: otto, nineoldandroids, listviewanimation_lib to bulld path and in import/export check
+5) clean and build
+
+But when i am importing and running it in my project it shows
+error inflating class android.support.v7.widget.cardview
+and same for recyclerview
+
+anybody please tell me how to solve this issue?
+"
+node,Recovering Two-factor Secrets After OS Upgrade,Around two years ago I installed an OS upgrade on my Android phone that caused my two-factor secrets to get lost (and subsequently lost access to a bitcoin wallet with ~75K in it). I was wondering if Google Authenticator backs up secrets to the cloud by any chance? Or does an OS upgrade permanently wipe those secrets?
+node,Integration tests fail if copybara is imported,"`//copybara/integration:reference_doc_test` and `//copybara/integration:tool_test` fail due to wrong path if copybara is imported into other repo.
+```
+bazel test @copybara//...
+[...]
+@copybara//javatests/com/google/copybara/transform:metadata/RevisionMigratorTest PASSED in 0,0s
+@copybara//javatests/com/google/copybara/util/console:ConsoleTest        PASSED in 0,0s
+@copybara//javatests/com/google/copybara/util/console:ConsolesTest       PASSED in 0,0s
+@copybara//javatests/com/google/copybara/util/console/testing:TestingConsoleTest PASSED in 0,0s
+@copybara//copybara/integration:reference_doc_test                       FAILED in 0,9s
+  /.../testlogs/external/copybara/copybara/integration/reference_doc_test/test.log
+@copybara//javatests/com/google/copybara/git:GitDestinationTest          PASSED in 0,0s
+  Stats over 5 runs: max = 0,0s, min = 0,0s, avg = 0,0s, dev = 0,0s
+@copybara//copybara/integration:tool_test                                FAILED in 30 out of 30 in 0,6s
+  Stats over 30 runs: max = 0,6s, min = 0,3s, avg = 0,3s, dev = 0,1s
+  /.../testlogs/external/copybara/copybara/integration/tool_test/shard_29_of_30/test.log
+[...]
+  /.../testlogs/external/copybara/copybara/integration/tool_test/shard_14_of_30/test.log
+
+Executed 68 out of 70 tests: 68 tests pass and 2 fail locally.
+```
+
+```
+exec ${PAGER:-/usr/bin/less} ""$0"" || exit 1
+-----------------------------------------------------------------------------
+/.../external/copybara/copybara/integration/reference_doc_test.runfiles/XXX/external/copybara/copybara/integration/reference_doc_test: line 17: third_party/bazel/bashunit/unittest.bash: No such file or directory
+/.../external/copybara/copybara/integration/reference_doc_test.runfiles/XXX/external/copybara/copybara/integration/reference_doc_test: line 37: run_suite: command not found
+```"
+node,Switch from sha1 to sha256 in WORKSPACE.,"Hi,
+
+I'm getting some log lines from bazel saying to switch from sha1 to sha256 in the WORKSPACE file:
+
+```
+INFO: SHA256 (https://github.com/bazelbuild/rules_cc/archive/ea5c5422a6b9e79e6432de3b2b29bbd84eb41081.zip) = faa25a149f46077e7eca2637744f494e53a29fe3814bfe240a2ce37115f6e04d
+DEBUG: Rule 'rules_cc' indicated that a canonical reproducible form can be obtained by modifying arguments sha256 = ""faa25a149f46077e7eca2637744f494e53a29fe3814bfe240a2ce37115f6e04d""
+DEBUG: Call stack for the definition of repository 'rules_cc' which is a http_archive (rule definition at /home/dseomn/.cache/bazel/_bazel_dseomn/72478d6acfe6c09d44b6b243c198de7d/external/bazel_tools/tools/build_defs/repo/http.bzl:292:16):
+ - /home/dseomn/Code/copybara/WORKSPACE:222:1
+WARNING: /home/dseomn/Code/copybara/WORKSPACE:21:1: maven_jar rule @guava//jar: Not using a checksum to verify the integrity of the artifact or the usage of SHA-1 (see https://shattered.io) is not secure, and can result in a non-reproducible build. Please specify the SHA-256 checksum with: sha256 = ""4a5aa70cc968a4d137e599ad37553e5cfeed2265e8c193476d7119036c536fe7"",
+WARNING: /home/dseomn/Code/copybara/WORKSPACE:21:1: maven_jar rule @guava//jar: Not using a checksum to verify the integrity of the artifact or the usage of SHA-1 (see https://shattered.io) is not secure, and can result in a non-reproducible build. Please specify the SHA-256 checksum with: sha256_src = ""9de05c573971cedfcd53fb85fc7a58a5f453053026a9bf18594cffc79a1d6874"",
+INFO: SHA256 (https://github.com/bazelbuild/rules_proto/archive/9cd4f8f1ede19d81c6d48910429fe96776e567b1.zip) = 7d05492099a4359a6006d1b89284d34b76390c3b67d08e30840299b045838e2d
+DEBUG: Rule 'rules_proto' indicated that a canonical reproducible form can be obtained by modifying arguments sha256 = ""7d05492099a4359a6006d1b89284d34b76390c3b67d08e30840299b045838e2d""
+DEBUG: Call stack for the definition of repository 'rules_proto' which is a http_archive (rule definition at /home/dseomn/.cache/bazel/_bazel_dseomn/72478d6acfe6c09d44b6b243c198de7d/external/bazel_tools/tools/build_defs/repo/http.bzl:292:16):
+ - /home/dseomn/Code/copybara/WORKSPACE:229:1
+INFO: SHA256 (https://github.com/bazelbuild/bazel/archive/4b0e301448227383fe76a8c1b0c03bfe2cbb2ec1.zip) = 29937386cd9c34382c99008d20797130d536d54f8dd95f323a5519cbd8d51006
+DEBUG: Rule 'io_bazel' indicated that a canonical reproducible form can be obtained by modifying arguments sha256 = ""29937386cd9c34382c99008d20797130d536d54f8dd95f323a5519cbd8d51006""
+DEBUG: Call stack for the definition of repository 'io_bazel' which is a http_archive (rule definition at /home/dseomn/.cache/bazel/_bazel_dseomn/72478d6acfe6c09d44b6b243c198de7d/external/bazel_tools/tools/build_defs/repo/http.bzl:292:16):
+ - /home/dseomn/Code/copybara/WORKSPACE:186:1
+INFO: SHA256 (https://github.com/bazelbuild/rules_python/archive/9d68f24659e8ce8b736590ba1e4418af06ec2552.zip) = f7402f11691d657161f871e11968a984e5b48b023321935f5a55d7e56cf4758a
+DEBUG: Rule 'rules_python' indicated that a canonical reproducible form can be obtained by modifying arguments sha256 = ""f7402f11691d657161f871e11968a984e5b48b023321935f5a55d7e56cf4758a""
+DEBUG: Call stack for the definition of repository 'rules_python' which is a http_archive (rule definition at /home/dseomn/.cache/bazel/_bazel_dseomn/72478d6acfe6c09d44b6b243c198de7d/external/bazel_tools/tools/build_defs/repo/http.bzl:292:16):
+ - /home/dseomn/Code/copybara/WORKSPACE:215:1
+```"
+node,Add Google music dices and Nexus One cross rotation progress drawables.,Hi!
+
+This PR adds a dices 'I'm feeling lucky' of the Google Play Music app and the Nexus One cross rotation progress drawables.
+
+node,Better support for updating dependencies,Currently Copybara allows to move code from one repo to another. It can be used with some hacks to update a repo based on changes from another repo (see #84 for details). We should improve this and make it less hacky. Some ideas:
+
+   - Multiple sources origin
+
+  - Don't require origin/destination files and/or don't require a checkout.
+
+  - Custom RevId that contains the dependency.
+node,Feature Request: ability to re-order accounts,Original [issue 190](https://code.google.com/p/google-authenticator/issues/detail?id=190) created by stewartl42 on 2012-07-09T20:58:16.000Z:
+
+<b>What steps will reproduce the problem?</b>
+1. Open the App
+2. accounts are listed in the order they were added and cannot be re-ordered
+
+<b>What is the expected output? What do you see instead?</b>
+The method used to re-order the accounts is not important. 
+
+<b>What version of the product are you using? On what operating system?</b>
+2.21 - Samsung Vibrant
+
+<b>Please provide any additional information below.</b>
+
+node,Hash being overwritten if identificators have the same name,"While scanning a QR code to help my friend setup an account for a service we both use, the authenticator simply overwrote my previous hash and put his in it's place, instead of either creating another entry or simply giving me a prompt asking me if I confirm the operation.
+
+As a side note, now I can't recover my acess to said service anymore, since I don't possess the unlock code  and seemingly there's no google account linked to that hash. I can't believe such a thing really wasn't thought about, it's a basic security flaw.
+"
+node,Document building copybara uberjar (copybara_deploy.jar),"Most users will probably want to build not with the command in the README.md, but instead use
+
+    bazel build //java/com/google/copybara:copybara_deploy.jar
+
+This produces an uberjar at
+
+    [,,,]
+    Target //java/com/google/copybara:copybara_deploy.jar up-to-date:
+      bazel-bin/java/com/google/copybara/copybara_deploy.jar
+    [....]
+
+I believe this is the typical way how one would want to build copybara. Figuring this out may be needlessly difficult for people unfamiliar with the build system."
+node,[Feature Request] Want archived file as source,Sometimes libraries are provided within an archived file. I'd like to copy the content into our repository and maintain the relationship with the help of copybara.
+node,Can't add more than 1 card,"Hi,
+
+I have implemented custom cards with custom providers. But, the UI is not showing more than 1 card either with same card object being added twice or different card with different provider
+"
+node,Feature: Add Cards to MaterialListViewAdapter,It seems to me that there's currently no way to add more cards to the CardList once we've set up a `MaterialListViewAdapter` with our initial list of Cards.
+
+I'd like to introduce new cards when the user interacts with my existing set of cards (e.g. clicks on one of the buttons or dismisses a card with the swipe gesture).
+
+node,No way to get a card by other than index,"The adapter has a method to remove a card by passing the card to it, but there is no way to get a reference to a card by passing a card to it. So I can remove a card by calling 
+
+`mListView.getMaterialListViewAdapter().remove(card)`
+
+but not get a reference to it, by calling
+
+`mListView.getMaterialListViewAdapter().get(card)` or
+`mListView.getMaterialListViewAdapter().getItem(card)`
+
+I want to modify a card's description from another function, after the card has been added to the listview
+"
+node,Single tap to copy,"Authenticator should copy codes to the clipboard on a single tap. For me, copying codes is one of the most frequent operations I perform in Google authenticator. Switching to a single-tap copy workflow would shave off a few seconds in copying codes which would help me not run out of time to use them. Red Hat's [FreeOTP](https://play.google.com/store/apps/details?id=org.fedorahosted.freeotp) application has this functionality already.
+# Current Workflow
+1. Open Authenticator.
+2. Find appropriate identity.
+3. Long-press code.
+4. Tap copy icon.
+5. Code is in clipboard.
+# Proposed Workflow
+1. Open Authenticator.
+2. Find appropriate identity.
+3. Tap code.
+4. Code is in clipboard.
+"
+node,null instead context in fragments,some time in `fragment` throws exception when i use : 
+
+``` java
+
+//So i use it like this 
+getActivity().findViewById(R.id.google_progress).setVisibility(View.INVISIBLE);
+
+```
+
+and i know `getActivity` some time return **null** instead _context_ but still is problem ! you have any suggest can cover this ?
+
+``` java
+/**
+     * Return the {@link FragmentActivity} this fragment is currently associated with.
+     * May return {@code null} if the fragment is associated with a {@link Context}
+     * instead.
+     */
+    final public FragmentActivity getActivity() {
+        return mHost == null ? null : (FragmentActivity) mHost.getActivity();
+    }
+
+```
+
+node,create Progressbar programmatically,"as per your code, you are using progressbar from xml. but how can we create progressbar programmatically with Foldingdrawable.? i tried simple but didnt showing progressbar.
+"
+node,how to go back to top of list?,"After adding new card, it always go to bottom, but I want it go back to top of list.
+"
+node,Settings to change the code grouping from 2x 3digit to 3x 2digit,Maybe its just me but whenever I open the app and read a code I read it in my head like `65 45 23` and not like `654 523`. It would be nice if I could switch the digit grouping.
+node,should copybara info (or a related sibling) use the same semantics migrate does?,"Currently one can think there are pending changes when migrate will fail (for example when you have empty commits).
+@mikelalcon referenced this in #3 when he wrote: ""Ideally we should honor origin_files. At least the glob roots. Would be great if we could honor the excludes too.
+Probably this involves an option to origin.changes() to return the list of files in a change too.""
+Maybe what we need is ""expensive info"" since it will cost more or ""migrate --dry-run"" to reflect the pending commits"
+node,BigImageCardProvider.java,""
+node,Update project dependencies,"Latest build dependencies, a few whitespace fixes, and one Lint error fix.
+
+<sub><sup>Please NO GitHub rebase/squash merges. If you'd like me to combine some or all of the commits, please let me know, and I will update my branch. Thank you.</sup></sub>
+"
+node,Workflow best practices for migration of GitHub code into internal repo,"This looks like a great tool, and would be of use to us on some upcoming projects. Thanks for open sourcing it!
+
+One question I have (I can't seem to find a better forum for Q's) is around best practices for integrating changes from GitHub with an internal authoritative repo.
+
+This is mentioned in the README:
+
+> Importing a change from a non-authoritative repository into the authoritative repository. When a change is made in the non-authoritative repository (for example, a contributor in the public repository), Copybara transforms and moves that change into the appropriate place in the authoritative repository. Any merge conflicts are dealt with in the same way as an out-of-date change within the authoritative repository.
+
+Concretely, say someone opens a PR on your GitHub repo. What does the process look like for integrating that change into the internal repo? Is the change first merged into the GitHub repo then migrated to the internal repo? Or is there some way to do some kind of initial vetting to know that the change is compatible with the internal repo before merging the change in GitHub, then moving? I've often wondered how this is done on some of the PRs I've submitted to Google GitHub projects.
+
+Happy to offer up some documentation in a PR once I grok this concept.
+
+Thanks again for open sourcing the tool!"
+node,test PR,Change-Id: If65ff833c503426bd0a001e27becc25b24b2dd52
+node,Divider between content and actions,I've read the Material Design documentation and noticed that Google uses a slight divider between the content of a card and the supplemental actions. Here are some [examples from the guidelines](http://www.google.com/design/spec/components/cards.html#cards-content).
+
+node,Failed to resolve: com.github.dexafree:materiallist:23.2.2,Title says it all.
+What shall i do?
+    compile 'com.github.dexafree:materiallist:3.2.2'
+
+node,How to make the CardView with rounded corners pls ?,I would like to make your carview to look like this : 
+https://github.com/DenisMondon/material-design-library/blob/master/images/screen07.png
+
+with rounded corners. Is it possible ?
+
+thanks 
+
+node,Text is always white,"When I use BigImageCard the description text is white, when I use SmallImageCard then the title is white, so the text is not visible to the user.
+
+Any fix?
+"
+node,"In all classes of library function ""getCallback()"" is undefined.",""
+node,Publish copybara to maven central,"Hi folks!
+
+So we are gearing up to use this internally in a more than ""Jeffry runs it on his laptop occasionally"" sort of manner. We were curious if this project can get published to maven central so that we can fetch it (and new versions in the future) for use in stuff like Jenkins, etc...
+
+Thanks again for all the great work, we've gotten a good amount of utility out of this and it's rad that you contributed this out to the open source world!"
+node,made getLastAvailableToMigrate public for programmatic access,""
+node,Expose time correction as a manual preference.,This allows it to be changed without a connection to the internet.  Addresses #6.
+
+node,Added url load with Picasso,I added new behaviour where you can load a image from a url website sending a string to setDrawable.
+
+node,Remove cards from List,How I can remove all cards from my list to refresh the list with a new cards?
+
+node,Codes complications,"Hi, I would like to fork the app to make it generating longer codes of 8-16 characters including digits and letters (or even few words) Do you see it is easy to do based on this code or better to start from scratch?"
+node,Files already exist in <location> when migrating a repo.,"Ok, back again :)
+
+I was able to get copybara working using the copybara repo, and now I'm switching over to the @sonatype repo I want to migrate to a public one.
+
+I'm running `copybara copy.bara.sky --force`
+
+My copy.bara.sky looks like:
+
+```
+url = ""git@github.com:sonatype/INTERNAL_REPO.git""
+
+core.workflow(
+    name = ""default"",
+    origin = git.origin(
+        url = url,
+        ref = ""master"",
+    ),
+    destination = git.destination(
+        url = ""file:///tmp/foo"",
+        fetch = ""master"",
+        push = ""master"",
+    ),
+    destination_files = glob([""matthew/py-iq-reports/IQreport/**""], exclude = [""README_INTERNAL.txt""]),
+
+    authoring = authoring.pass_thru(""Jeffry Hesse <jeffryxtron@gmail.com>""),
+    transformations = [
+	    core.move("""", """"),
+	],
+)
+```
+
+I end up with this:
+
+```
+764 jeffryhesse:IQreport (master *)$ copybara copy.bara.sky --force
+Copybara source mover (Version: Unknown version)
+Task: Git Origin: Initializing local repo
+Enter passphrase for key '/Users/jeffryhesse/.ssh/id_rsa': 
+WARN: Cannot find last imported revision, but proceeding because of --force flag
+Task: Moving 
+ERROR: Files already exist in /Users/jeffryhesse/copybara/temp/workdir2564596437170999916/checkout:
+```
+
+I've truncated the filelist since it's a lot of internal stuff, plus likely not going to give much actual detail on the issue. I'm not sure what's quite going on here, and I'm sure I'm missing something. Any help is appreciated."
+node,OnItemClickListener is triggered n times,"Hi, in my code I have : 
+mListView.addOnItemTouchListener(new RecyclerItemClickListener.OnItemClickListener() {
+                @Override
+                public void onItemClick(CardItemView cardItemView, int i) {
+// Part A
+}
+
+//                @Override
+//                public void onItemLongClick(CardItemView cardItemView, int i) {
+//...
+//}
+});
+
+The code at Part A is triggered as many time as the current number of cards inside the mListView. Did I do something wrong? 
+
+Thanks!
+"
+node,Dialog Disappears on Device Rotation,"When I perform these sequences of events, the dialog on screen disappears:
+
+Sequence 1:
+1.  Long Click on code item in list
+2.  Click on Rename
+3. Orientation Change
+
+Sequence 2:
+1.  Long Click on code item
+2.  Click on Remove
+3. Orientation Change
+"
+node,Support for private git repo URLs,""
+node,Update Picasso library to 2.7.71828,Update Picasso library to 2.7.71828
+node,Please provide us with apk sample !!,Please provide us with apk sample !!
+
+thank you.
+
+node,Any future for SSH git access with passphrase?,"I see in the docs this is not supported, but wonder if its an eminent feature or a if there is a work around.   I'm specifically using the docker integration to run copybara, but my ssh key has a pretty long passphrase.
+
+(FTR I'm stoked this exists, its what I always hoped MOE would be, but this unlike MOE just worked pretty much OOTB, so thanks!)"
+node,The  function of dismiss Card doesn't work., mListView.setOnDismissCallback(new OnDismissCallback())
+
+This function can not work. 
+
+node,Adding antialias to every paints for #2,Adding antialias to every paints for #2 
+
+node,Add Bazel buildtools to Docker image,Adding `buildifier` and `buildozer` to the copybara docker image would ease usage for me.
+node,Empty layouts,"For example in ButtonsCard, when setting left or right button text to """" or null, an empty button is created. This should not happen.
+
+Also when both buttons are null or """" the whole button ""holder"" should dissapear, without leaving a big padding on the bottom.
+
+I'll send a pull request if I have time to fix it.
+"
+node,"listView.getDividerHeight() return '""-1""","```
+private void calculateListHeight(ListView listView) {
+        final ListAdapter adapter = listView.getAdapter();
+
+
+        int totalHeight = 0;
+        for (int i = 0; i < adapter.getCount(); i++) {
+            View item = adapter.getView(i, null, listView);
+            item.measure(
+                    View.MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED),
+                    View.MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED)
+            );
+            totalHeight += item.getMeasuredHeight();
+        }
+
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        params.height = totalHeight + listView.getDividerHeight() * (adapter.getCount());
+
+        listView.setLayoutParams(params);
+        listView.requestLayout();
+    }
+```
+
+When I use  BasicListViewCard Show my ListView , It's can't show all my items,
+then I find `listView.getDividerHeight()` alaways return -1，
+
+then I give it a Default value (30dp),fix it for me,
+
+It seems is not a issue of your project, But I just want know what reason cause this problem,Thank you!
+"
+node,Untabify the transformations example.,""
+node,Converted project to Gradle format (Android Studio 1.1.0),"Given that Android Studio is stable and now the officially supported Android IDE moving forward, this commit migrates this project into the new Gradle format.  
+"
+node,Clarify start steps,For Bazel n00bs like me.
+node,Increase Spacing and Card Layout,How can I increase the spacing between two cards ?
+
+node,Any change in FedRAMP Approval plans?,"Older issue - #65  referencing the same question, I wanted to see if there had been any change or any future plans in development.
+
+
+"
+node,Add color or icon to OTP code UI,"In case when there are multiple OTP codes, it would help if they are visually different.
+Maybe allowing a user to set a color for the OTP account, or perhaps adding a icon/emoji on left/right side of the code.
+"
+node,How to overlay a file such as README.md,"Hi there Copybara friends!
+
+I'm working on another project using this fabulous tool, and I was wondering about a particular use case and how to best accomplish it.
+
+```
+core.workflow(
+    name = ""default"",
+    origin = git.origin(
+        url = sourceUrl,
+        ref = ""master"",
+    ),
+    destination = git.destination(
+        url = destinationUrl,
+        fetch = ""master"",
+        push = ""master"",
+    ),
+    mode = ""ITERATIVE"",
+    # Change path to the folder you want to publish publicly
+    origin_files = glob([""**""], exclude = [""copy.bara.sky"", "".copybara/**"", ""Jenkinsfile"", ""README.md""]),
+    destination_files = glob([""**""]),
+
+    authoring = authoring.pass_thru(""THIS GUY <dude@email.com>""),
+    transformations = [
+      metadata.squash_notes(prefix = 'Public export of code:\n\n', show_description = False),
+      core.copy("".copybara/public"", """", paths = glob([""README.md""]))
+    ],
+)
+```
+
+I was wondering if this is the best way to accomplish overlaying a public README.md from an internal repo. I'm asking this publicly because I'm not 100% sure how to dry run the copybara stuff and see what a public repo will look like, and as well to just see if there is a better way to accomplish this. I think the core.replace stuff is a bit too granular, in this case replacing the file completely seems to make the most sense.
+
+Thanks!
+"
+node,Missing BEGIN button,"Cannot ""begin"" after installation - the application is in Czech on Sony E2105 with Android 4.4.4. I can see ""Your password"" and ""A code this app will generate for you"" (in my language Vaše heslo etc.) - but there is no button - it is probably ""bellow the visible area of the screen""
+  
+![screenshotauth 1](https://user-images.githubusercontent.com/35100685/34569617-9c5b4786-f169-11e7-918d-3c0a018ca834.jpg)
+"
+node,No way to get index of card in OnButtonPressListener,There is no way to get the index of the card in the OnButtonPressListener. I am programmatically adding cards and creating OnButtonPressListener for each using a for loop and I need to know the index of the card so I can fire the appropriate code depending on which card's buttons were pressed
+
+node,Test,""
+node,Add format module and implement buildifier transform to format Bazel/Starlark files,"This PR adds a new transformation that runs [buildifier](https://github.com/bazelbuild/buildtools/tree/master/buildifier) during import/export.
+
+Related: #98
+
+Note: This is still WIP (name of binary hardcoded, no tests, ...). I would appreciate an early high-level review to make sure the overall design of this is good, though."
+node,Codes incorrectly generated on Blu Studio Energy runing android 4.4.2,"When running authenticator 2.49 on a Blu Studio Energy running 4.4.2 the generated codes are incorrect.
+
+I also have a nexus 5 running 5.0.1, when inputting the same token seed to both phones the 4.4.2 device never generates the correct codes, while the 5.0.1 device using the same seed generates the proper codes.
+
+I've also tried inputting the tokens using QR codes to eliminate the chance of user input error. I've confirmed the token codes are wrong for multiple sites including github, gmail, aws, several online games. 
+
+The times are synced up and accurate on both phones, I've also attempted to use the app's ""time correction for codes"" feature in setup and it indicates no changes need to be made.
+
+I've loaded the FreeOTP app from RedHat on the device and the token codes work properly in that app, which further supports it not being a time sync related issue on the device.
+"
+node,Fail to refresh the action text,"when I using such the follow code:
+
+```
+Card card = new Card.Builder(this)
+            .withProvider(new CardProvider())
+            .setLayout(R.layout.material_image_with_buttons_card)
+            .setTitle(""Card number 5"")
+            .setDescription(""Lorem ipsum dolor sit amet"")
+            .setDrawable(R.drawable.photo)
+            .addAction(R.id.left_text_button, new TextViewAction(this)
+                    .setText(""Izquierda"")
+                    .setTextResourceColor(R.color.black_button)
+                    .setListener(new OnActionClickListener() {
+                        @Override
+                        public void onActionClicked(View view, Card card) {
+                                    TextViewAction act = (TextViewAction) card.getProvider().getAction(R.id.right_text_button);
+                                    act.setText(act.getText()+""e"");    // the other action text modified here 
+                        }
+                    }))
+            .addAction(R.id.right_text_button, new TextViewAction(this)
+                    .setText(""Derecha"")
+                    .setTextResourceColor(R.color.accent_material_dark)
+                    .setListener(new OnActionClickListener() {
+                        @Override
+                        public void onActionClicked(View view, Card card) {
+
+                        }
+                    }))
+            .endConfig()
+            .build();
+```
+
+If you try this code in your own project, you will meet a problem: 
+Some card cannot be updated immediately, it always happen.But it can be updated by sliding the list. 
+
+It's a bug?
+"
+node,Fails in Android 5.0,"There are several [comments in Google Play](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&hl=en) about the crashes in Android Lollipop (specially in LG G3 mobile).
+In my device (LG G3) with Android 5.0 crashes when I press ""_Start configuration_"" and when I select (in menu) ""_Configuration_"" > ""_Hour correction in codes_"".
+"
+node,Create release please,"There were made serveral bug fixes in since it was placed on github. Please release those to the app market, the fixes were necessary for me to let this app work. i do now have a self compiled apk on my phone....
+"
+node,First time importing pull request from public to private,"Hello!
+
+I'm stuck on importing PRs. 
+
+- I have private and public repositories.
+- Before release I need to import some PRs from public to private repository. There have been zero migrations using Copybara before and repositories have zero commits in common. 
+- Copybara obviously cannot find parent commit. I tell it to use latest master commit as parent and it replaces new code in private with the old one from public which is not the part of the PR.
+
+But I need to migrate only PR changes. I think I can use something like **patch**. Is there any solutions for doing it using Copybara?
+
+Here's my current config:
+
+```
+core.workflow(
+  name = ""import_pr_from_oss"",
+
+  origin = git.github_pr_origin(
+    url = publicRepoUrl,
+    state = ""ALL"",
+    use_merge = True,
+  ),
+  destination = git.github_pr_destination(
+    url = internalRepoUrl,
+    destination_ref = ""master-internal"", # TODO: Update to master after test
+    integrates = [],
+  ),
+  mode = ""CHANGE_REQUEST"",
+  set_rev_id = False,
+
+  authoring = authoring.pass_thru(""**authoring here**""),
+
+  # Including/excluding files
+  origin_files = glob([""**""], exclude = [
+
+    # exclude hidden files
+    "".**"",
+    ""**/.**"",
+
+    # exclude all private sources
+    ""private/**"",
+
+    # exclude helper scripts and related
+    ""**.sh"",
+    ""**.log"",
+    ""**.rc"",
+    ""revision.txt"",
+
+    # exclude generated bits
+    ""**/target/**"",
+    ""**/node_modules/**"",
+
+  ]) + glob([
+
+    # keep some specified files
+    "".circleci/config.yml"",
+    ""**/.placeholder"",
+    "".mvn/**"",
+  ]),
+
+  destination_files = glob([""**""], exclude = [
+
+    # exclude hidden files
+    "".**"",
+    ""**/.**"",
+
+    # exclude all private sources
+    ""private/**"",
+
+    # exclude helper scripts and related
+    ""**.sh"",
+    ""**.log"",
+    ""**.rc"",
+    ""revision.txt"",
+
+    # exclude generated bits
+    ""**/target/**"",
+    ""**/node_modules/**"",
+  ]) + glob([
+
+    # keep some specified files
+    "".circleci/config.yml"",
+    ""**/.placeholder"",
+    "".mvn/**"",
+  ]),
+
+  transformations = [
+    metadata.save_author(),
+    metadata.expose_label(""COPYBARA_INTEGRATE_REVIEW"")
+    metadata.replace_message(""${GITHUB_PR_TITLE}\n\n${GITHUB_PR_BODY}\n\nSubmitted by: @${GITHUB_PR_USER}\n\nExternal PR number: #${GITHUB_PR_NUMBER}""),
+  ],
+```
+
+Thank you!
+"
+node,"Authenticator crashes on ""start setup""","**What steps will reproduce the problem?**
+1. Open Authentication
+2. Try to put Begin Setup button
+3. Immediately unfortunately, authentication has stopped
+
+**What is the expected output? What do you see instead?**
+Immediately unfortunately, authentication has stopped
+
+**What version of the product are you using? On what operating system?**
+Package version 49
+package version name: 2.49
+On Android
+device: LG G3
+
+**Please provide any additional information below.**
+
+This issue was originally reported on google code (https://code.google.com/p/google-authenticator/issues/detail?id=353) and then reopened on github (https://github.com/google/google-authenticator/issues/346) but both records are closed.
+However the issue still occurs.
+
+**Workaround**
+Originally posted on google code and reproduced at http://lifeisabug.com/google-authenticator-crashes-account-setup-workaround/
+1. Open Authenticator but do NOT press the “Begin setup” button.
+2. Instead, select “setup account” from the option menu.
+3. Then from another device, go to https://accounts.google.com/b/0/SmsAuthSettings, select “Move to a different phone” and scan the QR code.
+"
+node,A test PR,""
+node,Space between items when scrooling,"Hello,
+
+Im using the v2 version of the library (i cant update to v3 because there are incompatible and i have a lot of work with v2), i have a problem with MaterialListView and cards.
+
+On the list there are a big space betwen items, this is an example:
+
+![screenshot_1476349323](https://cloud.githubusercontent.com/assets/21805726/19343255/b1b565f2-9135-11e6-8614-0c93ef4e7939.png)
+
+And there is my xml code, im ussing SmallImageCard
+
+`<RelativeLayout xmlns:android=""http://schemas.android.com/apk/res/android""
+    xmlns:tools=""http://schemas.android.com/tools""
+    android:layout_width=""match_parent""
+    android:layout_height=""match_parent""
+    xmlns:bootstrap=""http://schemas.android.com/apk/res-auto""
+    android:paddingLeft=""@dimen/activity_horizontal_margin""
+    android:paddingRight=""@dimen/activity_horizontal_margin""
+    android:paddingTop=""@dimen/activity_vertical_margin""
+    android:paddingBottom=""@dimen/activity_vertical_margin"">
+
+```
+<ProgressBar
+    android:id=""@+id/barraProgresoEmpleados""
+    android:layout_width=""wrap_content""
+    android:layout_height=""wrap_content""
+    style=""@android:style/Widget.Holo.ProgressBar.Large""
+    android:layout_marginRight=""5dp""
+    android:layout_centerVertical=""true""
+    android:layout_centerHorizontal=""true"" />
+<!--<TextView-->
+    <!--android:id=""@+id/sinEmpleadosTV""-->
+    <!--android:layout_width=""wrap_content""-->
+    <!--android:layout_height=""wrap_content""-->
+    <!--android:layout_alignParentTop=""true""-->
+    <!--android:layout_centerHorizontal=""true""-->
+    <!--android:textColor=""@color/red""-->
+    <!--android:text=""Sin empleados disponibles""-->
+    <!--android:visibility=""gone""/>-->
+<com.beardedhen.androidbootstrap.BootstrapLabel
+    android:id=""@+id/sinEmpleadosTV""
+    android:layout_width=""wrap_content""
+    android:layout_height=""wrap_content""
+    android:layout_below=""@+id/barraProgresoClientes""
+    android:layout_centerHorizontal=""true""
+    android:layout_centerVertical=""true""
+    android:layout_gravity=""center""
+    android:visibility=""gone""
+    bootstrap:bootstrapBrand=""danger""
+    bootstrap:roundedCorners=""true""
+    bootstrap:bootstrapText=""{fa_exclamation_circle}   Sin empleados disponibles""
+    />
+
+    <com.dexafree.materialList.view.MaterialListView
+        android:layout_width=""wrap_content""
+        android:layout_height=""wrap_content""
+        android:id=""@+id/material_listview""
+        android:visibility=""gone""
+        android:scrollbars=""vertical""
+        android:dividerHeight=""1dp""/>
+```
+
+</RelativeLayout>
+`
+
+Thanks you, regards!
+"
+node,feat(docs): add archlinux aur installation instructions,"A package tracking `HEAD` is available on the AUR. This patch adds a
+reference to that package. It also sets up the framework for documenting
+system packages in the README, as a section for this did not exist.
+
+---
+
+I maintain this over at https://github.com/sudoforge/pkgbuilds/tree/master/copybara-git. The way that `*-git` packages work in Arch means that anybody who builds this package will always grab the latest version of the repository; although I will periodically bump the `pkgver` variable (denoting the ""package version"") in order to ""notify"" downstream users' tooling that a new version is out."
+node,How to setDrawable with Fresco ?,""
+node,Merges as commits when first_parent=False,"Hello,
+
+I trying to bring gitlab support to copybara for my company, but in the process I discovered issue with git -> git synchronization.
+
+In default configuration merges are squashed to single commit and in branch based workflows this disrupts whole git history, therefore I tried `first_parent=False` option in `git.origin` and it copies both sides of merge as it should, but it isn't able to copy merges, as they are treated as usual commits and they usually doesn't  contain any changes.
+
+This disrupts closing github PR when branch is merged on gitlab side and it caused also merge conflicts when on other branches after one of them was merged.
+
+I tried to find a way to fix that in cohybara source code, but it looks like `isMerge` info is lost many calls up in stack trace before it reaches writer.
+"
+node,Unexpected merge importing a pull request,"When trying to import a pull request using the workflow:
+
+```
+core.workflow(
+    name = ""import_pr"",
+    mode = ""CHANGE_REQUEST"",
+    origin = git.github_pr_origin(
+        url = github_public_url,
+        branch = ""master"",
+    ),
+    destination = git.destination(
+        url = github_sot_url,
+        fetch = ""master"",
+    ),
+    origin_files = glob([""**""]),
+    destination_files = glob(
+        [""somedir/**""],
+        exclude = [
+            ""somedir/bfile"",
+        ],
+    ),
+    authoring = authoring.pass_thru(""Default email <default@defatult.com>""),
+    transformations = [
+        core.move("""", ""somedir""),
+        metadata.save_author(),
+        metadata.expose_label(""COPYBARA_INTEGRATE_REVIEW""),
+        metadata.expose_label(""GITHUB_PR_NUMBER"", new_name = ""Closes"", separator = "" #""),
+    ],
+)
+```
+
+I get: 
+
+```
+% copybara copy.bara.sky import_pr 1
+Nov 09, 2019 2:51:27 PM com.google.copybara.Main configureLog
+INFO: Setting up LogManager
+Copybara source mover (Version: Unknown version)
+Task: Integrating change from https://github.com/ob/cb-sot-public/pull/1 from ob:ob-patch-1 21171d13a57703bae681c45dd57b2e76bffb1ab5
+ERROR: Conflict detected while rebasing /Users/obonilla/copybara/temp/workdir109556842962639907/checkout to d0b3be83ebc842c8dd6feae051391d7a82adf9b8. Please sync or update the change in the origin and retry. Git output was:
+First, rewinding head to replay your work on top of it...
+Applying: Project import generated by Copybara.
+Applying: Project import generated by Copybara.
+Using index info to reconstruct a base tree...
+Falling back to patching base and 3-way merge...
+CONFLICT (add/add): Merge conflict in .gitignore
+Auto-merging .gitignore
+Patch failed at 0002 Project import generated by Copybara.
+Resolve all conflicts manually, mark them as resolved with
+""git add/rm <conflicted_files>"", then run ""git rebase --continue"".
+You can instead skip this commit: run ""git rebase --skip"".
+To abort and get back to the state before ""git rebase"", run ""git rebase --abort"".
+
+```
+
+However, that pull request didn't change the `.gitignore` file so I didn't expect this to be a problem.
+
+SoT repo: https://github.com/ob/cb-sot, exported repo: https://github.com/ob/cb-sot-public, PR that I'm trying to import: https://github.com/ob/cb-sot-public/pull/1
+
+I don't see why Copybara is trying to merge the two `.gitignore` files, are they treated specially by globs?"
+node,Welcome Card Strange Behaviour,"I am using 2.0.1 version of your the library and have encountered a very strange behaviour when adding welcome cards.
+
+I am creating a new welcome card using:
+
+```
+    SimpleCard card;
+     card = new WelcomeCard(this);
+    card.setTitle(""Welcome!"");
+    card.setDescription(""If you're a new user, we recommend you take the tutorial."");
+    ((WelcomeCard) card).setSubtitle(""Take a quick tour ?"");
+    ((WelcomeCard) card).setButtonText(""Okay!"");
+    ((WelcomeCard) card).setBackgroundColorRes(R.color.primary);
+    ((WelcomeCard) card).setDividerColor(getResources().getColor(R.color.primary_dark));
+    ((WelcomeCard) card).setDescriptionColor(getResources().getColor(R.color.icons));
+    card.setDismissible(true);
+    ((WelcomeCard) card).setOnButtonPressedListener(new OnButtonPressListener() {
+        @Override
+        public void onButtonPressedListener(View view, Card card) {
+            card.dismiss();
+            Toast.makeText(MainActivity.this,""Coming Soon"", Toast.LENGTH_LONG).show();
+        }
+});
+```
+
+I am adding it to mListView using:
+
+```
+mListView.add(card);
+```
+
+Very strangely, 
+- Two welcome cards get added to my view instead of one. 
+- I can't seem to be able to change the color of description text.
+
+I have attached a screenshot for reference. 
+![device-2015-01-22-042454](https://cloud.githubusercontent.com/assets/7647281/5847217/d337365a-a1f0-11e4-921e-fde07a814de0.png)
+"
+node,How to use card.setBackgroundColor() ?,"Hi,
+I want to change the background color of cards, but i don't know how to do it. 
+i tried it in hex version of color (#ffffff) and rgb version of color (002,003,004) 
+They don't work. Could you help me?
+Thank you.
+"
+node,TEST TEST TEST,Change-Id: I790167e816ccc11e2aa7e7f874e31f12ed94eeab
+node,Added the possibility to add a custom divider,I added a simple method that allows to set a custom divider to the material list. I also modified the example app in order to use it. I used [ceskobassman's gist](https://gist.github.com/ceskobassman/179a62e1be65c2275baf)
+
+node,Bad behaviour with emptyView,"I tried to set an empty view but it doesn't work. Only the empty view is visible, also if the list is not empty..
+
+Is there anybody that could try it? 
+"
+node,"hello ,iam",""
+node,Mirroring tags between github repos,"It isn't clear to me how to mirror tags between two github repositories. Our current workflow for exporting source looks like this:
+```python
+core.workflow(
+    name = ""exportSourceToPublic"",
+    origin = git.github_origin(
+        url = privateUrl,
+        ref = ""master"",
+    ),
+    destination = git.github_destination(
+        url = publicUrl,
+        fetch = ""master"",
+        push = ""master"",
+    ),
+    origin_files = filesToPublish,
+    mode = ""ITERATIVE"",
+    authoring = authoring.pass_thru(defaultAuthor),
+    transformations = [
+        metadata.restore_author(),
+    ],
+)
+```
+
+All of our tags are for commits on `master`. I assumed that I could simply run this with `origin.ref = ""refs/tags/<tag>""` and `destination.push = ""refs/tags/<tag>""`. When I do this I get this output:
+```
+Task: Git Origin: Initializing local repo
+WARN: No new changes to import for resolved ref: 1809e6d8aa53af7fa30146277f9b8740ab38771c
+```
+
+This makes sense as the commit already exists on `destination:master`, but I would still expect it to push it to the tag. Am I holding it wrong / is there a better way to handle this use case? Or is it a bug and it should still push to the tag?"
+node,Antialias and a couple of comments,"Hey,
+
+Good job mate for this library! A couple of comments there:
+- you should set the antialias to the paints, I've tried and it looks better
+- I'm not sure if inheriting from ProgressBar is a good idea. You are doing some extra work in your `super.onDraw(canvas)` I would actually clone the code from `ProgressBar`, remove what I don't need and set that as a base class for my custom progress bars.
+
+Good idea anyway!
+"
+node,"Update android, build tools to 29, RULES_JVM_EXTERNAL_TAG ","Tethik already mentioned these changes in his PR, required by latest bazel. My CLA is on file.
+
+Thanks for creating a pull request with us! Please make sure you have submitted the CLA at https://cla.developers.google.com/ if you haven't already.
+
+## Change Description
+
+Please describe the change from your pull request here. If this pull request is related to an existing issue, link the issue here as well.
+"
+node,Block screenshots,"## Change Description
+
+This adds a toggleable setting to block screenshots from the main AuthenticatorActivity. By default that setting is set to `true`. Fixes #50 
+
+Unfortunately I haven't been able to run the tests as they make my poor laptop go OOM. I tested it on a test device though. I've also had to upgrade the build tools etc to get the project to run, but I omitted it from this PR to keep it contained. 
+
+"
+node,Document how to change git location and minimal required version,It is not clear what is the minimum version we require for git and how to change the default location.
+node,Support to store secret keys on YubiKey,"It would be great if the Google Authenticator would have support to store the secret keys on an external secure storage like YubiKey. The current implementation is not very secure as the secure keys are stored as a plain text in the SQLite DB. If the device is compromised, the attacker can potentially compromise the account secured by the secret key.
+
+The implementation should be similar to [Yubico Authenticator](https://play.google.com/store/apps/details?id=com.yubico.yubioath). That would allow to secure applications which do not support YubiKey directly.
+"
+node,Update project dependencies,"Keeping the build dependencies up-to-date! :)
+
+<sub><sup>Please NO GitHub rebase/squash merges. The changes are broken up into meaningful, independent commits, and my branch should already be up-to-date with the latest target branch. If not, or if you'd like me to combine some or all of the commits, please let me know, and I will make the necessary updates as soon as possible. Thank you!</sup></sub>"
+node,Importing a Pull Request,"Hi there!
+
+I'm gearing up to do a demo of copybara for @sonatype tomorrow, and I was curious, what do you all do to import a pull request? I can add this to the docs as an example as well.
+
+What I basically want to do is:
+
+- I have a private source repo
+- PR comes in from public destination repo
+- Run copybara to bring the PR in to the source repo (so we can noodle on it, make adjustments if we need to)
+- Merge that PR
+- Run copybara and have the changes make it out to the destination
+
+I see some stuff around the source PR, etc... but figured I would ask more so about workflow related to this.
+
+Thanks!"
+node,Android Wear integration,Android Wear integration would make using 2-factor authentication a much simpler process when you don't have to hunt for your phone every time you want to log into a website/service. This feels like a significant omission in the Android ecosystem.
+
+node,How to make Chrome ProgressBar rotate?,"Hi, could you improve the Chrome ProgressBar animation in order to make it rotate  clockwise or counterclockwise while switching circles positions? Thank you in advance."
+node,Working with LFS repositries,"Hi there,
+
+Can copybara operate with repositories with files managed by Git LFS? My scenario is as follows:
+
+- I have a private repository on github that has many artifacts (some of which are large files which are managed by LFS). This repository acts as a source repository.
+- I also have another private repository on github which acts as the target repository.
+- The source repository gets frequent pushes, and from time to time we need to selectively copy certain files from it to the target repository.
+- when using copybara to do so, we get an error message during the task: ""Git Destination: Checking out master"":
+```
+Error downloading object: (...): batch request: missing protocol: """"
+Errors logged to (...)
+Use `git lfs logs last` to view the log.
+error: external filter 'git-lfs filter-process' failed
+fatal: (...): smudge filter lfs failed
+```
+which seems as a problem with relevant to git-lfs.
+
+So does copybara support repositories with LFS-managed files?"
+node,Test PR,This is a test
+node,multifile defined,17:14:53.374 [ERROR] [org.gradle.BuildExceptionReporter]
+17:14:53.374 [ERROR] [org.gradle.BuildExceptionReporter]    UNEXPECTED TOP-LEVEL EXCEPTION:
+17:14:53.374 [ERROR] [org.gradle.BuildExceptionReporter]    com.android.dex.DexException: Multiple dex files define Lcom/nhaarman/listviewanimations/util/Swappable;
+17:14:53.374 [ERROR] [org.gradle.BuildExceptionReporter]        at com.android.dx.merge.DexMerger.readSortableTypes(DexMerger.java:596)
+17:14:53.375 [ERROR] [org.gradle.BuildExceptionReporter]        at com.android.dx.merge.DexMerger.getSortedTypes(DexMerger.java:554)
+17:14:53.375 [ERROR] [org.gradle.BuildExceptionReporter]        at com.android.dx.merge.DexMerger.mergeClassDefs(DexMerger.java:535)
+17:14:53.375 [ERROR] [org.gradle.BuildExceptionReporter]        at com.android.dx.merge.DexMerger.mergeDexes(DexMerger.java:171)
+17:14:53.375 [ERROR] [org.gradle.BuildExceptionReporter]        at com.android.dx.merge.DexMerger.merge(DexMerger.java:189)
+17:14:53.375 [ERROR] [org.gradle.BuildExceptionReporter]        at com.android.dx.command.dexer.Main.mergeLibraryDexBuffers(Main.java:454)
+17:14:53.375 [ERROR] [org.gradle.BuildExceptionReporter]        at com.android.dx.command.dexer.Main.runMonoDex(Main.java:303)
+17:14:53.375 [ERROR] [org.gradle.BuildExceptionReporter]        at com.android.dx.command.dexer.Main.run(Main.java:246)
+17:14:53.375 [ERROR] [org.gradle.BuildExceptionReporter]        at com.android.dx.command.dexer.Main.main(Main.java:215)
+17:14:53.375 [ERROR] [org.gradle.BuildExceptionReporter]        at com.android.dx.command.Main.main(Main.java:106)
+17:14:53.375 [ERROR] [org.gradle.BuildExceptionReporter]
+
+node,Trying to use this but...,"Whenever I try to initiate a card it says not valid. Even the sample one's in your wiki. I am using gradle dependency with version 2.0.7. I saw earlier in your post that you told someone to use 2.0.1, since it could fix the card issue. It still didn't for me. Are we supposed to have 2 different gradle dependencies for cards and the actual library?
+
+Would appreciate help!
+"
+node,Active search,"Please note that the code in this repository is an open source fork of the app in the Play Store, so **there is no guarantee that both apps will be in sync**. Please check which version of the app your bug applies to below.
+
+- [ ] This feature request applies to the app downloaded from the [Play Store][playstore].
+- [x ] This feature request is for the [Github version][opensource] of the app.
+
+The Google Authenticator app is maintained by a small group of 20%-ers within Google. Although we'd love to give the app some more love, engineers need to allocate limited cycles to many competing priorities. Please check the box below to make sure that we're on the same page.
+
+- [ x] I have acknowledged that filing this feature request does not obligate Google to implement my specific request.
+
+## Feature Description
+
+Add an active search box that filters results as you type.
+
+### Why is it important?
+
+Now that 2fa has gotten traction, having to scroll and scan past 30+ codes makes it a little difficult to use.
+
+## Additional Information
+
+
+[playstore]: https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2
+[opensource]: https://github.com/google/google-authenticator-android
+[pr]: https://github.com/google/google-authenticator-android/blob/master/CONTRIBUTING.md
+"
+node,made getAvailableToMigrate public for programmatic access,I changed getLastAvailableToMigrate previously but it was a mistake. I need getAvailableToMigrate.
+If you'd like I can add another commit to this PR to remove the public modifier from getLastAvailableToMigrate
+node,Avoid showing any codes right after screen unlock,"The problem is, if the phone was locked with the app running, it will show current codes right after unlock to anyone watching over the shoulder, security cameras, TV crews etc.
+
+There are multiple ways to avoid this, e.g.:
+* close app completely on screen lock (the behaviour I'd personally expect and accept);
+* implement #37 after unlock (would solve more general problem of exposing unneeded codes);
+* ask for user confirmation after unlock (inelegant but probably easier to understand for some)."
+node, Failed to resolve: com.github.dexafree:materiallist:3.2.2, Failed to resolve: com.github.dexafree:materiallist:3.2.2
+I guess the correct version is 3.2.1 or you have not uploaded 3.2.2 to maven yet.
+
+![2016-07-10 21-20-42](https://cloud.githubusercontent.com/assets/6168238/16713800/0d3f7ef8-46e5-11e6-99cb-9d6e3b7ab024.png)
+
+node,Request OTP via Bluetooth,Original [issue 177](https://code.google.com/p/google-authenticator/issues/detail?id=177) created by quintella.marcelo on 2012-05-08T20:53:34.000Z:
+
+Suggestion to create a mechanism to retrieve OTP over bluetooth for the Android Google Authenticator Application
+
+User would put the cursor on a text box in the browser and then hit a (configurable) key combination (e.g. CTRL+SHIFT+i) and it would automatically get an OTP code from the phone´s application and paste it into the text box.
+
+This would probably need an accompaining Mac and Windows client aplication that would have to run as a service and intercept the key combination in order to then request the code to the phone.
+
+This would make the usage of OTP much more practical.
+
+node,Crashing when used in ViewPager and swiping to new page,"```
+05-06 17:31:03.634    1558-1558/email.crappy.ssao.ruoka E/InputEventReceiver﹕ Exception dispatching input event.
+05-06 17:31:03.635    1558-1558/email.crappy.ssao.ruoka E/MessageQueue-JNI﹕ Exception in MessageQueue callback: handleReceiveCallback
+05-06 17:31:03.653    1558-1558/email.crappy.ssao.ruoka E/MessageQueue-JNI﹕ java.lang.ArrayIndexOutOfBoundsException: length=12; index=-1
+            at java.util.ArrayList.get(ArrayList.java:310)
+            at com.dexafree.materialList.controller.MaterialListAdapter.getCard(MaterialListAdapter.java:97)
+            at com.dexafree.materialList.view.MaterialListView$2.canDismiss(MaterialListView.java:62)
+            at com.dexafree.materialList.controller.SwipeDismissRecyclerViewTouchListener.onTouch(SwipeDismissRecyclerViewTouchListener.java:212)
+            at android.view.View.dispatchTouchEvent(View.java:8465)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2399)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2092)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2405)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2049)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2405)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2049)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2405)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2049)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2405)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2049)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2405)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2049)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2405)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2049)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2405)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2049)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2405)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2049)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2405)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2049)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2405)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2049)
+            at com.android.internal.policy.impl.PhoneWindow$DecorView.superDispatchTouchEvent(PhoneWindow.java:2369)
+            at com.android.internal.policy.impl.PhoneWindow.superDispatchTouchEvent(PhoneWindow.java:1719)
+            at android.app.Activity.dispatchTouchEvent(Activity.java:2742)
+            at com.android.internal.policy.impl.PhoneWindow$DecorView.dispatchTouchEvent(PhoneWindow.java:2330)
+            at android.view.View.dispatchPointerEvent(View.java:8666)
+            at android.view.ViewRootImpl$ViewPostImeInputStage.processPointerEvent(ViewRootImpl.java:4123)
+            at android.view.ViewRootImpl$ViewPostImeInputStage.onProcess(ViewRootImpl.java:3989)
+            at android.view.ViewRootImpl$InputStage.deliver(ViewRootImpl.java:3544)
+            at android.view.ViewRootImpl$InputStage.onDeliverToNext(ViewRootImpl.java:3597)
+            at android.view.ViewRootImpl$InputStage.forward(ViewRootImpl.java:3563)
+            at android.view.ViewRootImpl$AsyncInputStage.forward(ViewRootImpl.java:3680)
+            at android.view.ViewRootImpl$InputStage.apply(ViewRootImpl.java:3571)
+            at android.view.ViewRootImpl$AsyncInputStage.apply(ViewRootImpl.java:3737)
+            at android.view.ViewRootImpl$InputStage.deliver(ViewRootImpl.java:3544)
+            at android.view.ViewRootImpl$InputStage.onDeliverToNext(ViewRootImpl.java:3597)
+            at android.view.ViewRootImpl$InputStage.forward(ViewRootImpl.java:3563)
+            at android.view.ViewRootImpl$InputStage.apply(ViewRootImpl.java:3571)
+            at android.view.ViewRootImpl$InputStage.deliver(ViewRootImpl.java:3544)
+            at android.view.ViewRootImpl.deliverInputEvent(ViewRootImpl.java:5807)
+            at android.view.ViewRootImpl.doProcessInputEvents(ViewRootImpl.java:5781)
+            at android.view.ViewRootImpl.enqueueInputEvent(ViewRootImpl.java:5752)
+            at android.view.ViewRootImpl$WindowInputEventReceiver.onInputEvent(ViewRootImpl.java:5897)
+            at android.view.InputEventReceiver.dispatchInputEvent(InputEventReceiver.java:185)
+            at android.os.MessageQueue.nativePollOnce(Native Method)
+            at android.os.MessageQueue.next(MessageQueue.java:143)
+            at android.os.Looper.loop(Loop
+05-06 17:31:03.653    1558-1558/email.crappy.ssao.ruoka D/AndroidRuntime﹕ Shutting down VM
+    --------- beginning of crash
+05-06 17:31:03.654    1558-1558/email.crappy.ssao.ruoka E/AndroidRuntime﹕ FATAL EXCEPTION: main
+    Process: email.crappy.ssao.ruoka, PID: 1558
+    java.lang.ArrayIndexOutOfBoundsException: length=12; index=-1
+            at java.util.ArrayList.get(ArrayList.java:310)
+            at com.dexafree.materialList.controller.MaterialListAdapter.getCard(MaterialListAdapter.java:97)
+            at com.dexafree.materialList.view.MaterialListView$2.canDismiss(MaterialListView.java:62)
+            at com.dexafree.materialList.controller.SwipeDismissRecyclerViewTouchListener.onTouch(SwipeDismissRecyclerViewTouchListener.java:212)
+            at android.view.View.dispatchTouchEvent(View.java:8465)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2399)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2092)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2405)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2049)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2405)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2049)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2405)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2049)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2405)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2049)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2405)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2049)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2405)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2049)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2405)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2049)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2405)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2049)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2405)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2049)
+            at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2405)
+            at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2049)
+            at com.android.internal.policy.impl.PhoneWindow$DecorView.superDispatchTouchEvent(PhoneWindow.java:2369)
+            at com.android.internal.policy.impl.PhoneWindow.superDispatchTouchEvent(PhoneWindow.java:1719)
+            at android.app.Activity.dispatchTouchEvent(Activity.java:2742)
+            at com.android.internal.policy.impl.PhoneWindow$DecorView.dispatchTouchEvent(PhoneWindow.java:2330)
+            at android.view.View.dispatchPointerEvent(View.java:8666)
+            at android.view.ViewRootImpl$ViewPostImeInputStage.processPointerEvent(ViewRootImpl.java:4123)
+            at android.view.ViewRootImpl$ViewPostImeInputStage.onProcess(ViewRootImpl.java:3989)
+            at android.view.ViewRootImpl$InputStage.deliver(ViewRootImpl.java:3544)
+            at android.view.ViewRootImpl$InputStage.onDeliverToNext(ViewRootImpl.java:3597)
+            at android.view.ViewRootImpl$InputStage.forward(ViewRootImpl.java:3563)
+            at android.view.ViewRootImpl$AsyncInputStage.forward(ViewRootImpl.java:3680)
+            at android.view.ViewRootImpl$InputStage.apply(ViewRootImpl.java:3571)
+            at android.view.ViewRootImpl$AsyncInputStage.apply(ViewRootImpl.java:3737)
+            at android.view.ViewRootImpl$InputStage.deliver(ViewRootImpl.java:3544)
+            at android.view.ViewRootImpl$InputStage.onDeliverToNext(ViewRootImpl.java:3597)
+            at android.view.ViewRootImpl$InputStage.forward(ViewRootImpl.java:3563)
+            at android.view.ViewRootImpl$InputStage.apply(ViewRootImpl.java:3571)
+            at android.view.ViewRootImpl$InputStage.deliver(ViewRootImpl.java:3544)
+            at android.view.ViewRootImpl.deliverInputEvent(ViewRootImpl.java:5807)
+            at android.view.ViewRootImpl.doProcessInputEvents(ViewRootImpl.java:5781)
+            at android.view.ViewRootImpl.enqueueInputEvent(ViewRootImpl.java:5752)
+            at android.view.ViewRootImpl$WindowInputEventReceiver.onInputEvent(ViewRootImpl.java:5897)
+            at android.view.InputEventReceiver.dispatchInputEvent(InputEventReceiver.java:185)
+            at android.os.MessageQueue.nativePollOnce(Native Method)
+            at android.os.MessageQ
+```
+
+This happens when when I swipe from viewpager tab to another, when each of them have a MaterialList.
+
+I assume this is because it registers my swipe as belonging to a tab that hasn't yet loaded completely, but...
+
+This does not happen if I click the tabs from the title strip, only when swiping
+"
+node,Add show_description functionality to MetadataSquashNotes,"I believe this will add the ability to disable showing the commit message when using `metadata.squash_notes`.
+
+This can be tested by now providing `show_description = False` with `metadata.squash_notes`. This should remove the message in all cases, including compact and non compact notes.
+
+Docs updated as a part of this and tests updated."
+node,App crashes on startup on Android 2.3.6 (Gingerbread),"The play store indicated that the update for google authenticator that my android phone was asking to do was compatible with my old phone, so I updated. I was concerned, so I checked and double-checked. Now it just crashes.
+
+The application Authenticator (process com.google.android.apps.auth enticator2) has stopped unexpectedly. Please try again.
+
+How can i roll it back to how it was and had been for a long time? Why did it say it was compatible if it was not?
+
+KDI-i360-v1.0
+Android 2.3.6"
+node,"Replacement of ""compile"" with ""implementation""","As ""compile"" is going to be deprecated end-2018, this PR replaces with ""implementation"" that is the new usage."
+node,setDismissable only after action,"Hi, how is it possible to set the card dismissable only after button pressing (disabling swipe) or adding an action on swipe action?
+"
+node,How to get card details using mListView object ? ,"                           mListView.getAdapter().addAtStart(new Card.Builder(this)
+                            .setTag(""BASIC_IMAGE_BUTTONS_CARD"" )
+                            .setDismissible()
+                            .withProvider(new CardProvider())
+                            .setLayout(R.layout.card_new)
+                                      ddAction(R.id.left_text_button, new TextViewAction(this)
+                                    .setText(""left"")
+                                    .setTextResourceColor(R.color.black_button))
+                            .addAction(R.id.right_text_button, new TextViewAction(SimManagment.this)
+                                    .setText(""right"")
+                                    .setTextResourceColor(R.color.orange_button))
+                            .addAction(R.id.three_text_button, new TextViewAction(SimManagment.this)
+                                    .setText(""right"")
+                                    .setTextResourceColor(R.color.orange_button))
+                            .endConfig()
+                            .build());
+
+XML
+
+                <?xml version=""1.0"" encoding=""utf-8""?>
+               <com.dexafree.materialList.card.CardLayout
+                 xmlns:android=""http://schemas.android.com/apk/res/android""
+                        xmlns:tools=""http://schemas.android.com/tools""
+                                style=""@style/MainLayout"">
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view=""http://schemas.android.com/apk/res-auto""
+        android:id=""@+id/cardView""
+        style=""@style/Material_Card_View""
+        card_view:cardCornerRadius=""@dimen/card_corner_radius""
+        card_view:cardElevation=""@dimen/card_elevation"">
+        <LinearLayout
+            android:orientation=""horizontal""
+            android:layout_width=""fill_parent""
+            android:layout_height=""wrap_content"">
+
+
+            <LinearLayout
+                android:orientation=""vertical""
+                android:layout_width=""match_parent""
+                android:layout_height=""match_parent"">
+
+                <EditText style=""@style/Material_Action""
+                    android:id=""@+id/mobile_no""
+                    android:inputType=""number""
+                    android:layout_width=""match_parent""
+                    android:layout_height=""wrap_content""
+                    android:hint=""Mobile Number""
+                    tools:text=""my""
+                   />
+                <EditText style=""@style/Material_Action""
+                    android:id=""@+id/sim_no""
+                    android:layout_width=""match_parent""
+                    android:layout_height=""wrap_content""
+                    android:inputType=""number""
+                    tools:text=""Action 1""
+                    android:hint=""Sim Number""
+                    />
+
+
+                <LinearLayout
+                    android:orientation=""horizontal""
+                    android:layout_width=""fill_parent""
+                    android:layout_height=""fill_parent""
+                    android:paddingLeft=""8dp"">
+
+                    <TextView style=""@style/Material_Action""
+                        android:id=""@+id/left_text_button""
+                        tools:text=""Action 1""/>
+
+                    <TextView style=""@style/Material_Action""
+                        android:id=""@+id/right_text_button""
+                        tools:text=""Action 2""/>
+                    <TextView style=""@style/Material_Action""
+                        android:id=""@+id/three_text_button""
+                        tools:text=""Action 2""/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+      </com.dexafree.materialList.card.CardLayout>
+
+I have add two text box inside the card view , when Click the that card How can I get the two values ?
+Can any one please help ?
+
+
+"
+node,test for github assignee to safe reviewer list,""
+node,Published docker image?,"It would be super helpful to have a copy of the latest `master` or release published as a docker image to Docker Hub or Google Container Registry so others can simply `docker pull` rather than rebuilding. It seems others have [copybara images built](https://hub.docker.com/search?q=copybara&type=image), so it would be nice to have an official mirror. 
+"
+node,I Ching my mobail,"Plea help I Ching may mobail I I lost the recovery code for my Snape Chat account, please help"
+node,Query the function of the specified account,"When the account is more and more, it takes time and effort to check the account."
+node,FedRAMP Approval,Are you pursuing FEDRAMP Approval for Google Authenticator for Government Agencies? Is there any plans of initiating this process within the near future? 
+node,Proguard,If you are using proguard this methods are removed:
+- float getScale() from GoogleMusicDicesDrawable
+- void setScale(float scale) from GoogleMusicDicesDrawable
+- void setRotationAngle(int angle) from NexusRotationCrossDrawable
+- int getRotationAngle() from NexusRotationCrossDrawable
+
+I have to add this line to proguard.cfg:
+-keep class com.jpardogo.android.googleprogressbar.*\* { *; }
+
+node,Access current data model from within OnButttonPressListener?,"OnButtonPressListener provides only a reference to TextView textView. So my question ist how to access the current card (and its metadata stored inside it) from within the Listener?
+Is it good practice to declare a card instance final in order to access it from within the listener?
+
+Example:
+
+``` java
+      BasicButtonsCard card = new BasicButtonsCard();
+      card.setTitle(dataPojo.getTitle());
+      card.setDescription(dataPojo.getSource());
+      card.setLeftButtonText(""Dislike"");
+      card.setRightButtonText(""Like"");
+      card.setShowDivider(true);
+      card.setDismissible(true);
+      card.setOnLeftButtonPressedListener(new OnButtonPressListener() {
+        @Override
+        public void onButtonPressedListener(TextView textView) {
+           //Accessing ""card"" right here would only be possible if it was declared 'final'
+           restClient.postUpdate(""Dismiss"", card.getTitle()); 
+          card.dismiss(); 
+        }
+      });
+      materialListView.add(card);
+```
+
+For me it would be great if onButtonPressListener would also provide access to the card like
+
+``` java
+onButtonPressedListener(TextView textView, Card currentCard)
+```
+"
+node,Provide an Android  Studio project,Is it possible to include this repo in an Android Studio project?
+node,HOTP counter value should be 8-byte (long),"The initial counter value for HOTP registrations should allow the full 8-bytes as specified in RFC 4226.
+Currently the com.google.android.apps.authenticator.AuthenticatorActivity parseSecret() method is attempting to parse the counter from the scanned QR code using
+
+```
+Integer.parseInt(counterParameter);
+```
+
+This should clearly be using
+
+```
+Long.parseLong(counterParameter);
+```
+
+and everywhere the counter is declared, it should be using Long not Integer.
+The manual key entry screen should also allow for counter entry if possible.
+"
+node,"Update deprecated ctx.action usage to ctx.actions.{run,run_shell}","Also the `use_default_shell_env parameter` is added where appropriate.
+
+Without it, build fails on Linux distributions with unusual handling
+ of PATH variable, such as NixOS."
+node,Programatically setting focus on the list view,"Can I programatically set the focus to whatever position on the list I like ?
+Whenever I build a list and renders it in the app, it focuses on a random item on my list. 
+
+```
+    mListView.setSelection(index);
+```
+"
+node,Seamless Scrolling,"Currently, if the mListView is updated with new cards, it auto-scrolls to the point where new cards are inserted.
+
+However, what if I want the list to remain as it is (stay on current card) ? 
+
+Alternatively, if it scrolls off automatically, is there a way to ascertain which card the user was on before he got scrolled away ?
+"
+node,Update Android build-tools version to 30.0.0-rc4,""
+node,Remove ic_launcher.png from library resources,"Please remove the ic_launcher.png files from your library.
+It is not necessary, and also it is a problem with the last gradle plugin 1.2.x
+"
+node,Add smart prune support to GitDestination,Smart prune support works by only adding files from
+TransformResult.getAffectedFilesForSmartPrune to the git index. This
+causes files that only changed due to non-reversible transforms to be
+excluded from the commit.
+
+Smart prune is also a large performance improvement when the workflow's
+destination_files are a small subset of a large monorepo. The behavior
+without smart prune is to remove most of the SoT repo from the index
+only to then add it back in AddExcludedFilesToIndex.
+
+I am not sure if the git smart prune behavior matches that of other
+destinations because getAffectedFilesForSmartPrune was only used in a
+few tests in the OSS codebase. But given the API of TransformResult I
+am assuming the piper destination must be doing something similar.
+node,Add hash for Bazel external workspace.,""
+node,Allow font size change or more compact view,"I have more than one screen of passwords; I'd love it to only be a screenful. The best layout would be:
+
+Google: foo@gmail.com 123456
+
+with the expiry time as a thin ""progress bar"" at the top of the screen, given that it's the same for all the codes (at least for me). (If there's some way of it being different, then it could be a thin bar under each line.)
+
+With a layout like that, you could fit 10 or 12 codes on the screen and still have them as readable. Although also, assigning each a random pastel colour would also help to distinguish them, and making the grey text a lighter grey would improve matters too.
+
+Gerv
+"
+node,Sorting of Entries,"Currently all entries are sorted in the order how they were originally add, this is sometimes very annoying if you have more than a few entries. It would be a good addition to let the user sort them manually.
+"
+node,Remove the com_google_protobuf_java external workspace.,Bazel doesn't require this one anymore.
+node,I disabled the google two step auth and it still comes up?,""
+node,Updated big_image_card_layout.xml,The xml of big_image_card_layout did not contain a description field which was supposed to be there.  The commit corrects that.
+
+node,Export of internal change,Export of internal change
+
+node,onButtonPressedListener documentation,"I don't just want to edit in your Wiki, thus I'll report it here:
+In your [BigImageButtonsCard](https://github.com/dexafree/MaterialList/wiki/BigImageButtonsCard) documentation you're giving an example for a Listener:
+
+```
+public void onButtonPressedListener(TextView textView) {
+```
+
+But that should be:
+
+```
+public void onButtonPressedListener(View view, Card card) {
+```
+"
+node,Authenticator 5.00 Open Source Release 🎉,Updating the Open Source version of Authenticator to match the current Play Store version.
+
+* Min API level is now 19.
+* Build system is Bazel instead of Gradle.
+* UI has been revamped.
+* Several other changes are detailed in `CHANGELOG.md`.
+node,Authenticator produces wrong codes during setup of new entries,"**What steps will reproduce the problem?**
+1. Go to auth setup page (Google, Amazon AWS, ...)
+2. Scan code or enter code manually
+3. New entry added to Authenticator
+4. Codes wont be accepted to verify Authenticator (""Wrong code. Please try again""
+
+**What is the expected output? What do you see instead?**
+ Not able to use Authenticator as ""connection"" wont be verified.
+
+**What version of the product are you using? On what operating system?**
+ Authenticator v2.49 on Android 4.4.2 (latest available for my phone [Wiko Highway Signs])
+
+**Please provide any additional information below.**
+ Never had any problems with the Authenticator on my old phone (Samsung Galaxy S).
+ Disabled 2-step auth properly before trying to add the auth on the new phone.
+ Setting up auth does not work with any ""provider"" (Google, Amazon AWS, ...).
+ I did sync the time in Authenticator (No update required, time already syncronised); I re-installed Authenticator; I rebooter the phone; I uninstalled Authenticator, rebootet the phone, installed Authenticator again; nothing helped.
+
+Thanks for your help!
+"
+node,Material List with Eclipse,How Can in use it with Eclipse 
+
+node,Pass through intent,How can I pass a card through intent. The object card can not be serialized or parceled. Please help me. I need to pass the card to another activity. 
+
+node,get OTP over Bluetooth,"hi all. when i worked at google, i loved that i could get an OTP over bluetooth and confirm by knocking on my phone while it was in my pocket (to prevent unauthorized requests). any chance you could add that to this open source app? thanks in advance!
+
+original issue google/google-authenticator#176. original original [issue 177](https://code.google.com/p/google-authenticator/issues/detail?id=177) in google code project:
+
+> Suggestion to create a mechanism to retrieve OTP over bluetooth for the Android Google Authenticator Application
+> 
+> User would put the cursor on a text box in the browser and then hit a (configurable) key combination (e.g. CTRL+SHIFT+i) and it would automatically get an OTP code from the phone´s application and paste it into the text box.
+> 
+> This would probably need an accompaining Mac and Windows client aplication that would have to run as a service and intercept the key combination in order to then request the code to the phone.
+> 
+> This would make the usage of OTP much more practical.
+"
+node,Update BigImageCardItemView.java,Make BigImageCardItemView abstract as BaseButtonsCardItemView
+
+node,Widget to display code in real time on home screen,"As [Blizzard Authenticator](https://play.google.com/store/apps/details?id=com.blizzard.bma), we can set a widget on home screen to update the one-time pasword and not need to access the app.
+"
+node,Allow offline manual time sync,"It would be great to allow to manually set the server time correction, for when the device is offline for extended periods.  This is not a huge problem when the clock drifts forward, but renders the program nonfunctional when the clock drifts more than 30 seconds backward.
+"
+node,Kotlin support,"I cann't implement it in my kotlin project, please support this, thanks"
+node,JUST A TEST. IGNORE,Change-Id: I3bf6b48e6bd49ea4d817e9584aea468be2f28a43
+node,Update BaseButtonsCardItemView.java,There is problem if the Layout it is not a LinearLayout but a Relative one instead (e.g. material_image_with_buttons_card.xml). I cast in this way and I have not problem now.
+
+node,Add Duration-based ctor to TimeoutKillableObserver,Add `java.time.Duration`-based constructor to `TimeoutKillableObserver`.
+node,Folders for organizing codes,https://github.com/google/google-authenticator/issues/455
+
+Add a navigation drawer like menu with folders/categories that users can create to organize codes into groups.
+node,CustomProgressBar,This PR consist in:
+- Custom `GoogleProgressBar` that can be use directly form the XML layout.
+- `attr.xml` file for the `GoogleProgressBar` to be set directly from the xml.
+- `FoldingCirclesDrawable` `Builder`
+- `gradle.build` file dependencies remove from library module
+- `AndroidManifest.xml` refactor to remove code not needed in library module 
+  The `Builder` will make the #6 easier to be accomplish.
+
+node,Remove repository URL,""
+node,"Styles, Templates, Empty View, Simplifications, Code Refactoring, Animations, Actions","- **Material Styles**: Created a material_styles.xml with the font specific
+  stuff (like text size and style of title).
+- **Template layouts**: Added some layout components which can be easily
+  added to a card layout to create cards faster.
+- **Empty View**: Have to refactor the MaterialListView, because the empty
+  view can not be shown, if the class is extended by RecyclerView
+  directly.
+- **Simplifications**: Put all the methods from Text- & Button- & default
+  Provider into one single Provider class, because every card has these
+  things. There is also no need any more to extend the Provider classes (often it was only used to define the layout). With the CardProvider you've got a stand alone provider.
+- **Code Refactoring**: Cleaned up the code.
+- **Animations**: The adapter was not notified when something changed - I mean not by the typicaly method notifyDataSetChanged(). It needs to be notified by notifyItemRemoved/notifyItemInserted/etc.
+- **Actions**: Put all things together in one Provider class with the
+  possibility to add ""Action""s to the views. These actions can be set
+  through the builder pattern.
+
+> The actions can not be integrated into the builder pattern like we did it bevor with the CardProvider :-1: due to the fact, that the generic types getting me so confusing and I haven't found a solution to get it integrated by now. The problem is - when trying to integrate it - the types getting into chaos and I don't know why. When I try to do something like this...
+> 
+> ``` java
+> Card card = new Card.Builder(this)
+>                           .withProvider(new CardProvider())
+>                           .setLayout(R.layout.my_material_card)
+>                           .setTitle(""test"")
+>                           // ... set other properties ...
+>                           .addAction(R.id.action1, new TextViewAction(this))
+>                           .setText(""ACTION!"")
+>                           .setListener(listener)
+>                           .endAction()
+>                           // ... add more actions ...
+>                           .endConfig()
+>                           .build();
+> ```
+> 
+> ``` java
+> public <A extends Action<T>> A addAction(@IdRes int id, A action) {
+>     mSavedActions.put(id, action);
+>     return action;
+> }
+> ```
+> 
+> The setText(string) method (in this example) would be marked with an underlined error, that this method is not known. If I let me show all the possible methods after addAction(int, action) I only see endAction(). Maybe you've got an idea how to solve the problem? This would be awsome! :+1:
+> 
+> The current situation with the actions is not as bad as it sounds like. I think it looks nice, that the actions are intended from the builder pattern (see the MainActivity for examples).
+"
+node,No new changes to import for resolved ref: ITERATIVE move,"Having a bit of an issue getting copybara to move changes for an internal repo. We recreated an external repo and I keep getting this (external repo is empty). I imagine there is a local repo on my laptop that is keeping track of all this and is like ""I ALREADY MOVED THIS!"" but I don't know what it is to blow it away. Maybe I'm not right though :)
+
+copy.bara.sky:
+```
+# Update these references to your orginzations repos
+sourceUrl = ""git@github.com:sonatype/nexus-repository-p2-internal.git""
+destinationUrl = ""git@github.com:sonatype/nexus-repository-p2.git""
+
+core.workflow(
+    name = ""default"",
+    origin = git.origin(
+        url = sourceUrl,
+        ref = ""master"",
+    ),
+    destination = git.destination(
+        url = destinationUrl,
+        fetch = ""master"",
+        push = ""master"",
+    ),
+    mode = ""ITERATIVE"",
+    # Change path to the folder you want to publish publicly
+    origin_files = glob([""**""], exclude = [""copy.bara.sky""]),
+    destination_files = glob([""**""]),
+
+    authoring = authoring.pass_thru(""Me <me@me.com>""),
+)
+```
+
+```
+nexus-repository-p2-internal  master ✅  ~/code/tools/copybara/bazel-bin/java/com/google/copybara/copybara copy.bara.sky --force --last-rev=8b55debc2b4820f5f287dde93afe4be1b969e793
+Copybara source mover (Version: Unknown version)
+Task: Git Origin: Initializing local repo
+WARN: No new changes to import for resolved ref: 8b55debc2b4820f5f287dde93afe4be1b969e793
+```
+
+Appreciate any help, as per usual."
+node,Update build,- Use Build Tools 25.0.1
+- compileSdVersion 22 -> 25
+- Android Gradle Plugin 1.1.3 -> 2.2.3
+- Gradle 2.2.1 -> 3.2.1
+node,Update documentation,--git-first-commit was deprecated in favor of the more general
+--force.
+
+Other minor changes added too.
+
+Fixes #18
+
+Change-Id: Id364a6662f1f6b9279fd389d65a041bfbf43bc3b
+node,destination_files behaviour,"I am attempting to use copybara to migrate many standalone repos into a monorepo, and use copybara to keep them in step while we are in the process of migration. However I am hitting an issue with the behaviour of destination_files, or perhaps my understanding of it.
+
+The following in the config used
+```
+core.workflow(
+    name = ""default"",
+    origin = git.origin(
+        url = origin_url,
+        ref = ""master"",
+    ),
+    destination = git.destination(
+        url = dest_url,
+        fetch = ""master"",
+        push = ""copybara/microtime_import"",
+    ),
+    ask_for_confirmation = True,
+    destination_files = glob([""libs/microtime/**""]),
+    origin_files = glob([""**""]),
+    authoring = authoring.pass_thru(""Copybara <cc@internal>""),
+    transformations = [
+	    core.move("""", ""libs/microtime""),
+    ],
+)
+```
+
+When this runs, it removes **all** other files in the destination repo, unless they are matched by an `exclude` in `destination_files`, which seems to go against the line in the docs:
+
+```
+A glob relative to the root of the destination repository that matches files that are part of the migration. Files NOT matching this glob will never be removed, even if the file does not exist in the source.
+```
+
+How can I get copybara to import from the the origin repo and only affect the destination folder?
+Using copybara built from ea42789eb4610847f9d9bf3a0e6d96e5155a55b5"
+node,"Stable version, compatible with Android 2.3.7?","Hi there!
+
+Is there a stable version, compatible with Android 2.3.7?
+
+Thank you for your feedbacks.
+
+
+Best regards,
+Jan"
+node,Secrets should be stored in a java.security.KeyStore,"Transferred from https://github.com/google/google-authenticator/issues/157
+
+Instead of storing the secrets in the SQLite database, the SQLite database should store the alias of the SecretKey in a java.security.KeyStore. This will allow migration to more secure methods of storage in the future.
+
+Note that you'll have to use a JCEKS instead of the default JKS.
+"
+node,Key change dynamically,"I wonder if it is possible to change the key generation of dynamic way?
+
+Changing the getSecret () method it is possible to generate the token, but in validation in the application is not possible.
+
+One observation is that I'm not using google but in a company's authentication system.
+"
+node,Multiple dex  files for libcoreanimation,"Hi, I'm facing an issue.. My gradle build is failing because of multiple dex files for libcoreanimation. I checked the iml file and it is showing libcoreanimation 3.1.0 is imported by both your project and sticky list headers.. I'm defining your project as a dependency  in my gradle file. Please fix it or provide a way to quick fix  I'm a bit short on time. 
+"
+node,Add default http.userAgent flag,Fixes #65 
+node,Run Copybara in GitHub actions?,"Hi, is it possible to run Copybara in GitHub actions?
+
+Thinking someone could create an action that wraps it, or would it be easier to use Docker?
+"
+node,Group Token Number,"On iOS the token numbers are grouped like ""123 456"", which makes much more readable when logging in. It would be a good idea if the Android version would do the same.
+
+Also the blue colour for the token helps to read the numbers.
+"
+node,"Crashes on setup, Android 5.0",I just try to set up a new account and it crashes.
+Samsung Galaxy S5
+
+node,Add multiselect for quick delete multiple accounts,Add multiselect for quick delete multiple accounts
+node,Update SwipeDismissRecyclerViewTouchListener.java,"I found that there is  a bug existing when you Use BigImageButtonsCard or BigImageCard and swipe to dismiss a card, the card below the card dismissed
+may change it's Layouts. But after I delete the code that I commited ,it really works!
+I'm a fresh man ,don't know the real principle. But the bug is existing exactly.
+So U can Update a  newer version when u are free.
+"
+node,Where to find updated source code (v4.74)?,"Where do I find the updated source code of the Google Authenticator (v4,74) (with integrated barcode scanner, material design, etc.) as described at the Play Store?
+Is it available at all?"
+node,Trying to use 2.1.0,"Okay I see that you updated it, but none of the sample cards are appearing. In the README you say to import the module samplecards and compile. Where is that? I thought it was supposed to all be included in the library
+
+Thanks!
+
+PS. Really awesome work
+"
+node,GoogleProgressBar animation is slow,how can I make this animation fast.
+
+node,UNEXPECTED TOP-LEVEL EXCEPTION:,After upgrading the library to 2.0.0
+I am getting multiple dex libraries issue:
+
+```
+UNEXPECTED TOP-LEVEL EXCEPTION:
+com.android.dex.DexException: Multiple dex files define Lcom/nhaarman/listviewanimations/util/Swappable;
+    at com.android.dx.merge.DexMerger.readSortableTypes(DexMerger.java:596)
+    at com.android.dx.merge.DexMerger.getSortedTypes(DexMerger.java:554)
+    at com.android.dx.merge.DexMerger.mergeClassDefs(DexMerger.java:535)
+    at com.android.dx.merge.DexMerger.mergeDexes(DexMerger.java:171)
+    at com.android.dx.merge.DexMerger.merge(DexMerger.java:189)
+    at com.android.dx.command.dexer.Main.mergeLibraryDexBuffers(Main.java:454)
+    at com.android.dx.command.dexer.Main.runMonoDex(Main.java:303)
+    at com.android.dx.command.dexer.Main.run(Main.java:246)
+    at com.android.dx.command.dexer.Main.main(Main.java:215)
+    at com.android.dx.command.Main.main(Main.java:106)
+```
+
+node,is the new stuff ever gonna be released?,the new changes have been pending for a while now....
+is this library gone to the wayside?
+
+when will the dramatic change in the pending PRs be released?
+
+thanks
+
+node,Fly In Animation.,How do I get the Fly In animation from the bottom like seen in the sample app. Right now the cards are just static and have no appearance animations.
+
+node,Update Android Gradle plugin to 3.1.3,This PR migrates to Android Plugin for Gradle 3 and fixes associated build errors/warnings.
+node,Test PR,This is a test.
+node,Sample Cards as Gradle Import,Shouldn't the sample cards also be able to import via gradle into the own project?
+
+``` java
+    import 'com.github.dexafree:materiallist-cards:x.x.x'
+```
+
+node,"BUG strange behavior on ""com.android.support:design:23.2.1""","Using com.android.support:design:23.2.1 instead of com.android.support:design:23.1.1 the carda layout looks strange, there is a lot of space between cards.
+"
+node,Provide source code for 2.49,"The currently available version in the Play Store is `Google Authenticator 2.49`, while the source here reflects the already very old version 2.21.
+
+It would be very nice by Google to provide source code for the latest release as well, which I would highly appreciate for such a sensitive security application like a secure token generator.
+"
+node,Google Authenticator Time Synch Problem,"The keys Google 2FA generates are not valid for my app 2FA logins. So, I want to synch it but it does not work and pops up an error box saying, connection problem with the Google's server, check your network settings, and then retry. Please help me guys, it willi be life saving."
+node,Use reposurgeon to preserve commit messages,https://github.com/google/mediapipe/commits/master imports by copybara have no commit messages. Maybe use https://gitlab.com/esr/reposurgeon instead of reinventing the wheel?
+
+
+node,Update README.md,In the description method 'add' is called on the MaterialListView object directly which results in error.
+It should be called on MaterialListAdapter. It has been corrected.
+
+node,Create a docker image with copybara,It would be super handy to have a docker image that can run copybara. 
+
+Consider adding it to  https://github.com/GoogleCloudPlatform/cloud-builders 
+
+
+node,Option to increase space between Cards without creating custom card,"I was wondering how could one tinker with few properties of the cards, such as margin and padding, depth etc. without having to create custom card.
+
+I tried to change divided length for Material list view but it didn't work.
+
+In addition to this, it would be wonderful if a Progress bar indicator option could be given for each card.
+
+Thanks
+"
+node,Test commit,""
+node,Pull requests and confidential blocks,"There is an example in the documentation which uses `core.replace` to remove a confidential block.
+This transformation works perfectly fine in one direction. But I don't understand how to make it work with pull requests.
+
+Such transformation is not reversible. So if pull modifies a file with a cofidential block, then the block itself gets removed.
+
+Is there some easy way to apply such pull requests with copybara?
+"
+node,Scrollable View changes position on Device Rotation,"When I perform these sequences of events, the scroll view on screen goes back to the top:
+
+Sequence 1:
+1.  Click on More...
+2.  Click on Settings
+3.  Click on Time Correction 
+4.  Click on About this feature
+5.  Scroll Down
+6.  Orientation Change
+"
+node,with Provider," .withProvider(BasicImageButtonsCardProvider.class)
+
+having error with this line ""BasicImageButtonsCardProvider""
+"
+node,Help me please:  Cause: duplicate entry: android/support/v7/util/AsyncListUtil$1.class ,"This is my build.gradle file:
+
+`apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId ""by.me.example""
+        minSdkVersion 19
+        targetSdkVersion 27
+        versionCode 1
+        versionName ""1.0""
+        testInstrumentationRunner ""android.support.test.runner.AndroidJUnitRunner""
+        multiDexEnabled true
+    }
+    packagingOptions{
+        exclude 'META-INF/rxjava.properties'
+    }
+`
+ `   buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+}
+repositories {
+
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'com.android.support') {
+            if (!requested.name.startsWith(""multidex"")) {
+                details.useVersion ""27.1.1""
+            }
+        }
+    }
+}`
+`dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.google.android.gms:play-services-gcm:15.0.0'
+    implementation 'com.google.android.gms:play-services-ads:15.0.0'
+ implementation ""com.android.support:customtabs:27.1.1""
+
+
+   // implementation 'com.android.support:support-v4:27.1.1'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    implementation 'com.android.support:cardview-v7:27.1.1'
+
+
+    implementation 'com.android.support:design:27.1.1'
+
+
+   implementation 'com.squareup.picasso:picasso:2.5.2' //for Inmobi
+    implementation name: 'adcolony-sdk-3.2.1', ext: 'aar'
+    implementation name: 'mmedia-6.4.0', ext: 'aar'
+    implementation name: 'mobvista_alphab', ext: 'aar'
+    implementation name: 'mobvista_appwall', ext: 'aar'
+    implementation name: 'mobvista_appwallext', ext: 'aar'
+    implementation name: 'mobvista_common', ext: 'aar'
+    implementation name: 'mobvista_interstitial', ext: 'aar'
+    implementation name: 'mobvista_mvdownloads', ext: 'aar'
+    implementation name: 'mobvista_mvjscommon', ext: 'aar'
+    implementation name: 'mobvista_mvnative', ext: 'aar'
+    implementation name: 'mobvista_nativeex', ext: 'aar'
+    implementation name: 'mobvista_offerwall', ext: 'aar'
+    implementation name: 'mobvista_playercommon', ext: 'aar'
+    implementation name: 'mobvista_reward', ext: 'aar'
+    implementation name: 'mobvista_videocommon', ext: 'aar'
+    implementation name: 'mobvista_videofeeds', ext: 'aar'
+    implementation 'com.android.support:multidex:1.0.3'
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+}
+`
+
+
+I got This leads to the following error when I try to generate APK.
+**Cause: duplicate entry: android/support/v7/util/AsyncListUtil$1.class**
+
+_org.gradle.initialization.ReportedException: org.gradle.internal.exceptions.LocationAwareException: Execution failed for task ':app:transformClassesWithJarMergingForRelease'.
+	at org.gradle.initialization.DefaultGradleLauncher.doBuildStages(DefaultGradleLauncher.java:139)
+	at org.gradle.initialization.DefaultGradleLauncher.executeTasks(DefaultGradleLauncher.java:109)
+	at org.gradle.internal.invocation.GradleBuildController$1.call(GradleBuildController.java:78)
+	at org.gradle.internal.invocation.GradleBuildController$1.call(GradleBuildController.java:75)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.withLocks(DefaultWorkerLeaseService.java:152)
+	at org.gradle.internal.invocation.GradleBuildController.doBuild(GradleBuildController.java:100)
+	at org.gradle.internal.invocation.GradleBuildController.run(GradleBuildController.java:75)
+	at org.gradle.tooling.internal.provider.runner.BuildModelActionRunner.run(BuildModelActionRunner.java:53)
+	at org.gradle.launcher.exec.ChainingBuildActionRunner.run(ChainingBuildActionRunner.java:35)
+	at org.gradle.launcher.exec.ChainingBuildActionRunner.run(ChainingBuildActionRunner.java:35)
+	at org.gradle.tooling.internal.provider.ValidatingBuildActionRunner.run(ValidatingBuildActionRunner.java:32)
+	at org.gradle.launcher.exec.RunAsBuildOperationBuildActionRunner$1.run(RunAsBuildOperationBuildActionRunner.java:43)
+	at org.gradle.internal.progress.DefaultBuildOperationExecutor$RunnableBuildOperationWorker.execute(DefaultBuildOperationExecutor.java:336)
+	at org.gradle.internal.progress.DefaultBuildOperationExecutor$RunnableBuildOperationWorker.execute(DefaultBuildOperationExecutor.java:328)
+	at org.gradle.internal.progress.DefaultBuildOperationExecutor.execute(DefaultBuildOperationExecutor.java:199)
+	at org.gradle.internal.progress.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:110)
+	at org.gradle.launcher.exec.RunAsBuildOperationBuildActionRunner.run(RunAsBuildOperationBuildActionRunner.java:40)
+	at org.gradle.tooling.internal.provider.SubscribableBuildActionRunner.run(SubscribableBuildActionRunner.java:51)
+	at org.gradle.launcher.exec.InProcessBuildActionExecuter.execute(InProcessBuildActionExecuter.java:47)
+	at org.gradle.launcher.exec.InProcessBuildActionExecuter.execute(InProcessBuildActionExecuter.java:30)
+	at org.gradle.launcher.exec.BuildTreeScopeBuildActionExecuter.execute(BuildTreeScopeBuildActionExecuter.java:39)
+	at org.gradle.launcher.exec.BuildTreeScopeBuildActionExecuter.execute(BuildTreeScopeBuildActionExecuter.java:25)
+	at org.gradle.tooling.internal.provider.ContinuousBuildActionExecuter.execute(ContinuousBuildActionExecuter.java:80)
+	at org.gradle.tooling.internal.provider.ContinuousBuildActionExecuter.execute(ContinuousBuildActionExecuter.java:53)
+	at org.gradle.tooling.internal.provider.ServicesSetupBuildActionExecuter.execute(ServicesSetupBuildActionExecuter.java:57)
+	at org.gradle.tooling.internal.provider.ServicesSetupBuildActionExecuter.execute(ServicesSetupBuildActionExecuter.java:32)
+	at org.gradle.tooling.internal.provider.GradleThreadBuildActionExecuter.execute(GradleThreadBuildActionExecuter.java:36)
+	at org.gradle.tooling.internal.provider.GradleThreadBuildActionExecuter.execute(GradleThreadBuildActionExecuter.java:25)
+	at org.gradle.tooling.internal.provider.ParallelismConfigurationBuildActionExecuter.execute(ParallelismConfigurationBuildActionExecuter.java:43)
+	at org.gradle.tooling.internal.provider.ParallelismConfigurationBuildActionExecuter.execute(ParallelismConfigurationBuildActionExecuter.java:29)
+	at org.gradle.tooling.internal.provider.StartParamsValidatingActionExecuter.execute(StartParamsValidatingActionExecuter.java:69)
+	at org.gradle.tooling.internal.provider.StartParamsValidatingActionExecuter.execute(StartParamsValidatingActionExecuter.java:30)
+	at org.gradle.tooling.internal.provider.SessionFailureReportingActionExecuter.execute(SessionFailureReportingActionExecuter.java:59)
+	at org.gradle.tooling.internal.provider.SessionFailureReportingActionExecuter.execute(SessionFailureReportingActionExecuter.java:44)
+	at org.gradle.tooling.internal.provider.SetupLoggingActionExecuter.execute(SetupLoggingActionExecuter.java:45)
+	at org.gradle.tooling.internal.provider.SetupLoggingActionExecuter.execute(SetupLoggingActionExecuter.java:30)
+	at org.gradle.launcher.daemon.server.exec.ExecuteBuild.doBuild(ExecuteBuild.java:67)
+	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:36)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:122)
+	at org.gradle.launcher.daemon.server.exec.WatchForDisconnection.execute(WatchForDisconnection.java:37)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:122)
+	at org.gradle.launcher.daemon.server.exec.ResetDeprecationLogger.execute(ResetDeprecationLogger.java:26)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:122)
+	at org.gradle.launcher.daemon.server.exec.RequestStopIfSingleUsedDaemon.execute(RequestStopIfSingleUsedDaemon.java:34)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:122)
+	at org.gradle.launcher.daemon.server.exec.ForwardClientInput$2.call(ForwardClientInput.java:74)
+	at org.gradle.launcher.daemon.server.exec.ForwardClientInput$2.call(ForwardClientInput.java:72)
+	at org.gradle.util.Swapper.swap(Swapper.java:38)
+	at org.gradle.launcher.daemon.server.exec.ForwardClientInput.execute(ForwardClientInput.java:72)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:122)
+	at org.gradle.launcher.daemon.server.exec.LogAndCheckHealth.execute(LogAndCheckHealth.java:55)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:122)
+	at org.gradle.launcher.daemon.server.exec.LogToClient.doBuild(LogToClient.java:62)
+	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:36)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:122)
+	at org.gradle.launcher.daemon.server.exec.EstablishBuildEnvironment.doBuild(EstablishBuildEnvironment.java:82)
+	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:36)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:122)
+	at org.gradle.launcher.daemon.server.exec.StartBuildOrRespondWithBusy$1.run(StartBuildOrRespondWithBusy.java:50)
+	at org.gradle.launcher.daemon.server.DaemonStateCoordinator$1.run(DaemonStateCoordinator.java:295)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.gradle.internal.exceptions.LocationAwareException: Execution failed for task ':app:transformClassesWithJarMergingForRelease'.
+	at org.gradle.initialization.DefaultExceptionAnalyser.transform(DefaultExceptionAnalyser.java:74)
+	at org.gradle.initialization.MultipleBuildFailuresExceptionAnalyser.transform(MultipleBuildFailuresExceptionAnalyser.java:47)
+	at org.gradle.initialization.StackTraceSanitizingExceptionAnalyser.transform(StackTraceSanitizingExceptionAnalyser.java:30)
+	at org.gradle.initialization.DefaultGradleLauncher.doBuildStages(DefaultGradleLauncher.java:137)
+	at org.gradle.initialization.DefaultGradleLauncher.executeTasks(DefaultGradleLauncher.java:109)
+	at org.gradle.internal.invocation.GradleBuildController$1.call(GradleBuildController.java:78)
+	at org.gradle.internal.invocation.GradleBuildController$1.call(GradleBuildController.java:75)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.withLocks(DefaultWorkerLeaseService.java:152)
+	at org.gradle.internal.invocation.GradleBuildController.doBuild(GradleBuildController.java:100)
+	at org.gradle.internal.invocation.GradleBuildController.run(GradleBuildController.java:75)
+	at org.gradle.tooling.internal.provider.runner.BuildModelActionRunner.run(BuildModelActionRunner.java:53)
+	at org.gradle.launcher.exec.ChainingBuildActionRunner.run(ChainingBuildActionRunner.java:35)
+	at org.gradle.launcher.exec.ChainingBuildActionRunner.run(ChainingBuildActionRunner.java:35)
+	at org.gradle.tooling.internal.provider.ValidatingBuildActionRunner.run(ValidatingBuildActionRunner.java:32)
+	at org.gradle.launcher.exec.RunAsBuildOperationBuildActionRunner$1.run(RunAsBuildOperationBuildActionRunner.java:43)
+	at org.gradle.internal.progress.DefaultBuildOperationExecutor$RunnableBuildOperationWorker.execute(DefaultBuildOperationExecutor.java:336)
+	at org.gradle.internal.progress.DefaultBuildOperationExecutor$RunnableBuildOperationWorker.execute(DefaultBuildOperationExecutor.java:328)
+	at org.gradle.internal.progress.DefaultBuildOperationExecutor.execute(DefaultBuildOperationExecutor.java:199)
+	at org.gradle.internal.progress.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:110)
+	at org.gradle.launcher.exec.RunAsBuildOperationBuildActionRunner.run(RunAsBuildOperationBuildActionRunner.java:40)
+	at org.gradle.tooling.internal.provider.SubscribableBuildActionRunner.run(SubscribableBuildActionRunner.java:51)
+	at org.gradle.launcher.exec.InProcessBuildActionExecuter.execute(InProcessBuildActionExecuter.java:47)
+	at org.gradle.launcher.exec.InProcessBuildActionExecuter.execute(InProcessBuildActionExecuter.java:30)
+	at org.gradle.launcher.exec.BuildTreeScopeBuildActionExecuter.execute(BuildTreeScopeBuildActionExecuter.java:39)
+	at org.gradle.launcher.exec.BuildTreeScopeBuildActionExecuter.execute(BuildTreeScopeBuildActionExecuter.java:25)
+	at org.gradle.tooling.internal.provider.ContinuousBuildActionExecuter.execute(ContinuousBuildActionExecuter.java:80)
+	at org.gradle.tooling.internal.provider.ContinuousBuildActionExecuter.execute(ContinuousBuildActionExecuter.java:53)
+	at org.gradle.tooling.internal.provider.ServicesSetupBuildActionExecuter.execute(ServicesSetupBuildActionExecuter.java:57)
+	at org.gradle.tooling.internal.provider.ServicesSetupBuildActionExecuter.execute(ServicesSetupBuildActionExecuter.java:32)
+	at org.gradle.tooling.internal.provider.GradleThreadBuildActionExecuter.execute(GradleThreadBuildActionExecuter.java:36)
+	at org.gradle.tooling.internal.provider.GradleThreadBuildActionExecuter.execute(GradleThreadBuildActionExecuter.java:25)
+	at org.gradle.tooling.internal.provider.ParallelismConfigurationBuildActionExecuter.execute(ParallelismConfigurationBuildActionExecuter.java:43)
+	at org.gradle.tooling.internal.provider.ParallelismConfigurationBuildActionExecuter.execute(ParallelismConfigurationBuildActionExecuter.java:29)
+	at org.gradle.tooling.internal.provider.StartParamsValidatingActionExecuter.execute(StartParamsValidatingActionExecuter.java:69)
+	at org.gradle.tooling.internal.provider.StartParamsValidatingActionExecuter.execute(StartParamsValidatingActionExecuter.java:30)
+	at org.gradle.tooling.internal.provider.SessionFailureReportingActionExecuter.execute(SessionFailureReportingActionExecuter.java:59)
+	at org.gradle.tooling.internal.provider.SessionFailureReportingActionExecuter.execute(SessionFailureReportingActionExecuter.java:44)
+	at org.gradle.tooling.internal.provider.SetupLoggingActionExecuter.execute(SetupLoggingActionExecuter.java:45)
+	at org.gradle.tooling.internal.provider.SetupLoggingActionExecuter.execute(SetupLoggingActionExecuter.java:30)
+	at org.gradle.launcher.daemon.server.exec.ExecuteBuild.doBuild(ExecuteBuild.java:67)
+	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:36)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:122)
+	at org.gradle.launcher.daemon.server.exec.WatchForDisconnection.execute(WatchForDisconnection.java:37)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:122)
+	at org.gradle.launcher.daemon.server.exec.ResetDeprecationLogger.execute(ResetDeprecationLogger.java:26)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:122)
+	at org.gradle.launcher.daemon.server.exec.RequestStopIfSingleUsedDaemon.execute(RequestStopIfSingleUsedDaemon.java:34)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:122)
+	at org.gradle.launcher.daemon.server.exec.ForwardClientInput$2.call(ForwardClientInput.java:74)
+	at org.gradle.launcher.daemon.server.exec.ForwardClientInput$2.call(ForwardClientInput.java:72)
+	at org.gradle.util.Swapper.swap(Swapper.java:38)
+	at org.gradle.launcher.daemon.server.exec.ForwardClientInput.execute(ForwardClientInput.java:72)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:122)
+	at org.gradle.launcher.daemon.server.exec.LogAndCheckHealth.execute(LogAndCheckHealth.java:55)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:122)
+	at org.gradle.launcher.daemon.server.exec.LogToClient.doBuild(LogToClient.java:62)
+	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:36)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:122)
+	at org.gradle.launcher.daemon.server.exec.EstablishBuildEnvironment.doBuild(EstablishBuildEnvironment.java:82)
+	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:36)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:122)
+	at org.gradle.launcher.daemon.server.exec.StartBuildOrRespondWithBusy$1.run(StartBuildOrRespondWithBusy.java:50)
+	at org.gradle.launcher.daemon.server.DaemonStateCoordinator$1.run(DaemonStateCoordinator.java:295)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
+Caused by: org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:transformClassesWithJarMergingForRelease'.
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeActions(ExecuteActionsTaskExecuter.java:100)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:70)
+	at org.gradle.api.internal.tasks.execution.OutputDirectoryCreatingTaskExecuter.execute(OutputDirectoryCreatingTaskExecuter.java:51)
+	at org.gradle.api.internal.tasks.execution.SkipUpToDateTaskExecuter.execute(SkipUpToDateTaskExecuter.java:62)
+	at org.gradle.api.internal.tasks.execution.ResolveTaskOutputCachingStateExecuter.execute(ResolveTaskOutputCachingStateExecuter.java:54)
+	at org.gradle.api.internal.tasks.execution.ValidatingTaskExecuter.execute(ValidatingTaskExecuter.java:60)
+	at org.gradle.api.internal.tasks.execution.SkipEmptySourceFilesTaskExecuter.execute(SkipEmptySourceFilesTaskExecuter.java:97)
+	at org.gradle.api.internal.tasks.execution.CleanupStaleOutputsExecuter.execute(CleanupStaleOutputsExecuter.java:87)
+	at org.gradle.api.internal.tasks.execution.ResolveTaskArtifactStateTaskExecuter.execute(ResolveTaskArtifactStateTaskExecuter.java:52)
+	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:52)
+	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:54)
+	at org.gradle.api.internal.tasks.execution.ExecuteAtMostOnceTaskExecuter.execute(ExecuteAtMostOnceTaskExecuter.java:43)
+	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:34)
+	at org.gradle.execution.taskgraph.DefaultTaskGraphExecuter$EventFiringTaskWorker$1.run(DefaultTaskGraphExecuter.java:248)
+	at org.gradle.internal.progress.DefaultBuildOperationExecutor$RunnableBuildOperationWorker.execute(DefaultBuildOperationExecutor.java:336)
+	at org.gradle.internal.progress.DefaultBuildOperationExecutor$RunnableBuildOperationWorker.execute(DefaultBuildOperationExecutor.java:328)
+	at org.gradle.internal.progress.DefaultBuildOperationExecutor.execute(DefaultBuildOperationExecutor.java:199)
+	at org.gradle.internal.progress.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:110)
+	at org.gradle.execution.taskgraph.DefaultTaskGraphExecuter$EventFiringTaskWorker.execute(DefaultTaskGraphExecuter.java:241)
+	at org.gradle.execution.taskgraph.DefaultTaskGraphExecuter$EventFiringTaskWorker.execute(DefaultTaskGraphExecuter.java:230)
+	at org.gradle.execution.taskgraph.DefaultTaskPlanExecutor$TaskExecutorWorker.processTask(DefaultTaskPlanExecutor.java:123)
+	at org.gradle.execution.taskgraph.DefaultTaskPlanExecutor$TaskExecutorWorker.access$200(DefaultTaskPlanExecutor.java:79)
+	at org.gradle.execution.taskgraph.DefaultTaskPlanExecutor$TaskExecutorWorker$1.execute(DefaultTaskPlanExecutor.java:104)
+	at org.gradle.execution.taskgraph.DefaultTaskPlanExecutor$TaskExecutorWorker$1.execute(DefaultTaskPlanExecutor.java:98)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionPlan.execute(DefaultTaskExecutionPlan.java:626)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionPlan.executeWithTask(DefaultTaskExecutionPlan.java:581)
+	at org.gradle.execution.taskgraph.DefaultTaskPlanExecutor$TaskExecutorWorker.run(DefaultTaskPlanExecutor.java:98)
+	... 3 more
+Caused by: java.lang.RuntimeException: com.android.build.api.transform.TransformException: java.util.zip.ZipException: duplicate entry: android/support/v7/util/AsyncListUtil$1.class
+	at com.android.builder.profile.Recorder$Block.handleException(Recorder.java:55)
+	at com.android.builder.profile.ThreadRecorder.record(ThreadRecorder.java:104)
+	at com.android.build.gradle.internal.pipeline.TransformTask.transform(TransformTask.java:213)
+	at org.gradle.internal.reflect.JavaMethod.invoke(JavaMethod.java:73)
+	at org.gradle.api.internal.project.taskfactory.IncrementalTaskAction.doExecute(IncrementalTaskAction.java:46)
+	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:39)
+	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:26)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter$1.run(ExecuteActionsTaskExecuter.java:121)
+	at org.gradle.internal.progress.DefaultBuildOperationExecutor$RunnableBuildOperationWorker.execute(DefaultBuildOperationExecutor.java:336)
+	at org.gradle.internal.progress.DefaultBuildOperationExecutor$RunnableBuildOperationWorker.execute(DefaultBuildOperationExecutor.java:328)
+	at org.gradle.internal.progress.DefaultBuildOperationExecutor.execute(DefaultBuildOperationExecutor.java:199)
+	at org.gradle.internal.progress.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:110)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeAction(ExecuteActionsTaskExecuter.java:110)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeActions(ExecuteActionsTaskExecuter.java:92)
+	... 29 more
+Caused by: com.android.build.api.transform.TransformException: java.util.zip.ZipException: duplicate entry: android/support/v7/util/AsyncListUtil$1.class
+	at com.android.build.gradle.internal.transforms.JarMergingTransform.transform(JarMergingTransform.java:105)
+	at com.android.build.gradle.internal.pipeline.TransformTask$2.call(TransformTask.java:222)
+	at com.android.build.gradle.internal.pipeline.TransformTask$2.call(TransformTask.java:218)
+	at com.android.builder.profile.ThreadRecorder.record(ThreadRecorder.java:102)
+	... 41 more
+Caused by: java.util.zip.ZipException: duplicate entry: android/support/v7/util/AsyncListUtil$1.class
+	at com.android.builder.packaging.JarMerger.write(JarMerger.java:170)
+	at com.android.builder.packaging.JarMerger.addJar(JarMerger.java:156)
+	at com.android.builder.packaging.JarMerger.addJar(JarMerger.java:121)
+	at com.android.build.gradle.internal.transforms.JarMergingTransform.transform(JarMergingTransform.java:97)
+	... 44 more
+
+_"
+node,no card.dismiss() method,"I'm trying to use the Welcome Card, but it seems to be only swipe-to-dimiss.
+
+```
+WelcomeCard welcomeCard = new WelcomeCard(context);
+welcomeCard.setDismissible(true);
+welcomeCard.dismiss();
+```
+
+Android Studio refuses the `.dismiss()` method and it will not compile, either. The button to dismiss on the Welcome Card also does not work, I assume because it made a call to `.dismiss()`
+"
+node,Consider adding ability to momentarily pause 6-digit code from refreshing while entering it,"Please note that the code in this repository is an open source fork of the app in the Play Store, so **there is no guarantee that both apps will be in sync**. Please check which version of the app your bug applies to below.
+
+- [x] This feature request applies to the app downloaded from the [Play Store][playstore].
+- [ ] This feature request is for the [Github version][opensource] of the app.
+
+The Google Authenticator app is maintained by a small group of 20%-ers within Google. Although we'd love to give the app some more love, engineers need to allocate limited cycles to many competing priorities. Please check the box below to make sure that we're on the same page.
+
+- [x] I have acknowledged that filing this feature request does not obligate Google to implement my specific request.
+
+## Feature Description
+
+I'd like a feature in the Authenticator app that lets me *pause* the refreshing of a 6-digit code as I enter it during the sign-in process. I would like this feature because:
+
+* I commonly enter the 6-digit codes on another device (so I can't easily copy/paste the codes from my phone)
+* often the 6-digit code changes as I am entering it, causing me to start over and wish for a feature like this
+* I misjudge how long it takes to memorize and copy a 6-digit random number
+* I am usually too impatient to wait for the next code and believe in my ability to type fast (see previous bullet)
+* even with enough time, it is still unpleasantly stressful to enter a 6-digit random number under time pressure
+
+The ability to momentarily pause the number-refreshing addresses these issues. Won't the numbers be stale sometimes? Yes, but as long as I am within the grace period that's OK, and the app could show me how old a code is without erasing it from sight.
+
+Here is how I see it working (though I would happily welcome any implementation):
+
+1. you tap the code you want
+2. the code is shown in full-screen (bonus: it's easier to see!)
+3. when the code expires, it's not erased. Instead, the app indicates that it's stale.
+
+![Screenshot 2020-07-16 at 2 19 42 PM](https://user-images.githubusercontent.com/153497/87708991-939d1a80-c771-11ea-8ad4-9dc1085e29f3.png)
+
+
+### Why is it important?
+
+This is important because millions of people manually enter Authenticator codes onto other devices daily, and doing so under time pressure is 1.) stressful, and 2.) often leads to wasted time and effort if the number expires or is about to expire.
+
+This would be a simple, secure, and intuitive addition to an already great app that could relieve people of the unneeded time-pressure of using 2-factor authentication.
+
+
+[playstore]: https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2
+[opensource]: https://github.com/google/google-authenticator-android
+[pr]: https://github.com/google/google-authenticator-android/blob/master/CONTRIBUTING.md
+"
+node,Dockerfile Experiment,"Hi there,
+
+Here is a single commit for #44 . This fixes #39 
+
+Feedback addressed, let me know if there is anything else you'd like!
+
+Cheers,
+Jeffry"
+node,Always set locale to english when running git,"Fixing problem described in https://github.com/google/copybara/pull/93#discussion_r305000087.
+
+@denian 
+
+P.S. 
+This is my first PR in GitHub. I'm not that familiar with the procedure yet. If I did something not suit to the convention, I'm sorry.
+
+"
+node,metadata.add_header() documentation incorrectly formatted,"In the metadata.add_header() documentation, the last code block for `Add a header that uses a label` is improperly closed. The ""\`\`\`"" is at the end of a line instead of on its own line. This causes the block to extend to the end of the first block in the next subsection.
+
+It's a minor issue but docs are important. :)"
+node,Add new card to top,Can I add a card to the top? Would be useful for a news feed.
+
+node,Migrate maven_jar to rules_jvm_external,"This PR migrates Maven artifact handing from using `maven_jar` to [`rules_jvm_external`](https://github.com/bazelbuild/rules_jvm_external/). With rules_jvm_external, you can get transitive Maven artifact management and artifact dependency graph pinning in the form of [`maven_install.json`](https://github.com/bazelbuild/rules_jvm_external/#pinning-artifacts-and-integration-with-bazels-downloader).
+
+This was automated using a script (see https://github.com/bazelbuild/rules_jvm_external/issues/216)."
+node,Crash when removing WelcomeCard,"When I try to remove the welcome card from the top of the adapter, my app crashes:
+
+`java.lang.ArrayIndexOutOfBoundsException: length=12; index=-1
+            at java.util.ArrayList.get(ArrayList.java:310)
+            at com.dexafree.materialList.MaterialListViewAdapter.getItem(MaterialListViewAdapter.java:78)
+            at com.dexafree.materialList.view.MaterialListView$1.onDismiss(MaterialListView.java:88)
+            at com.dexafree.materialList.controller.SwipeDismissListener$4.onAnimationEnd(SwipeDismissListener.java:311)
+            at com.nineoldandroids.animation.ValueAnimator.endAnimation(ValueAnimator.java:1034)
+            at com.nineoldandroids.animation.ValueAnimator.access$900(ValueAnimator.java:43)
+            at com.nineoldandroids.animation.ValueAnimator$AnimationHandler.handleMessage(ValueAnimator.java:669)
+            at android.os.Handler.dispatchMessage(Handler.java:102)
+            at android.os.Looper.loop(Looper.java:212)
+            at android.app.ActivityThread.main(ActivityThread.java:5137)
+            at java.lang.reflect.Method.invokeNative(Native Method)
+            at java.lang.reflect.Method.invoke(Method.java:515)
+            at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:902)
+            at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:718)
+            at dalvik.system.NativeStart.main(Native Method)`
+
+How I remove the card:
+
+ `mListView.getMaterialListViewAdapter().remove(wc);
+                        mListView.getMaterialListViewAdapter().notifyDataSetChanged();`
+"
+node,addAction on card makes action on other cards,"I tried to implement an action after clicking on a textview inside a card like your example but if I have a list of cards, the action doesn't work properly.
+For example the action consists in changing the text of the TextView after clicking on it.
+Now, if I click on the TextView on the first card, the text is changed on the second one, but not on the first one.
+Sometimes it seems to work properly though.
+thanks
+"
+node,Add textVisiblePassword to inputType of key,"Some very popular alternative keyboards have started to ignore the `textNoSuggestions` hint and provide auto-completion nonetheless. Adding the `textVisiblePassword` hint works around this in many cases. This is important, because adding the key to potentially backup-ed and possibly cloud-synced auto-completion information will result in the key no longer being secret.
+"
+node,Clean Shell Scripts,Address warnings and apply suggestions from [ShellCheck](https://github.com/koalaman/shellcheck)
+node,Allow overriding of the git.destination fetch and push references in …,"…the CLI.
+
+After this change a user can overwrite the git.destination() fetch and push references by
+passing a command line flag. This is particularly useful when a user wants to test the configuration or when a local git is used as a wrapper of other destination type (internal usage).
+
+This is pretty much a copy-and-paste change of @mikelalcon's 2775e1971b7cb799199d1004d4545ef238d9f9ad commit. Unfortunately, my Java testing skills are non-existent and I was unable to figure out the right way to test the overrides in javatests/com/google/copybara/git/GitDestinationTest.java.
+
+Can someone pick this up and add the appropriate tests (or teach me)? We would like this internally.
+"
+node,Circle progress taking lot of time to flip ,"Hi, 
+
+ Thanks for the great library, please give option to increase speed of progress flip.
+"
+node,"How do I wipe out the commit message, but maintain sha1, etc...","This is what I've ended up with:
+
+```
+# Update these references to your orginzations repos
+sourceUrl = ""git@github.com:sonatype/nexus-repository-p2-internal.git""
+destinationUrl = ""git@github.com:sonatype/nexus-repository-p2.git""
+
+core.workflow(
+    name = ""default"",
+    origin = git.origin(
+        url = sourceUrl,
+        ref = ""master"",
+    ),
+    destination = git.destination(
+        url = destinationUrl,
+        fetch = ""master"",
+        push = ""master"",
+    ),
+    mode = ""ITERATIVE"",
+    # Change path to the folder you want to publish publicly
+    origin_files = glob([""**""], exclude = [""copy.bara.sky""]),
+    destination_files = glob([""**""]),
+
+    authoring = authoring.pass_thru(""DarthHater <jhesse@sonatype.com>""),
+    transformations = [
+      metadata.squash_notes(""Changes for Project Nexus Repository - P2:\n""),
+    ],
+)
+```
+
+I'd like to wipe out the commit message or make it generic. Origin sha1 is good to have. Is that possible with my setup? I'm using squash_notes out of ignorance, currently."
+node,Copybara.info() should be easy to use programmatically,"Provide a mechanism to get the Info, but still log it to the console by default.
+"
+node,Card Attributes,"I'm currently integrating your MaterialList into my App. It is a nice work!
+
+But now I think it would be very usefull to define some cards in a xml - with their attributes (background-color, text-color, etc). I think it would be a nice feature.
+"
+node,Crash when removing card.,"I got a crash when removing a card. Basically, I have a UI that needs only 3 cards on the screen at once. I'd like to use the MaterialList as it follows UI patterns elsewhere. 
+
+The code to remove is pretty straight forward:
+
+``` java
+scanListView = (MaterialListView) rootView.findViewById(R.id.scan_listview);
+if (visibleScans.size() > MAXIMUM_VISIBLE_SCANS) {
+    HistoryCard cardToRemove = visibleScans.get(0);
+    cardToRemove.setDismissible(true);
+    scanListView.remove(cardToRemove);  // Needs dismissible set to true.
+    visibleScans.remove(0); // Works properly
+}
+```
+
+Here is the error:
+
+04-23 11:01:23.289    7063-7063/com.globesherpa.enforcer E/AndroidRuntime﹕ FATAL EXCEPTION: main
+    Process: com.globesherpa.enforcer, PID: 7063
+    java.lang.RuntimeException: Could not dispatch event: class com.dexafree.materialList.events.DismissEvent to handler [EventHandler public void com.dexafree.materialList.view.MaterialListView.onCardDismiss(com.dexafree.materialList.events.DismissEvent)]: Attempt to read from field 'android.view.View android.support.v7.widget.RecyclerView$ViewHolder.itemView' on a null object reference
+            at com.squareup.otto.Bus.throwRuntimeException(Bus.java:456)
+            at com.squareup.otto.Bus.dispatch(Bus.java:386)
+            at com.squareup.otto.Bus.dispatchQueuedEvents(Bus.java:367)
+            at com.squareup.otto.Bus.post(Bus.java:336)
+            at com.dexafree.materialList.events.MainThreadBus.post(MainThreadBus.java:31)
+            at com.dexafree.materialList.events.BusProvider.dismiss(BusProvider.java:22)
+            at com.dexafree.materialList.view.MaterialListView.remove(MaterialListView.java:118)
+            at com.globesherpa.enforcer.scanner.ScanFragment.didScanBarcode(ScanFragment.java:169)
+            at com.mirasense.scanditsdk.internal.gui.ScanditSDKOverlayView$BarcodeOverlayMessageHandler.handleMessage(ScanditSDKOverlayView.java:564)
+            at android.os.Handler.dispatchMessage(Handler.java:102)
+            at android.os.Looper.loop(Looper.java:145)
+            at android.app.ActivityThread.main(ActivityThread.java:5972)
+            at java.lang.reflect.Method.invoke(Native Method)
+            at java.lang.reflect.Method.invoke(Method.java:372)
+            at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1388)
+            at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1183)
+     Caused by: java.lang.NullPointerException: Attempt to read from field 'android.view.View android.support.v7.widget.RecyclerView$ViewHolder.itemView' on a null object reference
+            at com.dexafree.materialList.view.MaterialListView.onCardDismiss(MaterialListView.java:171)
+            at java.lang.reflect.Method.invoke(Native Method)
+            at java.lang.reflect.Method.invoke(Method.java:372)
+            at com.squareup.otto.EventHandler.handleEvent(EventHandler.java:89)
+            at com.squareup.otto.Bus.dispatch(Bus.java:384)
+            at com.squareup.otto.Bus.dispatchQueuedEvents(Bus.java:367)
+            at com.squareup.otto.Bus.post(Bus.java:336)
+            at com.dexafree.materialList.events.MainThreadBus.post(MainThreadBus.java:31)
+            at com.dexafree.materialList.events.BusProvider.dismiss(BusProvider.java:22)
+            at com.dexafree.materialList.view.MaterialListView.remove(MaterialListView.java:118)
+            at com.globesherpa.enforcer.scanner.ScanFragment.didScanBarcode(ScanFragment.java:169)
+            at com.mirasense.scanditsdk.internal.gui.ScanditSDKOverlayView$BarcodeOverlayMessageHandler.handleMessage(ScanditSDKOverlayView.java:564)
+            at android.os.Handler.dispatchMessage(Handler.java:102)
+            at android.os.Looper.loop(Looper.java:145)
+            at android.app.ActivityThread.main(ActivityThread.java:5972)
+            at java.lang.reflect.Method.invoke(Native Method)
+            at java.lang.reflect.Method.invoke(Method.java:372)
+            at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1388)
+            at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1183)
+"
+node,Update README.md,It should be mListView.getAdapter.add(Card) instead of mListView.add(Card)
+
+node,Customize git binary path,"We need to customize the git binary path since we want to actually use a wrapper that:
+exports some environment properties for Copybara to leverage (username, email, etc).
+
+We tried setting `GIT_EXEC_PATH` in the env but that confuses git since we can't have wrapper sit in the actual `GIT_EXEC_PATH`.
+
+I experimented in my repo in changing `GitRepository#resolveGitBinary` to try and first read `GIT_BINARY_PATH` from the environment and if not fallback to `GIT_EXEC_PATH` and then back to `git` (like it does today).
+
+That solved my problem.
+
+I'd be really happy to send a PR for this. WDYT?"
+node,"ITERATIVE workflow overrides changes, CHANGE_REQUEST workflow only succeeded for a first change","Hi, I'm experimenting with git-to-git export-import scenario.
+For exporting from private repo to public repo I'm using ITERATIVE workflow with git.github_origin and git.github_destination.
+And for importing form public repo to private repo I'm using CHANGE_REQUEST workflow with git.github_origin and git.github_pr_destination.
+
+This setup does work for me in some cases, however in some other cases it doesn't. 
+
+Issue 1
+When running ITERATIVE workflow (exporting priv-->pub), copybara replaces all files changed in the destination with their earlier revisions existing in the origin. Copybara probably fails to find the baseline commit in this scenario but I don't see any errors or warnings. 
+
+Issue 2
+When running CHANGE_REQUEST workflow (importing priv<--pub) it works perfect for a first change but fails for subsequent change.
+Consider the following scenario:
+1. in the dest repo add 'line 1' to dest.txt file.
+2. run copybara import --> PR in the origin githab repo is created.
+3. accept the PR (merge or rebase - it doesn't matter), delete the branch
+4. optionally (the entire scenario fails either way) run copybara export --> ""Iterative workflow produced no changes in the destination for resolved ref: 1234""
+5. in the dest repo add 'line 2' to dest.txt file.
+6. run copybara import --> `ERROR: Conflict detected while rebasing <usr>/copybara/temp/workdir2115951859017918467/checkout to 1234.`
+
+Checking the failed patch at `<usr>/copybara/cache/git_repos/<repo url>/rebase-apply/patch`
+reveals that it contains additions for both 'line 1' and 'line 2' to dest.txt file.
+
+The only fix I've found for this condition is to remove the patch and run copybara export. This time change '1234' (the first one) would pass through and be pushed to the dest. But this will effectively destroy all the recent changes in the dest ('line 2' in our case) - see Issue 1.
+
+Are these issues really a bugs or desired behavior? 
+Is there anything I can try to work around at least one of those?
+Thank you."
+node,More readable changelogs,"While many open source projects impose guidelines to maintain good log messages, the mediapipe [commit history](https://github.com/google/mediapipe/commits/master) contains no commit messages at all.
+
+Maybe use http://www.catb.org/esr/reposurgeon/ for git import?"
+node, How to reference environment variables in copy.bara.sky,"Hi!
+The idea is to use environment variables in the copy.bara.sky configuration file.
+For example:
+```
+$> echo $MIGRATION_MODE
+SQUASH
+```
+```
+core.workflow(
+    name = ""import"",
+    mode = ${MIGRATION_MODE},
+
+    origin = git.github_origin(
+      url = sot_url,
+      ref = ""master"",
+    ),
+```
+Thanks in advance!"
+node,Dismissable crash,The listview crashes when you set a card to be dismissable but don't care about the callback
+
+node,Stop pinning build_tools version in the Android SDK config,Bazel CI is updating to build-tools 30.x.x. This allows for more flexibility with changing Bazel CI SDK versions.
+
+https://github.com/bazelbuild/continuous-integration/pull/984
+node,test,""
+node,"First Card Doesn't Dismiss, Spacing.","I can't seem to get the first card to dismiss in my Material Listview. All other cards except the first one work just fine. I saw this problem in other Issues too but I just can't seem to get it working.
+
+Also, how do I increase the spacing between cards ??
+"
+node,create layout programmatically,"Is there a way I can create MaterialListView programmatically, as not declare a MaterialListView in my layout xml?
+Thanks!
+"
+node,Tag for BigImageCard,"Hi there,
+I'm migrating my code from v2 to v3.
+I just find out that for v3 tag is no longer used.
+Can you tell me the workaround?
+Because I use the tag for intent extra whenever the item clicked.
+I do notice onClick for material listview also changed.
+Thanks.
+"
+node,No option to sort items,Is there any way to sort the card items (asc or desc)? I cannot find a way to do so in the adapter
+
+node,"In all classes of library ""import android.animation.Animator"" is missing.",""
+node,"remove all borders, and padding of card/list","Hi, 
+
+How to make card fit all window (width)? I remove all borders, and padding, but I have 1dp in Left and Right.
+
+![remove border](https://cloud.githubusercontent.com/assets/504812/14916952/dcd59dea-0df2-11e6-8f37-bd216a78c3bd.PNG)
+
+thanks
+"
+node,8digits,is there a way to set the otp length to 8 digits in the app?
+node,"Remove duplicated method ""ask"" ",Method implemented twice with same signature. Looks like mistake. 
+node,Camera 'Allow' button gets disabled,Steps to reproduce on an android device:
+1. Allow camera access during first time installation of google authenticator.
+2. Go to settings > app > Authenticator > Permission > remove camera access.
+3. Open the app again and click on + button to scan a barcode
+4. On the alert message check 'Don't ask again'
+5. Allow button will get disabled
+
+Please have a look at the attached video for better understanding of this issue.
+
+[Authenticator_camera_access_issue.mp4.zip](https://github.com/google/google-authenticator/files/3550733/Authenticator_camera_access_issue.mp4.zip)
+
+
+node,Invalid Codes for 3rd Parties,"Hello,
+
+Normally I have no issues with the google authenticator as a user but yesterday on my android phone I tried logging into one of my accounts with the following providers that support the Google authenticator. 
+
+ 
+
+- Digital Ocean - Providing with invalid codes, unable to login (Yesterday)
+- Stripe (Today) - Unable to login completely, had to reset account. 
+
+Can anyone please confirm if this might be a bug as this will be a certainly an issue as by law I am required to use this for my business. "
+node,On item click development,""
+node,Implementing a custom card,"Hello,
+I'm having some troubles in implementing a custom card in my project.
+I tried to follow your guide here:
+https://github.com/dexafree/MaterialList/wiki/Create-your-own-Cards
+
+But when I define the ItemView class like this:
+public class CustomCardItemView extends GridItemView<CustomCard>
+
+AndroidStudio tells me that it cannot resolve the symbol 'GridItemView'.
+It simply doesn't recognize/find it.
+
+How can I solve this problem?
+Thanks very much in advance
+"
+node,How to Apply onClick on the ListView ,i want to apply onClick on one list item in lIst view
+
+node,How to increase the spacing between cards,"How do I increase the vertical and/or horizontal spacing between 2 cards ? I tried using divider:height in the MaterialList component, but it didn't work.
+How do I achieve this ?
+
+Thanks !
+"
+node,Add reference to PAM RFC-86,""
+node,Remove double negative from README,""
+node,Example on getting animation to work?,"I can't seem to get animation to work.
+
+``` java
+materialListView = (MaterialListView) rootView.findViewById(R.id.scan_listview);
+materialListView.setItemAnimator(new SlideInDownAnimator()); // This SHOULD be setting animation?
+```
+
+But when I add a view later:
+
+``` java
+materialListView.addAtStart(cardToAdd);
+```
+
+No animation. 
+When dismissing a card with a swipe, it does remove. and the cards below do slide up rather nicely. It just isn't animating at all when adding nor with remove()
+"
+node,Crashes on time sync,Ever since I upgraded to Android 5.0 Authenticator codes no longer work and if do `Settings -> Time correction for codes -> Sync now` the app crashes. 
+
+node,info respects last rev flag,Currently Info command ignores `--last-rev` while Migrate respects it.
+I changed Info to work like Migrate.
+node,EmptyView,""
+node,Add link to Play store App,""
+node,Add check buttons on BasicListCard in V3,"In V2 there is an example on how to implement check buttons on List entries, but it is not shown in V3. How can we do that?
+"
+node,Request to add new project: Google Authenticator Android,- I want to test the following project on Bazel CI:
+  - https://github.com/google/google-authenticator-android
+  - https://github.com/mrpickles/google-authenticator-android
+- I confirm that the project has a `.bazelci/presubmit.yml` file.
+
+I also want to include my personal fork (see second sub-bullet) to minimize disturbances to the main repo while setting this up. The project name for my fork doesn't really matter.
+node,Should allow seed export/backup,"As I add more and more things to my Google Authenticator, I come to realise that every account has a unique and annoying way to recover if the seeds are lost. Google has backup codes which aren't too bad, but other sites sometimes require contacting support and the like.
+
+What I really want to be able to do is send my Authenticator seeds from an old device to a new one e.g. via QR code scanning, Android Beam, etc.
+
+Is this feature acceptable to the maintainers? If so, I might try my hand at implementing it, as it's time for me to replace my phone and I don't want to have to manually go around all six accounts and scrobble with the migration.
+"
+node,Main manifest has <uses-sdk android:minSdkVersion='8'> but library uses minSdkVersion='11',"I want to reference the library in my project(https://github.com/snowdream/android-widgets).i get the error as follows.  
+It seems that the minSdkVersion of my project is 8, but your minSdkVersion is 11.  
+ If your library is avaiable for minSdkVersion 8, can you modify it to minSdkVersion 8,thank you.  
+
+``` gradle
+[/home/snowdream/workspace/git/android-widgets/lib/src/main/AndroidManifest.xml, /home/snowdream/workspace/git/android-widgets/lib/build/exploded-aar/com.jpardogo.googleprogressbar/library/1.0.0/AndroidManifest.xml:2]   
+Main manifest has <uses-sdk android:minSdkVersion='8'> but library uses minSdkVersion='11'
+```
+"
+node,Possible New Feature: Identifiers Tags for cards,"In a scenario where cards are being used a templates for large amount of new content, it is important to have some identifier ID for each card instance apart from the just index position.
+
+Though this small feature is relatively simple to add, but it has great utility.
+"
+node,Update Main.java,wait until I release my change to canary. just a test
+node,Customisable colors on FoldingCirclesDrawable,""
+node,Add a ssh GitHub example based on my experience,"This takes some of the config I generated for a @sonatype project, generalizes it and adds it as an example for others.
+
+Let me know if there is anything you'd like me to adjust, greatly appreciate the help you've all been thus far."
+node,"Add build flavors ""playStore"", ""openSource"", and ""openSourceDev""","Since this project switched to Android Studio and Gradle as build system, I think we should use some of its advantages, namely build flavors.
+
+This pull requests adds 3 flavors: `playStore`, `openSource`, and `openSourceDev`.
+
+The `playStore` flavor is added for completeness, as most users of this open-source version will never be able to build the official Play Store version due to missing signing credentials.
+
+The ""openSource"" and ""openSourceDev"" flavor use a different package name, so that they can be installed concurrently on a single device, giving the user (and us developers) the possibility to use the official Play Store version as well as a productive open-source version, while still being able to perform development tasks on a separate installation, without risking our ""productive"" open-source Authenticator.
+
+Adjustments to all `themes.xml` are necessary in order to replace qualified names with references to flavor package names. There seems to be a problem within certain XML files, where package names are not replaced with the `applicationId` from the flavor (compare http://tools.android.com/tech-docs/new-build-system/applicationid-vs-packagename and http://stackoverflow.com/questions/28159281/android-gradle-applicationid-setting-causing-no-resource-found-in-themes-xml). 
+Also replaces hard-coded references to package name in XML files for preferences.
+
+The test instrumentation is hard-coded against the `openSourceDev` flavor, as I suppose this flavor is going to be used for the test runner during development. Please note, that some test cases fail at the moment, but this is unrelated to this pull request.
+"
+node,gradle compile ,I want to know how to make compile like your project 
+dependencies {
+    compile 'com.jpardogo.googleprogressbar:library:(latest version)'
+}
+
+node,Buttons disappearing on dismissing the previous card.,On dismissing a BasicButtonsCard from a list. The left/right buttons disappears for the card that takes the place of the dismissed card.
+
+Any solution for this?
+
+node,Test a PR,This is a test
+
+Change-Id: I501a08eae27c69e88803d7aa2cf28ac2cbeb9891
+node,Custom ProgressBar with xml attr & FoldingCirclesDrawable Builder,This pull request consist in a CustomProgressBar with xml attr to add directly to your xml.
+A FoldingCirclesDrawable Builder
+
+node,Icon collision,"Your material list is very impressive! I want to use it with gradle. But when I add the dependency to my gradle configuration and sync it, then I'll get the following error:
+
+Error:(33, 9) Execution failed for task ':app:processDebugManifest'.
+
+> Manifest merger failed : Attribute application@icon value=(@drawable/app_icon) from AndroidManifest.xml:33:9
+>     is also present at com.github.dexafree:materiallist:1.0.3:13:9 value=(@drawable/ic_launcher)
+>     Suggestion: add 'tools:replace=""android:icon""' to <application> element at AndroidManifest.xml:31:5 to override
+
+I think you should remove the android:icon field from the manifest in your library.
+"
+node,Initial Dockerfile fun stuff,"Hi there,
+
+I've been having a blast using copybara, so I figured I'd see if I could give back a bit. This might address #39 ?
+
+I was able to use this docker file to do an export of public code for one of our projects at sonatype, so it at least works for me!
+
+Let me know if you'd like me to change anything!"
+node,How to make the list filterable?,Is there a way to make the list/cards filterable in any way using like a search bar/input text on the top of the activity?
+
+node,Authenticator crashes in attempt to read a barcode,"How to reproduce:
+1- Open Autenticator
+2- Choose ""Start Configuration""
+3- Choose  ""Read Barcode""
+
+Application crashes before camera opens.
+
+Android Version: 5.0
+Celphone: Motorola Moto X second generation.
+"
+node,Load More,Can i add load more features on List of cards ?!!? 
+
+node,card_corner_radius has no effect,"dimen name=""card_corner_radius""
+Changing this property no longer has any affect on cards. I wondered if it was intentional or if it will be fixed?
+"
+node,Add presubmit.yml,I'm adding `.bazelci/presubmit.yml` as a prerequisite for setting up a CI pipeline for Bazel.
+
+https://github.com/bazelbuild/continuous-integration/blob/master/buildkite/README.md
+node,Help with the list..,How can I set onscrolllistner and how to set onitemclicklistner for the entire card? Please help. I would like to hide the toolbar with the help of onscroll listener and I want an activity to be opened by clicking anywhere on the card. 
+
+How to set onscrolllistener and onitemclicklistner please help..
+
+node,converted folding circles progress bar to folding circles drawable,"So here is quite a big pull request, not sure if you agree with this one.
+
+Here is the fixes it brings:
+- converted `FoldingCirclesProgressBar` to `FoldingCircleDrawable` so it can be reused in many other situations. plus it makes the use of it more clean from a progress bar (that's for #2)
+- cleaned up the code a bit. the new class is a bit lighter than the first one
+- the animation speed can be modified easily now with `android:indeterminateDuration` on the `ProgressBar` (that's for #1)
+"
+node,Test1,""
+node,Hash being overwritten if identificators have the same name,"While scanning a QR code to help my friend setup an account for a service we both use, the authenticator simply overwrote my previous hash and put his in it's place, instead of either creating another entry or simply giving me a prompt asking me if I confirm the operation.
+
+As a side note, now I can't recover my acess to said service anymore, since I don't possess the unlock code and seemingly there's no google account linked to that hash. I can't believe such a thing really wasn't thought about, it's a basic security flaw.
+
+I'm using Android 4.4.2 and latest version of the authenticator from playstore.
+"
+node,Anyway to use this like jquery plugin ? ,"I am planning to use this progress bar in my website. Can i use in my website like other 
+jquery plugins ? 
+
+Thanks,
+Senthil.
+"
+node,how to decrease left/right padding?,""
+node,Thanks!,"Maybe not the most appropriate use of an issue, but I just wanted to let you know we've been using Copybara over at @sonatype for exporting our community projects. I've yet to bring any code in yet, but the export has been great. Thanks for creating this, and pass this on!"
+node,Update Android Gradle plugin to 3.2.0,This PR change the build files to work with the latest of the Gradle tools that came out with Android Studio 3.2
+node,Update README.md,Fixed method name to set dismissible cards in readme instructions.
+
+node,Card with an internal List,Google uses it in their Keep App (http://cdn.ndtv.com/tech/images/gadgets/google_keep_app_update.jpg). This would be very great to have. There is already a library for manuel sorting and reordering available (http://nhaarman.github.io/ListViewAnimations/).
+
+node,Security Problem: Screenshot Function,"Original [issue 402](https://code.google.com/p/google-authenticator/issues/detail?id=402) created by TriplexAccount.P.N on 2014-07-08T10:27:41.000Z:
+
+Copied from https://github.com/google/google-authenticator/issues/401 because it applies to Android app (as well?).
+
+<b>What steps will reproduce the problem?</b>
+1. Call Screenshot Function from the specific smartphone
+
+<b>What version of the product are you using? On what operating system?</b>
+Google Authentificator: 2.49
+
+<b>Please provide any additional information below.</b>
+In general, it is not possible to take a screenshot of any inner user interface from a banking app for security reason. The Google Authentificator can be comprimised by using a trojan with screenshot function. Please disable the ability to take a screenshot from the main interface from the Google Authentificator.
+"
+node,F-Droid,"It would be great to see this Android app on F-Droid!
+
+[F-Droid](https://f-droid.org/) is an Android app store specifically for free/libre open-source apps. It would be great if your app could be released there, as it is the number one for getting FLOSS Android apps for many people.
+F-Droid also builds all apps from source ([optionally even reproducible](https://f-droid.org/en/docs/Reproducible_Builds/)), so downloads from there can be trusted.
+
+The [app developer FAQ](https://f-droid.org/en/docs/FAQ_-_App_Developers/) or [the quick start guide](https://f-droid.org/en/docs/Submitting_to_F-Droid_Quick_Start_Guide/) may help you to get started."
+node,No option for animation?,"I cannot find a way to animate the cards. I mean when they are loaded, there seems to be no way to animation individual cards, somewhat like in the Google Newsstand app, where cards fly upwards.
+
+Any chance of adding support for animations?
+"
+node,"Intent to EnterKeyActivity passing Key, Account Name and Time Based","Hi guys!
+
+How do you guys feel about add those 3 values (account name, key and time based) through the intent from another app in EnterKeyActivity?
+
+The thing is, I have all this values and I'd like to make the process to enable it easier. In this way the user will only need to tap _ADD_ button. 
+"
+node,App crash When back to main screen after Change System Time and Synch,"Here is logcat:
+
+ FATAL EXCEPTION: main
+                                                                                           Process: com.google.android.apps.authenticator2.os, PID: 24056
+                                                                                           java.lang.RuntimeException: Unable to start activity ComponentInfo{com.google.android.apps.authenticator2.os/com.google.android.apps.authenticator.timesync.SettingsTimeCorrectionActivity}: java.lang.ClassCastException: java.lang.Integer cannot be cast to java.lang.String
+                                                                                               at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2646)
+                                                                                               at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2707)
+                                                                                               at android.app.ActivityThread.-wrap12(ActivityThread.java)
+                                                                                               at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1460)
+                                                                                               at android.os.Handler.dispatchMessage(Handler.java:102)
+                                                                                               at android.os.Looper.loop(Looper.java:154)
+                                                                                               at android.app.ActivityThread.main(ActivityThread.java:6077)
+                                                                                               at java.lang.reflect.Method.invoke(Native Method)
+                                                                                               at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:866)
+                                                                                               at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:756)
+                                                                                            Caused by: java.lang.ClassCastException: java.lang.Integer cannot be cast to java.lang.String
+                                                                                               at android.app.SharedPreferencesImpl.getString(SharedPreferencesImpl.java:225)
+                                                                                               at android.preference.Preference.getPersistedString(Preference.java:1472)
+                                                                                               at android.preference.EditTextPreference.onSetInitialValue(EditTextPreference.java:160)
+                                                                                               at android.preference.Preference.dispatchSetInitialValue(Preference.java:1388)
+                                                                                               at android.preference.Preference.onAttachedToHierarchy(Preference.java:1182)
+                                                                                               at android.preference.PreferenceGroup.addPreference(PreferenceGroup.java:163)
+                                                                                               at android.preference.PreferenceGroup.addItemFromInflater(PreferenceGroup.java:105)
+                                                                                               at android.preference.PreferenceGroup.addItemFromInflater(PreferenceGroup.java:104)
+                                                                                               at android.preference.GenericInflater.rInflate(GenericInflater.java:490)
+                                                                                               at android.preference.GenericInflater.inflate(GenericInflater.java:327)
+                                                                                               at android.preference.GenericInflater.inflate(GenericInflater.java:264)
+                                                                                               at android.preference.PreferenceManager.inflateFromResource(PreferenceManager.java:280)
+                                                                                               at android.preference.PreferenceActivity.addPreferencesFromResource(PreferenceActivity.java:1521)
+                                                                                               at com.google.android.apps.authenticator.timesync.SettingsTimeCorrectionActivity.onCreate(SettingsTimeCorrectionActivity.java:35)
+                                                                                               at android.app.Activity.performCreate(Activity.java:6662)
+                                                                                               at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1118)
+                                                                                               at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2599)
+                                                                                               at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2707) 
+                                                                                               at android.app.ActivityThread.-wrap12(ActivityThread.java) 
+                                                                                               at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1460) 
+                                                                                               at android.os.Handler.dispatchMessage(Handler.java:102) 
+                                                                                               at android.os.Looper.loop(Looper.java:154) 
+                                                                                               at android.app.ActivityThread.main(ActivityThread.java:6077) 
+                                                                                               at java.lang.reflect.Method.invoke(Native Method) 
+                                                                                               at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:866) 
+                                                                                               at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:756) "
+node,version 2 deserves a better project structure,"this commit will separate module ""materialList"" into two parts. 
+
+the 1st part would still named ""materialList"". but now it would just care about the core functions. 
+
+the 2nd part is called ""sampleCards"". and it would be a convenient extension. 
+
+the point is when i have got to create my own cards, a core lib with smaller size would be perfect. if the ""sampleCards"" happens to fit the need, well, just one more import sentence. 
+
+besides, a simple and clear project structure is good for development. 
+"
+node,Add Google music dices progress drawable,Hi!
+
+This PR adds a dices 'I'm feeling lucky' progress of the Google Play Music app.
