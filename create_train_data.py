@@ -1,5 +1,9 @@
-import pandas as pd
+#Skript to create Training.csv
 
+# bug.csv contain Issues with Bug Label in Github
+# not_bug.csv contain Issues with No Bug Label in Github
+
+import pandas as pd
 import Processing.PreProcessing as p
 
 
@@ -34,7 +38,8 @@ df_total["full_body"]=df_total["full_body"].apply(lambda x: p.preprocess(x))
 
 df_total=df_total.dropna()
 
-#uncommend to create the "trainings.csv
+#uncommend to create the "trainings.csv"
+
 #df_total.to_csv("training.csv",index=False)
 
 
