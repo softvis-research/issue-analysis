@@ -16,7 +16,7 @@ In order to perform the analysis on a wide range of Java programs and github rep
 Subsequently, a classification of "bugs and problems" is performed. This has the advantage that no labeling of bugs or errors has to be included in the documentation of the git repo.
 For this reason, text analysis mainly refers to the project data collected by Git.
 
-[Text analysis](https://github.com/softvis-research/issue-analysis/blob/dev/text_analyse.ipynb)
+[Text analysis](https://github.com/softvis-research/issue-analysis/blob/master/text_analyse.ipynb)
 
 ## Component analysis
 The data classified as bugs and errors are associated with the corresponding methods/classes and a statistical analysis is performed, which should display hotspots in the respective areas.
@@ -27,8 +27,8 @@ This evaluation includes for example the number of bugs/bugs per method|class, t
 
 Finally, the development of error sources in the project is to be visualized. The development of an error hotspot will be documented chronologically using the Git versioning. By visualizing these temporal developments, the emergence of potential errors is to be tracked and the causes better understood.
 
-[Component and time analysis](https://github.com/softvis-research/issue-analysis/blob/dev/components_analyse.ipynb)
+[Component and time analysis](https://github.com/softvis-research/issue-analysis/blob/master/components_analyse.ipynb)
 
 
 ### Run all Jupyter Notebooks with binder 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/softvis-research/issue-analysis/dev)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/softvis-research/issue-analysis/master)
